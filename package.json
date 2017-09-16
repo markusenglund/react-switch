@@ -2,10 +2,10 @@
   "name": "react-switch",
   "version": "1.0.0",
   "description": "Draggable toggle-switch component for react",
-  "main": "dist/index.jsx",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",
-    "build:watch": "babel src -d -w dist",
+    "build:watch": "babel src -w -d dist",
     "lint": "eslint --ext .js,.jsx src/",
     "prepublish": "npm run build",
     "test": "jest --verbose"
@@ -25,7 +25,7 @@
     "react-dom": ">= 15"
   },
   "devDependencies": {
-    "5": "0.0.1",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
