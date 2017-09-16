@@ -2,7 +2,6 @@
     "env": {
       "browser": true,
       "es6": true,
-      "node": true,
       "jest": true
     },
     "extends": "airbnb",
@@ -12,13 +11,8 @@
       },
       "sourceType": "module"
     },
-    "plugins": [
-      "react"
-    ],
     "rules": {
-      "linebreak-style": "off",
-      "comma-dangle": ["warn", "never"],
-      "arrow-body-style": "off"
+      "comma-dangle": ["warn", "never"]
     }
   }
   
