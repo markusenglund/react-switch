@@ -1,0 +1,34 @@
+.react-switch {
+  display: inline-block;
+  position: relative;
+}
+
+.react-switch-bg {
+  width: 56px;
+  height: 28px;
+  background-color: grey;
+  border-radius: 14px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.react-switch-toggle {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 1px;
+  border: 0px;
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+}
+
+.react-switch-toggle:active {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
