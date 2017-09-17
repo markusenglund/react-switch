@@ -16,10 +16,12 @@ class Switch extends Component {
   render() {
     const { checked } = this.props;
     return (
+      /* eslint-disable jsx-a11y/no-static-element-interactions */
       <div
         className="react-switch"
         onClick={this.handleClick}
       >
+        {/* eslint-disable jsx-a11y/no-static-element-interactions */}
         <span
           className="react-switch-bg"
           style={{ backgroundColor: checked ? 'green' : 'grey' }}

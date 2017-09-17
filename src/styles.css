@@ -10,6 +10,7 @@
   border-radius: 14px;
   display: inline-block;
   cursor: pointer;
+  transition: background-color 0.25s;
 }
 
 .react-switch-toggle {
@@ -25,6 +26,7 @@
   cursor: -webkit-grab;
   cursor: -moz-grab;
   cursor: grab;
+  transition: left 0.25s ease-out;
 }
 
 .react-switch-toggle:active {
