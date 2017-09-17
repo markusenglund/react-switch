@@ -21,8 +21,9 @@
   },
   "homepage": "https://github.com/yogaboll/react-switch#readme",
   "peerDependencies": {
-    "react": ">= 15",
-    "react-dom": ">= 15"
+    "react": ">=15",
+    "react-dom": ">=15",
+    "prop-types": ">=15"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -37,11 +38,6 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.3.0",
     "jest": "^21.1.0",
-    "prop-types": "^15.5.10",
     "react-test-renderer": "^15.6.1"
-  },
-  "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
   }
 }
