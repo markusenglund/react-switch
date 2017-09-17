@@ -5,10 +5,15 @@ import '../src/styles.css';
 function Switch({ checked = true, onChange }) {
   return (
     <div className="react-switch">
-      <span className="react-switch-bg" />
+      <span
+        className="react-switch-bg"
+        style={{ backgroundColor: checked ? 'green' : 'grey' }}
+      />
       <button
         className="react-switch-toggle"
-        style={{ left: checked ? '29px' : '1px' }}
+        style={{
+          left: checked ? '29px' : '1px',
+        }}
       />
     </div>
   );
