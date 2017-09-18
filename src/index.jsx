@@ -10,14 +10,16 @@ class Switch extends Component {
     this.handleDragStart = this.handleDragStart.bind(this);
     this.handleDrag = this.handleDrag.bind(this);
     this.handleDragStop = this.handleDragStop.bind(this);
+    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
     this.state = {
-      left: props.checked ? 29 : 1
+      left: props.checked ? 29 : 1,
+      inTransition: false
     };
   }
 
   componentWillReceiveProps({ checked }) {
     if (this.props.checked !== checked) {
-      this.setState({ left: checked ? 29 : 1 });
+      this.setState({ left: checked ? 29 : 1, inTransition: true });
     }
   }
 
@@ -26,12 +28,19 @@ class Switch extends Component {
     onChange(!checked);
   }
 
-  handleDragStart({ clientX }) {
-    console.log('DRAGSTART, clientX: ', clientX);
+  handleDragStart(event) {
+    const { inTransition } = this.state;
+    if (inTransition) {
+      return;
+    }
+
+    const clientX = event.clientX || event.touches[0].clientX;
+    console.log('DRAGSTART, startX: ', clientX);
     this.setState({ startX: clientX });
   }
 
-  handleDrag({ clientX }) {
+  handleDrag(event) {
+    const clientX = event.clientX || event.touches[0].clientX;
     const { checked } = this.props;
     const { startX } = this.state;
 
@@ -44,8 +53,12 @@ class Switch extends Component {
 
   handleDragStop() {
     const { checked, onChange } = this.props;
-    const { left, isDragging } = this.state;
+    const { left, isDragging, inTransition } = this.state;
+    if (inTransition) {
+      return;
+    }
     console.log('DRAGSTOP, checked: ', checked, 'left: ', left);
+
     if (!isDragging) {
       this.setState({ startX: null });
       return onChange(!checked);
@@ -63,6 +76,11 @@ class Switch extends Component {
     }
     this.setState({ startX: null, isDragging: false });
     return onChange(true);
+  }
+
+  handleTransitionEnd() {
+    console.log('TRANSITION END');
+    this.setState({ inTransition: false });
   }
 
   render() {
@@ -83,6 +101,7 @@ class Switch extends Component {
           onStop={this.handleDragStop}
         >
           <button
+            onTransitionEnd={this.handleTransitionEnd}
             className="react-switch-toggle"
             style={{
               left,
