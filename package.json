@@ -39,5 +39,8 @@
     "eslint-plugin-react": "^7.3.0",
     "jest": "^21.1.0",
     "react-test-renderer": "^15.6.1"
+  },
+  "dependencies": {
+    "react-draggable": "^3.0.3"
   }
 }
