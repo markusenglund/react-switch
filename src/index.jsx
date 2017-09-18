@@ -61,21 +61,24 @@ class Switch extends Component {
 
     if (!isDragging) {
       this.setState({ startX: null });
-      return onChange(!checked);
+      onChange(!checked);
+      return;
     }
 
     if (checked) {
       if (left > 15) {
-        return this.setState({ left: 29, startX: null, isDragging: false });
+        this.setState({ left: 29, startX: null, isDragging: false });
+      } else {
+        this.setState({ startX: null, isDragging: false });
+        onChange(false);
       }
-      this.setState({ startX: null, isDragging: false });
-      return onChange(false);
     }
     if (left < 15) {
-      return this.setState({ left: 1, startX: null, isDragging: false });
+      this.setState({ left: 1, startX: null, isDragging: false });
+    } else {
+      this.setState({ startX: null, isDragging: false });
+      onChange(true);
     }
-    this.setState({ startX: null, isDragging: false });
-    return onChange(true);
   }
 
   handleTransitionEnd() {
