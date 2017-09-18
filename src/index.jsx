@@ -14,7 +14,9 @@ class Switch extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.state = {
       left: props.checked ? 29 : 1,
-      inTransition: false
+      inTransition: false,
+      startX: null,
+      isDragging: false
     };
   }
 
@@ -36,7 +38,8 @@ class Switch extends Component {
 
   handleKeyDown({ keyCode }) {
     const { checked, onChange } = this.props;
-    if (keyCode === 13 || keyCode === 32) {
+    const { isDragging } = this.state;
+    if (keyCode === 13 || keyCode === 32 && !isDragging) {
       onChange(!checked);
     }
   }
