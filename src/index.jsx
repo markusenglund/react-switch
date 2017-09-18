@@ -11,6 +11,7 @@ class Switch extends Component {
     this.handleDrag = this.handleDrag.bind(this);
     this.handleDragStop = this.handleDragStop.bind(this);
     this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.state = {
       left: props.checked ? 29 : 1,
       inTransition: false
@@ -31,6 +32,13 @@ class Switch extends Component {
   handleClick() {
     const { checked, onChange } = this.props;
     onChange(!checked);
+  }
+
+  handleKeyDown({ keyCode }) {
+    const { checked, onChange } = this.props;
+    if (keyCode === 13 || keyCode === 32) {
+      onChange(!checked);
+    }
   }
 
   handleDragStart(event) {
@@ -110,6 +118,7 @@ class Switch extends Component {
         >
           <button
             onTransitionEnd={this.handleTransitionEnd}
+            onKeyDown={this.handleKeyDown}
             className="react-switch-toggle"
             style={{
               left,
