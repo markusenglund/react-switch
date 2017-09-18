@@ -18,8 +18,13 @@ class Switch extends Component {
   }
 
   componentWillReceiveProps({ checked }) {
-    if (this.props.checked !== checked) {
-      this.setState({ left: checked ? 29 : 1, inTransition: true });
+    const { left } = this.state;
+    const newLeft = checked ? 29 : 1;
+    if (left !== newLeft && this.props.checked !== checked) {
+      this.setState({
+        left: newLeft,
+        inTransition: true
+      });
     }
   }
 
