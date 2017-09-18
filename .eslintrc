@@ -12,7 +12,8 @@
       "sourceType": "module"
     },
     "rules": {
-      "comma-dangle": ["warn", "never"]
+      "comma-dangle": ["warn", "never"],
+      "no-mixed-operators": "off"
     }
   }
   
