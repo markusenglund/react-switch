@@ -4,18 +4,12 @@
 }
 
 .react-switch-bg {
-  width: 56px;
-  height: 28px;
-  border-radius: 14px;
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .react-switch-fg {
-  width: 56px;
-  height: 28px;
-  border-radius: 14px;
   display: inline-block;
   cursor: pointer;
   position: absolute;
@@ -24,10 +18,7 @@
 
 .react-switch-toggle {
   display: inline-block;
-  width: 26px;
-  height: 26px;
   border-radius: 50%;
-  background-color: white;
   position: absolute;
   top: 1px;
   border: 0px;
@@ -41,7 +32,6 @@
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
-  background-color: #eee;
 }
 
 .react-switch-toggle:focus {

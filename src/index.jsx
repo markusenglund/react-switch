@@ -103,21 +103,37 @@ class Switch extends Component {
   }
 
   render() {
-    const { checked } = this.props;
-    const { left, isDragging } = this.state;
+    const {
+      checked,
+      offColor,
+      onColor,
+      handleColor,
+      activeHandleColor,
+      height,
+      width
+    } = this.props;
+    const { left, isDragging, startX } = this.state;
     return (
       <div className="react-switch">
         <span
           className="react-switch-bg"
-          style={{ background: 'grey' }}
+          style={{
+            height,
+            width,
+            background: offColor,
+            borderRadius: height / 2
+          }}
         />
         {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
         <span
           className="react-switch-fg"
           style={{
+            height,
+            width,
             opacity: (left - 1) / 28,
-            background: 'green',
-            transition: isDragging ? null : 'opacity 0.2s ease-out'
+            background: onColor,
+            transition: isDragging ? null : 'opacity 0.2s ease-out',
+            borderRadius: height / 2
           }}
           onClick={this.handleClick}
         />
@@ -136,6 +152,9 @@ class Switch extends Component {
             className="react-switch-toggle"
             style={{
               left,
+              height: height - 2,
+              width: height - 2,
+              background: startX ? activeHandleColor : handleColor,
               transition: isDragging ? null : 'left 0.2s ease-out'
             }}
           />
@@ -144,9 +163,28 @@ class Switch extends Component {
     );
   }
 }
+
 Switch.propTypes = {
   checked: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  offColor: PropTypes.string,
+  onColor: PropTypes.string,
+  handleColor: PropTypes.string,
+  activeHandleColor: PropTypes.string,
+  height: PropTypes.number,
+  width: PropTypes.number
+
+};
+
+Switch.defaultProps = {
+  disabled: false,
+  offColor: 'grey',
+  onColor: 'green',
+  handleColor: 'white',
+  activeHandleColor: '#ddd',
+  height: 28,
+  width: 56
 };
 
 export default Switch;
