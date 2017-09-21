@@ -5,13 +5,12 @@
 
 .react-switch-bg {
   display: inline-block;
-  cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .react-switch-fg {
   display: inline-block;
-  cursor: pointer;
+  /* cursor: pointer; */
   position: absolute;
   left: 0px;
 }
@@ -22,17 +21,17 @@
   position: absolute;
   top: 1px;
   border: 0px;
-  cursor: move;
+  /* cursor: move;
   cursor: -webkit-grab;
   cursor: -moz-grab;
-  cursor: grab;
+  cursor: grab; */
 }
-
+/* 
 .react-switch-toggle:active {
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
-}
+} */
 
 .react-switch-toggle:focus {
   outline: 0;

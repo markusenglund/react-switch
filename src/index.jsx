@@ -108,6 +108,7 @@ class Switch extends Component {
   render() {
     const {
       checked,
+      disabled,
       offColor,
       onColor,
       handleColor,
@@ -115,10 +116,21 @@ class Switch extends Component {
       height,
       width
     } = this.props;
-    const checkedLeft = width - height + 1;
     const { left, isDragging, startX } = this.state;
+    const checkedLeft = width - height + 1;
+
+    // let handleCursor = 'grab';
+    // if (disabled) {
+    //   handleCursor = 'default';
+    // } else if (startX) {
+    //   handleCursor = 'grabbing';
+    // }
+    // console.log(handleCursor)
     return (
-      <div className="react-switch">
+      <div
+        className="react-switch"
+        style={{ opacity: disabled ? 0.4 : 1 }}
+      >
         <span
           className="react-switch-bg"
           style={{
@@ -137,20 +149,23 @@ class Switch extends Component {
             opacity: (left - 1) / (checkedLeft - 1),
             background: onColor,
             transition: isDragging ? null : 'opacity 0.2s ease-out',
-            borderRadius: height / 2
+            borderRadius: height / 2,
+            cursor: disabled ? 'default' : 'pointer'
           }}
-          onClick={this.handleClick}
+          onClick={disabled ? null : this.handleClick}
         />
         {/* eslint-enable jsx-a11y/no-static-element-interactions */}
         <DraggableCore
           onStart={this.handleDragStart}
           onDrag={this.handleDrag}
           onStop={this.handleDragStop}
+          disabled={disabled}
         >
           <div
             role="checkbox"
-            tabIndex="0"
+            tabIndex={disabled ? null : 0}
             aria-checked={checked}
+            aria-disabled={disabled}
             onTransitionEnd={this.handleTransitionEnd}
             onKeyDown={this.handleKeyDown}
             className="react-switch-toggle"
@@ -159,7 +174,8 @@ class Switch extends Component {
               height: height - 2,
               width: height - 2,
               background: startX ? activeHandleColor : handleColor,
-              transition: isDragging ? null : 'left 0.2s ease-out'
+              transition: isDragging ? null : 'left 0.2s ease-out',
+              cursor: disabled ? 'default' : 'pointer'
             }}
           />
         </DraggableCore>
