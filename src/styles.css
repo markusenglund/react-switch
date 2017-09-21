@@ -6,11 +6,20 @@
 .react-switch-bg {
   width: 56px;
   height: 28px;
-  background-color: grey;
   border-radius: 14px;
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.2s;
+}
+
+.react-switch-fg {
+  width: 56px;
+  height: 28px;
+  border-radius: 14px;
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  left: 0px;
 }
 
 .react-switch-toggle {

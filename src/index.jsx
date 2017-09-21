@@ -103,14 +103,21 @@ class Switch extends Component {
   }
 
   render() {
-    const { checked } = this.props;
-    const { left, startX } = this.state;
+    const { left, isDragging } = this.state;
     return (
       <div className="react-switch">
-        {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
         <span
           className="react-switch-bg"
-          style={{ backgroundColor: checked ? 'green' : 'grey' }}
+          style={{ background: 'grey' }}
+        />
+        {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
+        <span
+          className="react-switch-fg"
+          style={{
+            opacity: (left - 1) / 28,
+            background: 'green',
+            transition: isDragging ? null : 'opacity 0.2s'
+          }}
           onClick={this.handleClick}
         />
         {/* eslint-enable jsx-a11y/no-static-element-interactions */}
@@ -125,7 +132,7 @@ class Switch extends Component {
             className="react-switch-toggle"
             style={{
               left,
-              transition: startX ? null : 'left 0.2s ease-out'
+              transition: isDragging ? null : 'left 0.2s ease-out'
             }}
           />
         </DraggableCore>
