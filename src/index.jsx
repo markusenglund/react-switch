@@ -119,13 +119,6 @@ class Switch extends Component {
     const { left, isDragging, startX } = this.state;
     const checkedLeft = width - height + 1;
 
-    // let handleCursor = 'grab';
-    // if (disabled) {
-    //   handleCursor = 'default';
-    // } else if (startX) {
-    //   handleCursor = 'grabbing';
-    // }
-    // console.log(handleCursor)
     return (
       <div
         className="react-switch"
@@ -168,14 +161,13 @@ class Switch extends Component {
             aria-disabled={disabled}
             onTransitionEnd={this.handleTransitionEnd}
             onKeyDown={this.handleKeyDown}
-            className="react-switch-toggle"
+            className={disabled ? 'react-switch-toggle-disabled' : 'react-switch-toggle'}
             style={{
               left,
               height: height - 2,
               width: height - 2,
               background: startX ? activeHandleColor : handleColor,
-              transition: isDragging ? null : 'left 0.2s ease-out',
-              cursor: disabled ? 'default' : 'pointer'
+              transition: isDragging ? null : 'left 0.2s ease-out'
             }}
           />
         </DraggableCore>

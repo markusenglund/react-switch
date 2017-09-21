@@ -21,17 +21,26 @@
   position: absolute;
   top: 1px;
   border: 0px;
-  /* cursor: move;
+  cursor: move;
   cursor: -webkit-grab;
   cursor: -moz-grab;
-  cursor: grab; */
+  cursor: grab;
 }
-/* 
+
 .react-switch-toggle:active {
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
-} */
+}
+
+.react-switch-toggle-disabled {
+  display: inline-block;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  border: 0px;
+  cursor: default;
+}
 
 .react-switch-toggle:focus {
   outline: 0;
