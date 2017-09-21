@@ -39,7 +39,7 @@ class Switch extends Component {
   handleKeyDown({ keyCode }) {
     const { checked, onChange } = this.props;
     const { isDragging } = this.state;
-    if (keyCode === 13 || keyCode === 32 && !isDragging) {
+    if (keyCode === 32 && !isDragging) {
       onChange(!checked);
     }
   }
