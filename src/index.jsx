@@ -13,17 +13,19 @@ class Switch extends Component {
     this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.state = {
-      left: props.checked ? 29 : 1,
+      left: props.checked ? props.width - props.height : 1,
       inTransition: false,
       startX: null,
       isDragging: false
     };
   }
 
-  componentWillReceiveProps({ checked }) {
+  componentWillReceiveProps(nextProps) {
     const { left } = this.state;
-    const newLeft = checked ? 29 : 1;
-    if (left !== newLeft && this.props.checked !== checked) {
+    const { checked, width, height } = this.props;
+    const checkedLeft = width - height + 1;
+    const newLeft = nextProps.checked ? checkedLeft : 1;
+    if (left !== newLeft && checked !== nextProps.checked) {
       this.setState({
         left: newLeft,
         inTransition: true
@@ -57,22 +59,23 @@ class Switch extends Component {
 
   handleDrag(event) {
     const clientX = event.clientX || event.touches[0].clientX;
-    const { checked } = this.props;
+    const { checked, width, height } = this.props;
     const { startX } = this.state;
+    const checkedLeft = width - height + 1;
 
-    const startLeft = checked ? 29 : 1;
+    const startLeft = checked ? checkedLeft : 1;
     const newLeft = startLeft + clientX - startX;
-    const left = Math.min(29, Math.max(1, newLeft));
+    const left = Math.min(checkedLeft, Math.max(1, newLeft));
     console.log('DRAG, newleft: ', newLeft, 'left: ', left);
     this.setState({ left, isDragging: true });
   }
 
   handleDragStop() {
-    const { checked, onChange } = this.props;
     const { left, isDragging, inTransition } = this.state;
     if (inTransition) {
       return;
     }
+    const { checked, onChange, width, height } = this.props;
     console.log('DRAGSTOP, checked: ', checked, 'left: ', left);
 
     if (!isDragging) {
@@ -80,16 +83,16 @@ class Switch extends Component {
       onChange(!checked);
       return;
     }
-
+    const checkedLeft = width - height + 1;
     if (checked) {
-      if (left > 15) {
-        this.setState({ left: 29, startX: null, isDragging: false });
+      if (left > (checkedLeft + 1) / 2) {
+        this.setState({ left: checkedLeft, startX: null, isDragging: false });
       } else {
         this.setState({ startX: null, isDragging: false });
         onChange(false);
       }
     }
-    if (left < 15) {
+    if (left < (checkedLeft + 1) / 2) {
       this.setState({ left: 1, startX: null, isDragging: false });
     } else {
       this.setState({ startX: null, isDragging: false });
@@ -112,6 +115,7 @@ class Switch extends Component {
       height,
       width
     } = this.props;
+    const checkedLeft = width - height + 1;
     const { left, isDragging, startX } = this.state;
     return (
       <div className="react-switch">
@@ -130,7 +134,7 @@ class Switch extends Component {
           style={{
             height,
             width,
-            opacity: (left - 1) / 28,
+            opacity: (left - 1) / (checkedLeft - 1),
             background: onColor,
             transition: isDragging ? null : 'opacity 0.2s ease-out',
             borderRadius: height / 2
