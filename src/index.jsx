@@ -103,6 +103,7 @@ class Switch extends Component {
   }
 
   render() {
+    const { checked } = this.props;
     const { left, isDragging } = this.state;
     return (
       <div className="react-switch">
@@ -116,7 +117,7 @@ class Switch extends Component {
           style={{
             opacity: (left - 1) / 28,
             background: 'green',
-            transition: isDragging ? null : 'opacity 0.2s'
+            transition: isDragging ? null : 'opacity 0.2s ease-out'
           }}
           onClick={this.handleClick}
         />
@@ -126,7 +127,10 @@ class Switch extends Component {
           onDrag={this.handleDrag}
           onStop={this.handleDragStop}
         >
-          <button
+          <div
+            role="checkbox"
+            tabIndex="0"
+            aria-checked={checked}
             onTransitionEnd={this.handleTransitionEnd}
             onKeyDown={this.handleKeyDown}
             className="react-switch-toggle"

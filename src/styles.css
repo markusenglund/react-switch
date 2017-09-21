@@ -41,4 +41,10 @@
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
+  background-color: #eee;
+}
+
+.react-switch-toggle:focus {
+  outline: 0;
+  box-shadow: 0px 0px 1px 2px #4D90FE;
 }
