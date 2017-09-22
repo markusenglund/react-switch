@@ -1,16 +1,9 @@
-.react-switch {
-  display: inline-block;
-  position: relative;
-}
-
 .react-switch-bg {
   display: inline-block;
   transition: background-color 0.2s;
 }
 
 .react-switch-fg {
-  display: inline-block;
-  /* cursor: pointer; */
   position: absolute;
   left: 0px;
 }
@@ -31,15 +24,6 @@
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
-}
-
-.react-switch-handle-disabled {
-  display: inline-block;
-  border-radius: 50%;
-  position: absolute;
-  top: 1px;
-  border: 0px;
-  cursor: default;
 }
 
 .react-switch-handle:focus {

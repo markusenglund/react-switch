@@ -110,6 +110,7 @@ class Switch extends Component {
     const {
       checked,
       disabled,
+      className,
       offColor,
       onColor,
       handleColor,
@@ -127,8 +128,12 @@ class Switch extends Component {
 
     return (
       <div
-        className="react-switch"
-        style={{ opacity: disabled ? 0.4 : 1 }}
+        className={className}
+        style={{
+          opacity: disabled ? 0.4 : 1,
+          display: 'inline-block',
+          position: 'relative'
+        }}
       >
         <span
           className="react-switch-bg"
@@ -167,13 +172,14 @@ class Switch extends Component {
             aria-disabled={disabled}
             onTransitionEnd={this.handleTransitionEnd}
             onKeyDown={this.handleKeyDown}
-            className={disabled ? 'react-switch-handle-disabled' : 'react-switch-handle'}
+            className="react-switch-handle"
             style={{
               left,
               height: height - 2,
               width: height - 2,
               background: startX ? activeHandleColor : handleColor,
-              transition: isDragging ? null : 'left 0.2s ease-out'
+              transition: isDragging ? null : 'left 0.2s ease-out',
+              cursor: disabled ? 'default' : null
             }}
             id={id}
             name={name}
@@ -191,6 +197,7 @@ Switch.propTypes = {
   checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
+  className: PropTypes.string,
   offColor: PropTypes.string,
   onColor: PropTypes.string,
   handleColor: PropTypes.string,
@@ -213,6 +220,7 @@ Switch.defaultProps = {
   activeHandleColor: '#ddd',
   height: 28,
   width: 56,
+  className: null,
   id: null,
   name: null,
   value: null,
