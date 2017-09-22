@@ -22,7 +22,7 @@ class Switch extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { left } = this.state;
-    const { checked, width, height } = this.props;
+    const { width, height } = this.props;
     const checkedLeft = width - height + 1;
     const newLeft = nextProps.checked ? checkedLeft : 1;
     if (left !== newLeft) {
@@ -115,7 +115,12 @@ class Switch extends Component {
       handleColor,
       activeHandleColor,
       height,
-      width
+      width,
+      id,
+      name,
+      value,
+      'aria-labelledby': ariaLabelledby,
+      'aria-label': ariaLabel
     } = this.props;
     const { left, isDragging, startX } = this.state;
     const checkedLeft = width - height + 1;
@@ -170,6 +175,11 @@ class Switch extends Component {
               background: startX ? activeHandleColor : handleColor,
               transition: isDragging ? null : 'left 0.2s ease-out'
             }}
+            id={id}
+            name={name}
+            value={value}
+            aria-labelledby={ariaLabelledby}
+            aria-label={ariaLabel}
           />
         </DraggableCore>
       </div>
@@ -186,7 +196,12 @@ Switch.propTypes = {
   handleColor: PropTypes.string,
   activeHandleColor: PropTypes.string,
   height: PropTypes.number,
-  width: PropTypes.number
+  width: PropTypes.number,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  'aria-labelledby': PropTypes.string,
+  'aria-label': PropTypes.string
 
 };
 
@@ -197,7 +212,12 @@ Switch.defaultProps = {
   handleColor: 'white',
   activeHandleColor: '#ddd',
   height: 28,
-  width: 56
+  width: 56,
+  id: null,
+  name: null,
+  value: null,
+  'aria-labelledby': null,
+  'aria-label': null
 };
 
 export default Switch;
