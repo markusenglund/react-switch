@@ -7,7 +7,7 @@
     "build": "babel src -d dist",
     "build:watch": "babel src -w -d dist",
     "lint": "eslint --ext .js,.jsx src/",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "jest --verbose"
   },
   "repository": {
