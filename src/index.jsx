@@ -25,6 +25,8 @@ class Switch extends Component {
     const { width, height } = this.props;
     const checkedLeft = width - height + 1;
     const newLeft = nextProps.checked ? checkedLeft : 1;
+    /* !IMPORTANT: Don't set inTransition to true if the new and old left-position
+    is the same since this will not trigger the transition */
     if (left !== newLeft) {
       this.setState({
         left: newLeft,
@@ -41,6 +43,7 @@ class Switch extends Component {
   handleKeyDown({ keyCode }) {
     const { checked, onChange } = this.props;
     const { isDragging } = this.state;
+    // Trigger change only on spacebar key in accordance with wai-aria spec
     if (keyCode === 32 && !isDragging) {
       onChange(!checked);
     }
@@ -51,9 +54,7 @@ class Switch extends Component {
     if (inTransition) {
       return;
     }
-
     const clientX = event.clientX || event.touches[0].clientX;
-    console.log('DRAGSTART, startX: ', clientX);
     this.setState({ startX: clientX });
   }
 
@@ -66,7 +67,6 @@ class Switch extends Component {
     const startLeft = checked ? checkedLeft : 1;
     const newLeft = startLeft + clientX - startX;
     const left = Math.min(checkedLeft, Math.max(1, newLeft));
-    console.log('DRAG, newleft: ', newLeft, 'left: ', left);
     this.setState({ left, isDragging: true });
   }
 
@@ -76,13 +76,14 @@ class Switch extends Component {
       return;
     }
     const { checked, onChange, width, height } = this.props;
-    console.log('DRAGSTOP, checked: ', checked, 'left: ', left);
 
+    // Simulate clicking the handle
     if (!isDragging) {
       this.setState({ startX: null });
       onChange(!checked);
       return;
     }
+
     const checkedLeft = width - height + 1;
     if (checked) {
       if (left > (checkedLeft + 1) / 2) {
@@ -102,7 +103,6 @@ class Switch extends Component {
   }
 
   handleTransitionEnd() {
-    console.log('TRANSITION END');
     this.setState({ inTransition: false });
   }
 
