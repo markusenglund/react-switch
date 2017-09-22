@@ -136,6 +136,8 @@ class Switch extends Component {
           borderRadius: height / 2,
           display: 'inline-block',
           position: 'relative',
+          WebkitTransition: 'background-color 0.2s',
+          MozTransition: 'background-color 0.2s',
           transition: 'background-color 0.2s'
         }}
       >
@@ -147,6 +149,8 @@ class Switch extends Component {
             width,
             opacity: (left - 1) / (checkedLeft - 1),
             background: onColor,
+            WebkitTransition: isDragging ? null : 'opacity 0.2s ease-out',
+            MozTransition: isDragging ? null : 'opacity 0.2s ease-out',
             transition: isDragging ? null : 'opacity 0.2s ease-out',
             borderRadius: height / 2,
             cursor: disabled ? 'default' : 'pointer'
@@ -173,6 +177,8 @@ class Switch extends Component {
               height: height - 2,
               width: height - 2,
               background: startX ? activeHandleColor : handleColor,
+              WebkitTransition: isDragging ? null : 'left 0.2s ease-out',
+              MozTransition: isDragging ? null : 'left 0.2s ease-out',
               transition: isDragging ? null : 'left 0.2s ease-out',
               cursor: disabled ? 'default' : null
             }}
