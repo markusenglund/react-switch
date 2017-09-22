@@ -130,22 +130,17 @@ class Switch extends Component {
       <div
         className={className}
         style={{
-          opacity: disabled ? 0.4 : 1,
+          height,
+          width,
+          background: offColor,
+          borderRadius: height / 2,
           display: 'inline-block',
-          position: 'relative'
+          position: 'relative',
+          transition: 'background-color 0.2s'
         }}
       >
-        <span
-          className="react-switch-bg"
-          style={{
-            height,
-            width,
-            background: offColor,
-            borderRadius: height / 2
-          }}
-        />
         {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
-        <span
+        <div
           className="react-switch-fg"
           style={{
             height,
