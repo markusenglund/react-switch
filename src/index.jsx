@@ -25,7 +25,7 @@ class Switch extends Component {
     const { checked, width, height } = this.props;
     const checkedLeft = width - height + 1;
     const newLeft = nextProps.checked ? checkedLeft : 1;
-    if (left !== newLeft && checked !== nextProps.checked) {
+    if (left !== newLeft) {
       this.setState({
         left: newLeft,
         inTransition: true
