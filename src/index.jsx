@@ -167,7 +167,7 @@ class Switch extends Component {
             aria-disabled={disabled}
             onTransitionEnd={this.handleTransitionEnd}
             onKeyDown={this.handleKeyDown}
-            className={disabled ? 'react-switch-toggle-disabled' : 'react-switch-toggle'}
+            className={disabled ? 'react-switch-handle-disabled' : 'react-switch-handle'}
             style={{
               left,
               height: height - 2,

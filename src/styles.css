@@ -15,7 +15,7 @@
   left: 0px;
 }
 
-.react-switch-toggle {
+.react-switch-handle {
   display: inline-block;
   border-radius: 50%;
   position: absolute;
@@ -27,13 +27,13 @@
   cursor: grab;
 }
 
-.react-switch-toggle:active {
+.react-switch-handle:active {
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
 }
 
-.react-switch-toggle-disabled {
+.react-switch-handle-disabled {
   display: inline-block;
   border-radius: 50%;
   position: absolute;
@@ -42,7 +42,7 @@
   cursor: default;
 }
 
-.react-switch-toggle:focus {
+.react-switch-handle:focus {
   outline: 0;
   box-shadow: 0px 0px 1px 2px #4D90FE;
 }
