@@ -1,0 +1,27 @@
+html, body, #app, .examples {
+  margin: 0px;
+  height: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#examples {
+  overflow: auto;
+  margin: 20px;
+}
+
+.switch-group label {
+  vertical-align: middle;
+}
+
+.react-switch {
+  vertical-align: middle;
+  margin-left: 3px;
+}
+
+pre {
+  padding: 0 10px;
+  margin: 0;
+  border: 1px #777 solid;
+  width: 500px;
+  background: #eee;
+}
