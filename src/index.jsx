@@ -13,7 +13,7 @@ class Switch extends Component {
     this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.state = {
-      left: props.checked ? props.width - props.height : 1,
+      left: props.checked ? props.width - props.height + 1 : 1,
       inTransition: false,
       startX: null,
       isDragging: false
