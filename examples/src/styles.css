@@ -21,7 +21,5 @@ html, body, #app, .examples {
 pre {
   padding: 0 10px;
   margin: 0;
-  border: 1px #777 solid;
-  width: 500px;
   background: #eee;
 }
