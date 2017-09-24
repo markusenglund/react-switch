@@ -1,4 +1,6 @@
 src
+examples
 .babelrc
 .eslintrc
 .gitignore
+stats,json
