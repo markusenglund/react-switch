@@ -196,6 +196,12 @@ handleChange(checked) {
             `}
           </pre>
         </div>
+        <p>The full source code for this page can be found <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/yogaboll/react-switch/tree/master/examples/src"
+        >here
+        </a>.</p>
       </div>
     );
   }
