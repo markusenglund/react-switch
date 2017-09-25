@@ -176,6 +176,26 @@ handleChange(checked) {
             `}
           </pre>
         </div>
+        <div>
+          <h2>Switch with invisible label only readable by screen readers</h2>
+          <div className="switch-group">
+            <Switch
+              className="react-switch"
+              onChange={this.handleChange}
+              checked={this.state.checked}
+              aria-label="super secret label that is not visible"
+            />
+          </div>
+          <pre>{`
+  <Switch
+    className="react-switch"
+    onChange={this.handleChange}
+    checked={this.state.checked}
+    aria-label="super secret label that is not visible"
+  />  
+            `}
+          </pre>
+        </div>
       </div>
     );
   }
