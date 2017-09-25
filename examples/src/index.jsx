@@ -147,10 +147,12 @@ handleChange(checked) {
         <div className="example">
           <h2>Switch with clickable label</h2>
           <div className="switch-group">
+            {/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */}
             <label
               htmlFor="clickable-label-switch"
               onClick={() => this.handleChange(!this.state.checked)}
             >
+              {/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */}
               You have to add a clickhandler yourself
             </label>
             <Switch
