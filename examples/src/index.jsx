@@ -60,7 +60,7 @@ handleChange(checked) {
               className="react-switch"
               onChange={this.handleChange}
               checked={checked}
-              height={30}
+              height={24}
               width={90}
               handleColor="orange"
               activeHandleColor="yellow"
