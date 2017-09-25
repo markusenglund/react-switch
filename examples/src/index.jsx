@@ -122,6 +122,60 @@ handleChange(checked) {
             `}
           </pre>
         </div>
+        <div className="example">
+          <h2>Switch using aria-labelledby</h2>
+          <div className="switch-group">
+            <p id="neat-label">Great fantastic label, everyone says it is the best.</p>
+            <Switch
+              className="react-switch"
+              onChange={this.handleChange}
+              checked={this.state.checked}
+              aria-labelledby="neat-label"
+            />
+          </div>
+          <pre>{`
+<p id="neat-label">Great fantastic label, everyone says it's the best.</p>
+<Switch
+  className="react-switch"
+  onChange={this.handleChange}
+  checked={this.state.checked}
+  aria-labelledby="neat-label"
+/>      
+            `}
+          </pre>
+        </div>
+        <div className="example">
+          <h2>Switch with clickable label</h2>
+          <div className="switch-group">
+            <label
+              htmlFor="clickable-label-switch"
+              onClick={() => this.handleChange(!this.state.checked)}
+            >
+              You have to add a clickhandler yourself
+            </label>
+            <Switch
+              className="react-switch"
+              onChange={this.handleChange}
+              checked={this.state.checked}
+              id="clickable-label-switch"
+            />
+          </div>
+          <pre>{`
+<label
+  htmlFor="clickable-label-switch"
+  onClick={() => this.handleChange(!this.state.checked)}
+>
+  You have to add a clickhandler yourself
+</label>
+<Switch
+  className="react-switch"
+  onChange={this.handleChange}
+  checked={this.state.checked}
+  id="clickable-label-switch"
+/>   
+            `}
+          </pre>
+        </div>
       </div>
     );
   }
