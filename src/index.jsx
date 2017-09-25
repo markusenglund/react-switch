@@ -136,9 +136,10 @@ class Switch extends Component {
           borderRadius: height / 2,
           display: 'inline-block',
           position: 'relative',
-          WebkitTransition: 'background-color 0.2s',
-          MozTransition: 'background-color 0.2s',
-          transition: 'background-color 0.2s'
+          opacity: disabled ? 0.5 : 1,
+          WebkitTransition: 'all 0.2s',
+          MozTransition: 'all 0.2s',
+          transition: 'all 0.2s'
         }}
       >
         {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
