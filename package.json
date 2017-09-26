@@ -53,5 +53,11 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-draggable": "^3.0.3"
-  }
+  },
+  "keywords": [
+    "switch",
+    "toggle",
+    "react",
+    "react-component"
+  ]
 }
