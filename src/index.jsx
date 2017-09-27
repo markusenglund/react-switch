@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DraggableCore } from 'react-draggable';
-import '../styles.css';
+import './styles.css';
 
 class Switch extends Component {
   constructor(props) {
