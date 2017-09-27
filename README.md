@@ -1,5 +1,8 @@
 # react-switch
-A draggable, customizable and accessible toggle-switch component for React. 
+A draggable, customizable and accessible toggle-switch component for React.
+
+<img src="https://media.giphy.com/media/3ov9jPaY3NFx4jcGWY/giphy.gif" />
+
 
 ## Demo
 
