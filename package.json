@@ -6,7 +6,8 @@
   "scripts": {
     "build": "babel src -d dist --copy-files",
     "build:watch": "babel src -w -d dist --copy-files",
-    "build-examples": "webpack -p",
+    "build-examples": "webpack",
+    "build-examples:prod": "webpack -p",
     "lint": "eslint --ext .js,.jsx src/",
     "prepublishOnly": "npm run build",
     "test": "jest --verbose",
