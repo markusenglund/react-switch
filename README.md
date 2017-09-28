@@ -1,4 +1,7 @@
 # react-switch
+[![npm](https://img.shields.io/npm/v/react-switch.svg)]()
+[![npm](https://img.shields.io/npm/dm/react-switch.svg)]()
+
 A draggable, customizable and accessible toggle-switch component for React.
 
 <img src="https://media.giphy.com/media/xT9IgjHWZV0TZVVZWo/giphy.gif" />
