@@ -6,7 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unfinished]
 ### Fixed
-- Removed react and react-dom from dependencies
+- Removed react and react-dom from dependencies.
+- Css-file replaced with inline styles to avoid webpack style-loader dependence.
+
+### Changed
+- Cursor style of handle changed to pointer instead of grabbing.
+
 
 ## [1.1.0] - 2017-09-26
 ### Fixed
