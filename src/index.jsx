@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DraggableCore } from 'react-draggable';
-import './styles.css';
 
 class Switch extends Component {
   constructor(props) {
@@ -127,36 +126,57 @@ class Switch extends Component {
     const { left, isDragging, startX } = this.state;
     const checkedLeft = width - height + 1;
 
+    const backgroundStyle = {
+      height,
+      width,
+      background: offColor,
+      borderRadius: height / 2,
+      display: 'inline-block',
+      position: 'relative',
+      opacity: disabled ? 0.5 : 1,
+      WebkitTransition: 'all 0.2s',
+      MozTransition: 'all 0.2s',
+      transition: 'all 0.2s',
+      cursor: disabled ? 'default' : 'pointer'
+    };
+
+    const foregroundStyle = {
+      height,
+      width,
+      opacity: (left - 1) / (checkedLeft - 1),
+      background: onColor,
+      WebkitTransition: isDragging ? null : 'opacity 0.2s ease-out',
+      MozTransition: isDragging ? null : 'opacity 0.2s ease-out',
+      transition: isDragging ? null : 'opacity 0.2s ease-out',
+      borderRadius: height / 2,
+    };
+
+    const handleStyle = {
+      height: height - 2,
+      width: height - 2,
+      background: startX ? activeHandleColor : handleColor,
+      WebkitTransition: isDragging ? null : 'left 0.2s ease-out',
+      MozTransition: isDragging ? null : 'left 0.2s ease-out',
+      transition: isDragging ? null : 'left 0.2s ease-out',
+      display: 'inline-block',
+      borderRadius: '50%',
+      position: 'absolute',
+      left,
+      top: 1,
+      border: 0,
+      outline: 0,
+      boxShadow: startX ? '0px 0px 1px 2px #4D90FE' : null
+    };
+
     return (
       <div
         className={className}
-        style={{
-          height,
-          width,
-          background: offColor,
-          borderRadius: height / 2,
-          display: 'inline-block',
-          position: 'relative',
-          opacity: disabled ? 0.5 : 1,
-          WebkitTransition: 'all 0.2s',
-          MozTransition: 'all 0.2s',
-          transition: 'all 0.2s'
-        }}
+        style={backgroundStyle}
       >
         {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
         <div
           className="react-switch-fg"
-          style={{
-            height,
-            width,
-            opacity: (left - 1) / (checkedLeft - 1),
-            background: onColor,
-            WebkitTransition: isDragging ? null : 'opacity 0.2s ease-out',
-            MozTransition: isDragging ? null : 'opacity 0.2s ease-out',
-            transition: isDragging ? null : 'opacity 0.2s ease-out',
-            borderRadius: height / 2,
-            cursor: disabled ? 'default' : 'pointer'
-          }}
+          style={foregroundStyle}
           onClick={disabled ? null : this.handleClick}
         />
         {/* eslint-enable jsx-a11y/no-static-element-interactions */}
@@ -174,16 +194,7 @@ class Switch extends Component {
             onTransitionEnd={this.handleTransitionEnd}
             onKeyDown={this.handleKeyDown}
             className="react-switch-handle"
-            style={{
-              left,
-              height: height - 2,
-              width: height - 2,
-              background: startX ? activeHandleColor : handleColor,
-              WebkitTransition: isDragging ? null : 'left 0.2s ease-out',
-              MozTransition: isDragging ? null : 'left 0.2s ease-out',
-              transition: isDragging ? null : 'left 0.2s ease-out',
-              cursor: disabled ? 'default' : null
-            }}
+            style={handleStyle}
             id={id}
             name={name}
             value={value}

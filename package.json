@@ -4,8 +4,8 @@
   "description": "Draggable toggle-switch component for react",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel src -d dist --copy-files",
-    "build:watch": "babel src -w -d dist --copy-files",
+    "build": "babel src -d dist",
+    "build:watch": "babel src -w -d dist",
     "build-examples": "webpack",
     "build-examples:prod": "webpack -p",
     "lint": "eslint --ext .js,.jsx src/",
