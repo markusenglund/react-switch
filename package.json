@@ -9,7 +9,7 @@
     "build-examples": "webpack",
     "build-examples:prod": "webpack -p",
     "lint": "eslint --ext .js,.jsx src/",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "webpack -p && npm run build",
     "test": "jest --verbose",
     "start": "webpack-dev-server",
     "stats": "webpack --profile --json > stats.json"
