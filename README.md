@@ -4,7 +4,7 @@
 
 A draggable, customizable and accessible toggle-switch component for React.
 
-<img src="https://media.giphy.com/media/xT9IgjHWZV0TZVVZWo/giphy.gif" />
+<img src="https://media.giphy.com/media/l1J9OD7acbBrtYrWU/giphy.gif" />
 
 
 ## Demo
