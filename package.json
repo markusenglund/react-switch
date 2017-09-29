@@ -6,10 +6,9 @@
   "scripts": {
     "build": "babel src -d dist",
     "build:watch": "babel src -w -d dist",
-    "build-examples": "webpack",
-    "build-examples:prod": "webpack -p",
+    "build-examples": "webpack -p",
     "lint": "eslint --ext .js,.jsx src/",
-    "prepublishOnly": "webpack -p && npm run build",
+    "prepublishOnly": "npm run build",
     "test": "jest --verbose",
     "start": "webpack-dev-server",
     "stats": "webpack --profile --json > stats.json"
