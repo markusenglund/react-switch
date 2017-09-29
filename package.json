@@ -11,7 +11,7 @@
     "prepublishOnly": "npm run build",
     "test": "jest --verbose",
     "start": "webpack-dev-server",
-    "stats": "webpack --profile --json > stats.json"
+    "stats": "webpack -p --profile --json > stats.json && webpack-bundle-analyzer stats.json examples/dist -s gzip"
   },
   "repository": {
     "type": "git",
