@@ -15,7 +15,8 @@ class Switch extends Component {
       left: props.checked ? props.width - props.height + 1 : 1,
       inTransition: false,
       startX: null,
-      isDragging: false
+      isDragging: false,
+      focused: false
     };
   }
 
@@ -123,7 +124,7 @@ class Switch extends Component {
       'aria-labelledby': ariaLabelledby,
       'aria-label': ariaLabel
     } = this.props;
-    const { left, isDragging, startX } = this.state;
+    const { left, isDragging, startX, focused } = this.state;
     const checkedLeft = width - height + 1;
 
     const backgroundStyle = {
@@ -148,7 +149,7 @@ class Switch extends Component {
       WebkitTransition: isDragging ? null : 'opacity 0.2s ease-out',
       MozTransition: isDragging ? null : 'opacity 0.2s ease-out',
       transition: isDragging ? null : 'opacity 0.2s ease-out',
-      borderRadius: height / 2,
+      borderRadius: height / 2
     };
 
     const handleStyle = {
@@ -165,7 +166,7 @@ class Switch extends Component {
       top: 1,
       border: 0,
       outline: 0,
-      boxShadow: startX ? '0px 0px 1px 2px #4D90FE' : null
+      boxShadow: focused ? '0px 0px 1px 2px #4D90FE' : null
     };
 
     return (
@@ -193,6 +194,8 @@ class Switch extends Component {
             aria-disabled={disabled}
             onTransitionEnd={this.handleTransitionEnd}
             onKeyDown={this.handleKeyDown}
+            onFocus={() => this.setState({ focused: true })}
+            onBlur={() => this.setState({ focused: false })}
             className="react-switch-handle"
             style={handleStyle}
             id={id}
