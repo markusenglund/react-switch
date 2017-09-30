@@ -5,3 +5,4 @@ examples
 .gitignore
 stats.json
 webpack.config.js
+jest.config.js
