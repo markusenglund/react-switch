@@ -6,3 +6,4 @@ examples
 stats.json
 webpack.config.js
 jest.config.js
+jest.setup.js
