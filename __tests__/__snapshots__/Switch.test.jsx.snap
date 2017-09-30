@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch matches more advanced snapshot 1`] = `
+<div
+  style="height:80px;width:90px;background:grey;border-radius:40px;display:inline-block;position:relative;opacity:0.5;-webkit-transition:all 0.2s;-moz-transition:all 0.2s;transition:all 0.2s;cursor:default"
+>
+  <div
+    class="react-switch-fg"
+    style="height:80px;width:90px;opacity:1;background:#d1d2d3;-webkit-transition:opacity 0.2s ease-out;-moz-transition:opacity 0.2s ease-out;transition:opacity 0.2s ease-out;border-radius:40px"
+  />
+  <div
+    aria-checked="true"
+    aria-disabled="true"
+    aria-label="super-secret-label"
+    class="react-switch-handle"
+    id="test-test-123"
+    role="checkbox"
+    style="touch-action:none;height:78px;width:78px;background:pink;-webkit-transition:left 0.2s ease-out;-moz-transition:left 0.2s ease-out;transition:left 0.2s ease-out;display:inline-block;border-radius:50%;position:absolute;left:11px;top:1px;border:0;outline:0"
+  />
+</div>
+`;
+
+exports[`Switch matches snapshot 1`] = `
+<div
+  style="height:28px;width:56px;background:grey;border-radius:14px;display:inline-block;position:relative;opacity:1;-webkit-transition:all 0.2s;-moz-transition:all 0.2s;transition:all 0.2s;cursor:pointer"
+>
+  <div
+    class="react-switch-fg"
+    style="height:28px;width:56px;opacity:0;background:green;-webkit-transition:opacity 0.2s ease-out;-moz-transition:opacity 0.2s ease-out;transition:opacity 0.2s ease-out;border-radius:14px"
+  />
+  <div
+    aria-checked="false"
+    aria-disabled="false"
+    class="react-switch-handle"
+    role="checkbox"
+    style="touch-action:none;height:26px;width:26px;background:white;-webkit-transition:left 0.2s ease-out;-moz-transition:left 0.2s ease-out;transition:left 0.2s ease-out;display:inline-block;border-radius:50%;position:absolute;left:1px;top:1px;border:0;outline:0"
+    tabindex="0"
+  />
+</div>
+`;

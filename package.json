@@ -10,6 +10,7 @@
     "lint": "eslint --ext .js,.jsx src/",
     "prepublishOnly": "npm run build",
     "test": "jest",
+    "test:watch": "jest --watch",
     "start": "webpack-dev-server",
     "stats": "webpack -p --profile --json > stats.json && webpack-bundle-analyzer stats.json examples/dist -s gzip"
   },
@@ -38,6 +39,7 @@
     "css-loader": "^0.28.7",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
+    "enzyme-to-json": "^3.0.1",
     "eslint": "^4.6.1",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
@@ -52,6 +54,7 @@
     "react-test-renderer": "^16.0.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.6.0",
+    "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.8.2"
   },
   "dependencies": {
