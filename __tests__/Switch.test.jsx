@@ -87,18 +87,26 @@ describe('root div', () => {
 
 describe('foreground', () => {
   const wrapper = shallow(<Switch onChange={noop} checked height={30} width={50} onColor="#abc" />);
-  const { height, width, borderRadius, background, opacity } = wrapper.find('.react-switch-fg').get(0).props.style;
+  const { style } = wrapper.find('.react-switch-fg').get(0).props;
   it('gets dimensions from height and width props', () => {
-    expect(height).toBe(30);
-    expect(width).toBe(50);
-    expect(borderRadius).toBe(15);
+    expect(style.height).toBe(30);
+    expect(style.width).toBe(50);
+    expect(style.borderRadius).toBe(15);
   });
   it('gets color from onColor prop', () => {
-    expect(background).toBe('#abc');
+    expect(style.background).toBe('#abc');
   });
   it('has 1 opacity when checked', () => {
-    expect(opacity).toBe(1);
-  })
+    expect(style.opacity).toBe(1);
+  });
+
+  wrapper.setProps({ checked: false });
+  it('has zero opacity when checked changed to false', () => {
+    expect(wrapper.find('.react-switch-fg').get(0).props.style.opacity).toBe(0);
+  });
+
+  // it('gets 0.5 opacity when left is dragged to the middle', () => {
+  // })
 });
 
 describe('handle', () => {
@@ -116,5 +124,17 @@ describe('handle', () => {
     wrapper.setProps({ checked: true });
     expect(wrapper.state('left')).toBe(29);
     expect(wrapper.find('#foo').get(0).props.style.left).toBe(29);
+  });
+  const wrapper = shallow(<Switch onChange={noop} checked={false} />);
+  const handle = wrapper.find('.react-switch-handle').get(0);
+  it('has no box-shadow normally', () => {
+    expect(handle.props.style.boxShadow).toBeNull();
+  });
+  // wrapper.find('.react-switch-handle').simulate('focus');
+  it('gets a boxShadow on focus and loses it on blur', () => {
+    wrapper.find('.react-switch-handle').simulate('focus');
+    expect(wrapper.find('.react-switch-handle').get(0).props.style.boxShadow).toBe('0px 0px 1px 2px #4D90FE');
+    wrapper.find('.react-switch-handle').simulate('blur');
+    expect(wrapper.find('.react-switch-handle').get(0).props.style.boxShadow).toBeNull();
   });
 });
