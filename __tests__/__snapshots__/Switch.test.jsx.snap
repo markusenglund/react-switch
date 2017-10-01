@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Switch matches more advanced snapshot 1`] = `
+exports[`Switch matches snapshot with custom props 1`] = `
 <div
+  class="example-class"
   style="height:80px;width:90px;background:grey;border-radius:40px;display:inline-block;position:relative;opacity:0.5;-webkit-transition:all 0.2s;-moz-transition:all 0.2s;transition:all 0.2s;cursor:default"
 >
   <div
@@ -11,16 +12,17 @@ exports[`Switch matches more advanced snapshot 1`] = `
   <div
     aria-checked="true"
     aria-disabled="true"
-    aria-label="super-secret-label"
+    aria-label="bar"
+    aria-labelledby="baz"
     class="react-switch-handle"
-    id="test-test-123"
+    id="foo"
     role="checkbox"
     style="touch-action:none;height:78px;width:78px;background:pink;-webkit-transition:left 0.2s ease-out;-moz-transition:left 0.2s ease-out;transition:left 0.2s ease-out;display:inline-block;border-radius:50%;position:absolute;left:11px;top:1px;border:0;outline:0"
   />
 </div>
 `;
 
-exports[`Switch matches snapshot 1`] = `
+exports[`Switch matches snapshot with default props 1`] = `
 <div
   style="height:28px;width:56px;background:grey;border-radius:14px;display:inline-block;position:relative;opacity:1;-webkit-transition:all 0.2s;-moz-transition:all 0.2s;transition:all 0.2s;cursor:pointer"
 >
