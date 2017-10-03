@@ -40,21 +40,6 @@ class Switch extends Component {
     }
   }
 
-  handleClick() {
-    const { checked, onChange } = this.props;
-    onChange(!checked);
-  }
-
-  handleKeyDown(event) {
-    const { checked, onChange } = this.props;
-    const { isDragging } = this.state;
-    // Trigger change only on spacebar key in accordance with wai-aria spec
-    if (event.keyCode === 32 && !isDragging) {
-      event.preventDefault();
-      onChange(!checked);
-    }
-  }
-
   handleDragStart(event) {
     const { inTransition } = this.state;
     if (inTransition) {
@@ -106,6 +91,45 @@ class Switch extends Component {
     }
     this.setState({ startX: null, isDragging: false });
     onChange(true);
+  }
+
+  handleMouseDown() {
+
+  }
+
+  handleMouseMove() {
+
+  }
+
+  handleMouseUp() {
+
+  }
+
+  handleTouchStart(event) {
+    this.handleDragStart(event);
+  }
+
+  handleTouchMove(event) {
+    this.handleDrag(event);
+  }
+
+  handleTouchEnd() {
+    this.handleDragStop(event);
+  }
+
+  handleClick() {
+    const { checked, onChange } = this.props;
+    onChange(!checked);
+  }
+
+  handleKeyDown(event) {
+    const { checked, onChange } = this.props;
+    const { isDragging } = this.state;
+    // Trigger change only on spacebar key in accordance with wai-aria spec
+    if (event.keyCode === 32 && !isDragging) {
+      event.preventDefault();
+      onChange(!checked);
+    }
   }
 
   handleTransitionEnd() {
@@ -161,6 +185,7 @@ class Switch extends Component {
       height: height - 2,
       width: height - 2,
       background: startX ? activeHandleColor : handleColor,
+      touchAction: 'none',
       WebkitTransition: isDragging ? null : 'left 0.2s ease-out',
       MozTransition: isDragging ? null : 'left 0.2s ease-out',
       transition: isDragging ? null : 'left 0.2s ease-out',

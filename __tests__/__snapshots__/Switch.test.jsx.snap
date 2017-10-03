@@ -17,7 +17,7 @@ exports[`Props matches snapshot with custom props 1`] = `
     class="react-switch-handle"
     id="foo"
     role="checkbox"
-    style="touch-action:none;height:11px;width:11px;background:#def;-webkit-transition:left 0.2s ease-out;-moz-transition:left 0.2s ease-out;transition:left 0.2s ease-out;display:inline-block;border-radius:50%;position:absolute;left:25px;top:1px;border:0;outline:0"
+    style="height:11px;width:11px;background:#def;touch-action:none;-webkit-transition:left 0.2s ease-out;-moz-transition:left 0.2s ease-out;transition:left 0.2s ease-out;display:inline-block;border-radius:50%;position:absolute;left:25px;top:1px;border:0;outline:0"
   />
 </div>
 `;
@@ -35,7 +35,7 @@ exports[`Props matches snapshot with default props 1`] = `
     aria-disabled="false"
     class="react-switch-handle"
     role="checkbox"
-    style="touch-action:none;height:26px;width:26px;background:white;-webkit-transition:left 0.2s ease-out;-moz-transition:left 0.2s ease-out;transition:left 0.2s ease-out;display:inline-block;border-radius:50%;position:absolute;left:1px;top:1px;border:0;outline:0"
+    style="height:26px;width:26px;background:white;touch-action:none;-webkit-transition:left 0.2s ease-out;-moz-transition:left 0.2s ease-out;transition:left 0.2s ease-out;display:inline-block;border-radius:50%;position:absolute;left:1px;top:1px;border:0;outline:0"
     tabindex="0"
   />
 </div>
