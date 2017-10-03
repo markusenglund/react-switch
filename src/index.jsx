@@ -40,17 +40,15 @@ class Switch extends Component {
     }
   }
 
-  handleDragStart(event) {
+  handleDragStart(clientX) {
     const { inTransition } = this.state;
     if (inTransition) {
       return;
     }
-    const clientX = event.clientX || event.touches[0].clientX;
     this.setState({ startX: clientX });
   }
 
-  handleDrag(event) {
-    const clientX = event.clientX || event.touches[0].clientX;
+  handleDrag(clientX) {
     const { checked, width, height } = this.props;
     const { startX } = this.state;
     const checkedLeft = width - height + 1;
@@ -93,28 +91,28 @@ class Switch extends Component {
     onChange(true);
   }
 
-  handleMouseDown() {
-
+  handleMouseDown(event) {
+    this.handleDragStart(event.clientX);
   }
 
-  handleMouseMove() {
-
+  handleMouseMove(event) {
+    this.handleDrag(event.clientX);
   }
 
   handleMouseUp() {
-
+    this.handleDragStop();
   }
 
   handleTouchStart(event) {
-    this.handleDragStart(event);
+    this.handleDragStart(event.touches[0].clientX);
   }
 
   handleTouchMove(event) {
-    this.handleDrag(event);
+    this.handleDrag(event.touches[0].clientX);
   }
 
   handleTouchEnd() {
-    this.handleDragStop(event);
+    this.handleDragStop();
   }
 
   handleClick() {
