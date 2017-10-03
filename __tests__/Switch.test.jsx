@@ -11,30 +11,25 @@ describe('Switch', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('matches snapshot with custom props', () => {
+  it('matches snapshot with custom props excl disabled', () => {
     const wrapper = render(
       <Switch
         onChange={noop}
         checked
-        disabled
-        onColor="#d1d2d3"
-        handleColor="pink"
-        height={80}
-        width={90}
-        className="example-class"
+        onColor="#abc"
+        handleColor="#def"
+        height={13}
+        width={37}
         id="foo"
         aria-label="bar"
         aria-labelledby="baz"
+        className="qux"
       />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
 describe('root div', () => {
-  it('gets className from props', () => {
-    const wrapper = shallow(<Switch onChange={noop} checked={false} className="foo" />);
-    expect(wrapper.hasClass('foo')).toBe(true);
-  });
   // This might be better served by a snapshot
   it('gets correct styles from default props', () => {
     const wrapper = shallow(<Switch onChange={noop} checked={false} />);

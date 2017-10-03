@@ -1,23 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Switch matches snapshot with custom props 1`] = `
+exports[`Switch matches snapshot with custom props excl disabled 1`] = `
 <div
-  class="example-class"
-  style="height:80px;width:90px;background:grey;border-radius:40px;display:inline-block;position:relative;opacity:0.5;-webkit-transition:all 0.2s;-moz-transition:all 0.2s;transition:all 0.2s;cursor:default"
+  class="qux"
+  style="height:13px;width:37px;background:grey;border-radius:6.5px;display:inline-block;position:relative;opacity:1;-webkit-transition:all 0.2s;-moz-transition:all 0.2s;transition:all 0.2s;cursor:pointer"
 >
   <div
     class="react-switch-fg"
-    style="height:80px;width:90px;opacity:1;background:#d1d2d3;-webkit-transition:opacity 0.2s ease-out;-moz-transition:opacity 0.2s ease-out;transition:opacity 0.2s ease-out;border-radius:40px"
+    style="height:13px;width:37px;opacity:1;background:#abc;-webkit-transition:opacity 0.2s ease-out;-moz-transition:opacity 0.2s ease-out;transition:opacity 0.2s ease-out;border-radius:6.5px"
   />
   <div
     aria-checked="true"
-    aria-disabled="true"
+    aria-disabled="false"
     aria-label="bar"
     aria-labelledby="baz"
     class="react-switch-handle"
     id="foo"
     role="checkbox"
-    style="touch-action:none;height:78px;width:78px;background:pink;-webkit-transition:left 0.2s ease-out;-moz-transition:left 0.2s ease-out;transition:left 0.2s ease-out;display:inline-block;border-radius:50%;position:absolute;left:11px;top:1px;border:0;outline:0"
+    style="touch-action:none;height:11px;width:11px;background:#def;-webkit-transition:left 0.2s ease-out;-moz-transition:left 0.2s ease-out;transition:left 0.2s ease-out;display:inline-block;border-radius:50%;position:absolute;left:25px;top:1px;border:0;outline:0"
+    tabindex="0"
   />
 </div>
 `;
