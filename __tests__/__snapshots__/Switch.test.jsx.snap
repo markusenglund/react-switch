@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Switch matches snapshot with custom props excl disabled 1`] = `
+exports[`Props matches snapshot with custom props 1`] = `
 <div
   class="qux"
-  style="height:13px;width:37px;background:grey;border-radius:6.5px;display:inline-block;position:relative;opacity:1;-webkit-transition:all 0.2s;-moz-transition:all 0.2s;transition:all 0.2s;cursor:pointer"
+  style="height:13px;width:37px;background:grey;border-radius:6.5px;display:inline-block;position:relative;opacity:0.5;-webkit-transition:all 0.2s;-moz-transition:all 0.2s;transition:all 0.2s;cursor:default"
 >
   <div
     class="react-switch-fg"
@@ -11,19 +11,18 @@ exports[`Switch matches snapshot with custom props excl disabled 1`] = `
   />
   <div
     aria-checked="true"
-    aria-disabled="false"
+    aria-disabled="true"
     aria-label="bar"
     aria-labelledby="baz"
     class="react-switch-handle"
     id="foo"
     role="checkbox"
     style="touch-action:none;height:11px;width:11px;background:#def;-webkit-transition:left 0.2s ease-out;-moz-transition:left 0.2s ease-out;transition:left 0.2s ease-out;display:inline-block;border-radius:50%;position:absolute;left:25px;top:1px;border:0;outline:0"
-    tabindex="0"
   />
 </div>
 `;
 
-exports[`Switch matches snapshot with default props 1`] = `
+exports[`Props matches snapshot with default props 1`] = `
 <div
   style="height:28px;width:56px;background:grey;border-radius:14px;display:inline-block;position:relative;opacity:1;-webkit-transition:all 0.2s;-moz-transition:all 0.2s;transition:all 0.2s;cursor:pointer"
 >
