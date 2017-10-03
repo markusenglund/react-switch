@@ -4,12 +4,18 @@ import PropTypes from 'prop-types';
 class Switch extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
     this.handleDragStart = this.handleDragStart.bind(this);
     this.handleDrag = this.handleDrag.bind(this);
     this.handleDragStop = this.handleDragStop.bind(this);
-    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.handleMouseUp = this.handleMouseUp.bind(this);
+    this.handleTouchStart = this.handleTouchStart.bind(this);
+    this.handleTouchMove = this.handleTouchMove.bind(this);
+    this.handleTouchEnd = this.handleTouchEnd.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
     this.state = {
       left: props.checked ? props.width - props.height + 1 : 1,
       inTransition: false,
@@ -183,17 +189,23 @@ class Switch extends Component {
         <div
           role="checkbox"
           tabIndex={disabled ? null : 0}
-          aria-checked={checked}
-          aria-disabled={disabled}
-          onTransitionEnd={this.handleTransitionEnd}
+          onMouseDown={this.handleMouseDown}
+          onMouseMove={this.handleMouseMove}
+          onMouseUp={this.handleMouseUp}
+          onTouchStart={this.handleTouchStart}
+          onTouchMove={this.handleTouchMove}
+          onTouchEnd={this.handleTouchEnd}
           onKeyDown={this.handleKeyDown}
           onFocus={() => this.setState({ focused: true })}
           onBlur={() => this.setState({ focused: false })}
+          onTransitionEnd={this.handleTransitionEnd}
           className="react-switch-handle"
           style={handleStyle}
           id={id}
           name={name}
           value={value}
+          aria-checked={checked}
+          aria-disabled={disabled}
           aria-labelledby={ariaLabelledby}
           aria-label={ariaLabel}
         />
