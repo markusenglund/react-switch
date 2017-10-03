@@ -36,14 +36,14 @@ describe('onClick', () => {
     const mockOnChange = jest.fn();
     const wrapper = shallow(<Switch onChange={mockOnChange} checked={false} />);
     wrapper.find('.react-switch-fg').simulate('click');
-    expect(mockOnChange.mock.calls[0][0]).toBe(true);
+    expect(mockOnChange).toBeCalledWith(true);
   });
 
   it('does not call onChange when disabled', () => {
     const mockOnChange = jest.fn();
     const wrapper = shallow(<Switch onChange={mockOnChange} checked={false} disabled />);
     wrapper.find('.react-switch-fg').simulate('click');
-    expect(mockOnChange.mock.calls.length).toBe(0);
+    expect(mockOnChange).not.toBeCalled();
   });
 });
 
@@ -62,15 +62,14 @@ describe('handle', () => {
     const wrapper = shallow(<Switch onChange={mockOnChange} checked={false} />);
     wrapper.find('.react-switch-handle').simulate('focus');
     wrapper.find('.react-switch-handle').simulate('keydown', { keyCode: 32, preventDefault: mockPreventDefault });
-    expect(mockPreventDefault.mock.calls.length).toBe(1);
-    expect(mockOnChange.mock.calls[0][0]).toBe(true);
+    expect(mockPreventDefault).toBeCalled();
+    expect(mockOnChange).toBeCalledWith(true);
     wrapper.find('.react-switch-handle').simulate('keydown', { keyCode: 13, preventDefault: mockPreventDefault });
-    expect(mockPreventDefault.mock.calls.length).toBe(1);
-    expect(mockOnChange.mock.calls.length).toBe(1);
+    expect(mockPreventDefault).toBeCalled();
+    expect(mockOnChange).toBeCalled();
   });
 });
 
-// Test willComponentReceiveProps (checked)
 describe('checked prop', () => {
   it('affects left-position when it changes', () => {
     const wrapper = shallow(<Switch onChange={noop} checked={false} />);
