@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { DraggableCore } from 'react-draggable';
 
 class Switch extends Component {
   constructor(props) {
@@ -181,30 +180,23 @@ class Switch extends Component {
           onClick={disabled ? null : this.handleClick}
         />
         {/* eslint-enable jsx-a11y/no-static-element-interactions */}
-        <DraggableCore
-          onStart={this.handleDragStart}
-          onDrag={this.handleDrag}
-          onStop={this.handleDragStop}
-          disabled={disabled}
-        >
-          <div
-            role="checkbox"
-            tabIndex={disabled ? null : 0}
-            aria-checked={checked}
-            aria-disabled={disabled}
-            onTransitionEnd={this.handleTransitionEnd}
-            onKeyDown={this.handleKeyDown}
-            onFocus={() => this.setState({ focused: true })}
-            onBlur={() => this.setState({ focused: false })}
-            className="react-switch-handle"
-            style={handleStyle}
-            id={id}
-            name={name}
-            value={value}
-            aria-labelledby={ariaLabelledby}
-            aria-label={ariaLabel}
-          />
-        </DraggableCore>
+        <div
+          role="checkbox"
+          tabIndex={disabled ? null : 0}
+          aria-checked={checked}
+          aria-disabled={disabled}
+          onTransitionEnd={this.handleTransitionEnd}
+          onKeyDown={this.handleKeyDown}
+          onFocus={() => this.setState({ focused: true })}
+          onBlur={() => this.setState({ focused: false })}
+          className="react-switch-handle"
+          style={handleStyle}
+          id={id}
+          name={name}
+          value={value}
+          aria-labelledby={ariaLabelledby}
+          aria-label={ariaLabel}
+        />
       </div>
     );
   }
