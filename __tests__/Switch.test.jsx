@@ -106,10 +106,25 @@ describe('foreground', () => {
   });
 
   // it('gets 0.5 opacity when left is dragged to the middle', () => {
-  // })
+
+  // });
 });
 
 describe('handle', () => {
+  describe('static props get forwarded to element', () => {
+    const wrapper = shallow(
+      <Switch
+        onChange={noop}
+        checked={false}
+        id="foo"
+        aria-label="bar"
+        aria-labelledby="baz"
+        height={20}
+        width={30}
+      />
+    );
+    // DO stuff here!
+  });
   it('gets positioned based on checked-prop', () => {
     const wrapper = shallow(
       <Switch
@@ -137,4 +152,10 @@ describe('handle', () => {
     wrapper.find('.react-switch-handle').simulate('blur');
     expect(wrapper.find('.react-switch-handle').get(0).props.style.boxShadow).toBeNull();
   });
+  // it('responds to drag start', () => {
+  // expect(wrapper.state('startX')).toBeNull();
+  // wrapper.find('.react-switch-handle').simulate('mousedown', { clientX: 20 });
+  // expect(wrapper.state('startX')).not.toBeNull();
+  // console.log(wrapper.state('hello'));
+  // });
 });
