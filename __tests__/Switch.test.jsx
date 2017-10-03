@@ -69,3 +69,22 @@ describe('handle', () => {
     expect(mockOnChange.mock.calls.length).toBe(1);
   });
 });
+
+// Test willComponentReceiveProps (checked)
+describe('checked prop', () => {
+  it('affects left-position when it changes', () => {
+    const wrapper = shallow(<Switch onChange={noop} checked={false} />);
+    wrapper.setProps({ checked: true });
+    expect(wrapper.find('.react-switch-handle').get(0).props.style.left).toBe(29);
+    wrapper.setProps({ checked: false });
+    expect(wrapper.find('.react-switch-handle').get(0).props.style.left).toBe(1);
+  });
+
+  it('affects fg-opacity when it changes', () => {
+    const wrapper = shallow(<Switch onChange={noop} checked={false} />);
+    wrapper.setProps({ checked: true });
+    expect(wrapper.find('.react-switch-fg').get(0).props.style.opacity).toBe(1);
+    wrapper.setProps({ checked: false });
+    expect(wrapper.find('.react-switch-fg').get(0).props.style.opacity).toBe(0);
+  });
+});
