@@ -100,6 +100,7 @@ class Switch extends Component {
   }
 
   handleMouseMove(event) {
+    event.preventDefault();
     this.handleDrag(event.clientX);
     console.log('mousemove');
   }
