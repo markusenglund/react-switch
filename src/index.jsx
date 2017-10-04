@@ -92,15 +92,18 @@ class Switch extends Component {
   }
 
   handleMouseDown(event) {
-    this.handleDragStart(event.clientX);
+    // this.handleDragStart(event.clientX);
+    console.log('mousedown');
   }
 
   handleMouseMove(event) {
-    this.handleDrag(event.clientX);
+    // this.handleDrag(event.clientX);
+    console.log('mousemove');
   }
 
   handleMouseUp() {
-    this.handleDragStop();
+    // this.handleDragStop();
+    console.log('mouseup');
   }
 
   handleTouchStart(event) {
