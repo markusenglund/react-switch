@@ -212,12 +212,12 @@ class Switch extends Component {
         <div
           role="checkbox"
           tabIndex={disabled ? null : 0}
-          onMouseDown={this.handleMouseDown}
-          onMouseMove={this.handleMouseMove}
-          onMouseUp={this.handleMouseUp}
-          onTouchStart={this.handleTouchStart}
-          onTouchMove={this.handleTouchMove}
-          onTouchEnd={this.handleTouchEnd}
+          onMouseDown={disabled ? null : this.handleMouseDown}
+          onMouseMove={disabled ? null : this.handleMouseMove}
+          onMouseUp={disabled ? null : this.handleMouseUp}
+          onTouchStart={disabled ? null : this.handleTouchStart}
+          onTouchMove={disabled ? null : this.handleTouchMove}
+          onTouchEnd={disabled ? null : this.handleTouchEnd}
           onKeyDown={this.handleKeyDown}
           onFocus={() => this.setState({ focused: true })}
           onBlur={() => this.setState({ focused: false })}
