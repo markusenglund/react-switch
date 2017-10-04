@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Refactor
 - Dependency on 'react-draggable' is removed and replaced with new drag logic.
 
+### Fixed
+- Glitch related to faulty 'inTransition' state fixed due to inTransition no longer existing.
+
 ## [1.2.0 - 2017-09-29]
 ### Fixed
 - Removed react and react-dom from dependencies.

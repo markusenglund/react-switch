@@ -16,10 +16,8 @@ class Switch extends Component {
     this.handleTouchCancel = this.handleTouchCancel.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
     this.state = {
       left: props.checked ? props.width - props.height + 1 : 1,
-      inTransition: false,
       startX: null,
       isDragging: false,
       focused: false
@@ -31,27 +29,20 @@ class Switch extends Component {
     const { width, height } = this.props;
     const checkedLeft = width - height + 1;
     const newLeft = nextProps.checked ? checkedLeft : 1;
-    /* !IMPORTANT: Don't set inTransition to true if the new and old left-position
-    is the same since this will not trigger the transition */
     if (left !== newLeft) {
       this.setState({
         left: newLeft,
-        inTransition: true
       });
     }
   }
 
   handleDragStart(clientX) {
-    const { inTransition } = this.state;
-    if (inTransition) {
-      return;
-    }
     this.setState({ startX: clientX });
   }
 
   handleDrag(clientX) {
-    const { checked, width, height } = this.props;
     const { startX } = this.state;
+    const { checked, width, height } = this.props;
     const checkedLeft = width - height + 1;
 
     const startLeft = checked ? checkedLeft : 1;
@@ -61,10 +52,7 @@ class Switch extends Component {
   }
 
   handleDragStop() {
-    const { left, isDragging, inTransition } = this.state;
-    if (inTransition) {
-      return;
-    }
+    const { left, isDragging } = this.state;
     const { checked, onChange, width, height } = this.props;
 
     // Simulate clicking the handle
@@ -131,7 +119,7 @@ class Switch extends Component {
   }
 
   handleTouchCancel() {
-    console.log('touchcancel')
+    console.log('touchcancel');
     this.setState({ startX: null });
   }
 
@@ -148,10 +136,6 @@ class Switch extends Component {
       event.preventDefault();
       onChange(!checked);
     }
-  }
-
-  handleTransitionEnd() {
-    this.setState({ inTransition: false });
   }
 
   render() {
