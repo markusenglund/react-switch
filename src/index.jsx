@@ -24,16 +24,11 @@ class Switch extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { left } = this.state;
+  componentWillReceiveProps({ checked }) {
     const { width, height } = this.props;
     const checkedLeft = width - height + 1;
-    const newLeft = nextProps.checked ? checkedLeft : 1;
-    if (left !== newLeft) {
-      this.setState({
-        left: newLeft,
-      });
-    }
+    const left = checked ? checkedLeft : 1;
+    this.setState({ left });
   }
 
   handleDragStart(clientX) {
