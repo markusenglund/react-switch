@@ -123,7 +123,8 @@ class Switch extends Component {
     this.handleDrag(event.touches[0].clientX);
   }
 
-  handleTouchEnd() {
+  handleTouchEnd(event) {
+    event.preventDefault();
     console.log('touchend');
     this.handleDragStop();
   }
