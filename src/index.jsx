@@ -91,30 +91,39 @@ class Switch extends Component {
     onChange(true);
   }
 
+  // TODO: Implement event handler creation on mouse down
   handleMouseDown(event) {
-    // this.handleDragStart(event.clientX);
+    this.handleDragStart(event.clientX);
+    document.addEventListener('mousemove', this.handleMouseMove);
+    document.addEventListener('mouseup', this.handleMouseUp);
     console.log('mousedown');
   }
 
   handleMouseMove(event) {
-    // this.handleDrag(event.clientX);
+    this.handleDrag(event.clientX);
     console.log('mousemove');
   }
 
   handleMouseUp() {
-    // this.handleDragStop();
+    this.handleDragStop();
+    document.removeEventListener('mousemove', this.handleMouseMove);
+    document.removeEventListener('mouseup', this.handleMouseUp);
     console.log('mouseup');
   }
 
+  // TODO: Prevent mouse events from triggering on touch events.
   handleTouchStart(event) {
+    console.log('touchstart');
     this.handleDragStart(event.touches[0].clientX);
   }
 
   handleTouchMove(event) {
+    console.log('touchmove');
     this.handleDrag(event.touches[0].clientX);
   }
 
   handleTouchEnd() {
+    console.log('touchend');
     this.handleDragStop();
   }
 
@@ -216,8 +225,6 @@ class Switch extends Component {
           role="checkbox"
           tabIndex={disabled ? null : 0}
           onMouseDown={disabled ? null : this.handleMouseDown}
-          onMouseMove={disabled ? null : this.handleMouseMove}
-          onMouseUp={disabled ? null : this.handleMouseUp}
           onTouchStart={disabled ? null : this.handleTouchStart}
           onTouchMove={disabled ? null : this.handleTouchMove}
           onTouchEnd={disabled ? null : this.handleTouchEnd}
