@@ -75,8 +75,10 @@ class Switch extends Component {
     onChange(true);
   }
 
-  // TODO: Implement event handler creation on mouse down
   handleMouseDown(event) {
+    // Ignore right click and scroll
+    if (typeof event.button === 'number' && event.button !== 0) { return; }
+
     this.handleDragStart(event.clientX);
     document.addEventListener('mousemove', this.handleMouseMove);
     document.addEventListener('mouseup', this.handleMouseUp);
