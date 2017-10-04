@@ -147,8 +147,6 @@ class Switch extends Component {
       height,
       width,
       id,
-      name,
-      value,
       'aria-labelledby': ariaLabelledby,
       'aria-label': ariaLabel
     } = this.props;
@@ -225,8 +223,6 @@ class Switch extends Component {
           className="react-switch-handle"
           style={handleStyle}
           id={id}
-          name={name}
-          value={value}
           aria-checked={checked}
           aria-disabled={disabled}
           aria-labelledby={ariaLabelledby}
@@ -249,8 +245,6 @@ Switch.propTypes = {
   height: PropTypes.number,
   width: PropTypes.number,
   id: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.string,
   'aria-labelledby': PropTypes.string,
   'aria-label': PropTypes.string
 
@@ -266,8 +260,6 @@ Switch.defaultProps = {
   width: 56,
   className: null,
   id: null,
-  name: null,
-  value: null,
   'aria-labelledby': null,
   'aria-label': null
 };
