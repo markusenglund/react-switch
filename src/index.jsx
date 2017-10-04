@@ -13,6 +13,7 @@ class Switch extends Component {
     this.handleTouchStart = this.handleTouchStart.bind(this);
     this.handleTouchMove = this.handleTouchMove.bind(this);
     this.handleTouchEnd = this.handleTouchEnd.bind(this);
+    this.handleTouchCancel = this.handleTouchCancel.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
@@ -124,9 +125,14 @@ class Switch extends Component {
   }
 
   handleTouchEnd(event) {
-    event.preventDefault();
     console.log('touchend');
+    event.preventDefault();
     this.handleDragStop();
+  }
+
+  handleTouchCancel() {
+    console.log('touchcancel')
+    this.setState({ startX: null });
   }
 
   handleClick() {
@@ -230,6 +236,7 @@ class Switch extends Component {
           onTouchStart={disabled ? null : this.handleTouchStart}
           onTouchMove={disabled ? null : this.handleTouchMove}
           onTouchEnd={disabled ? null : this.handleTouchEnd}
+          onTouchCancel={disabled ? null : this.handleTouchCancel}
           onKeyDown={this.handleKeyDown}
           onFocus={() => this.setState({ focused: true })}
           onBlur={() => this.setState({ focused: false })}
