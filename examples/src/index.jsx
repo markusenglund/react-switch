@@ -15,8 +15,7 @@ class Examples extends Component {
   }
 
   handleChange(checked) {
-    console.log('handlechange, checked: ', checked);
-    this.setState({ checked: !checked });
+    this.setState({ checked });
   }
 
   handleDisabledChange(checked) {
