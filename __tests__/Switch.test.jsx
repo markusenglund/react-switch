@@ -62,7 +62,7 @@ describe('handle', () => {
     const wrapper = shallow(<Switch onChange={mockOnChange} checked={false} />);
     wrapper.find('.react-switch-handle').simulate('focus');
     wrapper.find('.react-switch-handle').simulate('keydown', { keyCode: 32, preventDefault: mockPreventDefault });
-    wrapper.find('.react-switch-handle').simulate('keydown', { keyCode: 13, preventDefault: mockPreventDefault });    
+    wrapper.find('.react-switch-handle').simulate('keydown', { keyCode: 13, preventDefault: mockPreventDefault });
     expect(mockPreventDefault.mock.calls.length).toBe(2);
     expect(mockOnChange.mock.calls.length).toBe(2);
   });
@@ -72,7 +72,7 @@ describe('handle', () => {
     wrapper.find('.react-switch-handle').simulate('focus');
     wrapper.find('.react-switch-handle').simulate('keydown', { keyCode: 14, preventDefault: noop });
     expect(mockOnChange).not.toBeCalled();
-  })
+  });
 });
 
 describe('checked prop', () => {
@@ -113,7 +113,7 @@ describe('drag related behaviour', () => {
       />
     );
     wrapper.find('.react-switch-handle').simulate('touchstart', { touches: [{ clientX: 100 }] });
-    wrapper.find('.react-switch-handle').simulate('touchmove', { touches: [{ clientX: 107.5 }] });    
+    wrapper.find('.react-switch-handle').simulate('touchmove', { touches: [{ clientX: 107.5 }] });
     wrapper.find('.react-switch-handle').simulate('touchend', { preventDefault: noop });
     expect(mockOnChange).toBeCalledWith(true);
   });
@@ -128,7 +128,7 @@ describe('drag related behaviour', () => {
       />
     );
     wrapper.find('.react-switch-handle').simulate('touchstart', { touches: [{ clientX: 100 }] });
-    wrapper.find('.react-switch-handle').simulate('touchmove', { touches: [{ clientX: 107.4 }] });    
+    wrapper.find('.react-switch-handle').simulate('touchmove', { touches: [{ clientX: 107.4 }] });
     wrapper.find('.react-switch-handle').simulate('touchend', { preventDefault: noop });
     expect(mockOnChange).not.toBeCalled();
   });
