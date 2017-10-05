@@ -87,3 +87,14 @@ describe('checked prop', () => {
     expect(wrapper.find('.react-switch-fg').get(0).props.style.opacity).toBe(0);
   });
 });
+
+// Test dragging behaviour
+describe('drag related behaviour', () => {
+  it('triggers onChange callback when isDragging is never set to true', () => {
+    const mockOnChange = jest.fn();
+    const wrapper = shallow(<Switch onChange={mockOnChange} checked={false} />);
+    wrapper.find('.react-switch-handle').simulate('touchstart', { touches: [{ clientX: 100 }] });
+    wrapper.find('.react-switch-handle').simulate('touchend', { preventDefault: noop });
+    expect(mockOnChange).toBeCalledWith(true);
+  });
+});
