@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Removed
 - The deprecated 'name' and 'value' properties are removed.
 
+## Added
+- New prop boxShadow. It acts just like outline, but I called it boxShadow since that is the actual css attribute that is being controlled.
+
 ## [1.2.0 - 2017-09-29]
 ### Fixed
 - Removed react and react-dom from dependencies.
