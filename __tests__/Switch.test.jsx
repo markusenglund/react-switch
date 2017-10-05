@@ -56,18 +56,23 @@ describe('handle', () => {
     expect(wrapper.find('.react-switch-handle').get(0).props.style.boxShadow).toBeNull();
   });
 
-  it('calls onChange and prevent default on spacebar but not on any other key', () => {
+  it('calls onChange and prevent default on spacebar and enter', () => {
     const mockOnChange = jest.fn();
     const mockPreventDefault = jest.fn();
     const wrapper = shallow(<Switch onChange={mockOnChange} checked={false} />);
     wrapper.find('.react-switch-handle').simulate('focus');
     wrapper.find('.react-switch-handle').simulate('keydown', { keyCode: 32, preventDefault: mockPreventDefault });
-    expect(mockPreventDefault).toBeCalled();
-    expect(mockOnChange).toBeCalledWith(true);
-    wrapper.find('.react-switch-handle').simulate('keydown', { keyCode: 13, preventDefault: mockPreventDefault });
-    expect(mockPreventDefault).toBeCalled();
-    expect(mockOnChange).toBeCalled();
+    wrapper.find('.react-switch-handle').simulate('keydown', { keyCode: 13, preventDefault: mockPreventDefault });    
+    expect(mockPreventDefault.mock.calls.length).toBe(2);
+    expect(mockOnChange.mock.calls.length).toBe(2);
   });
+  it('doesn\'t call onChange on some other key', () => {
+    const mockOnChange = jest.fn();
+    const wrapper = shallow(<Switch onChange={mockOnChange} checked={false} />);
+    wrapper.find('.react-switch-handle').simulate('focus');
+    wrapper.find('.react-switch-handle').simulate('keydown', { keyCode: 14, preventDefault: noop });
+    expect(mockOnChange).not.toBeCalled();
+  })
 });
 
 describe('checked prop', () => {
