@@ -76,6 +76,7 @@ handleChange(checked) {
               width={90}
               handleColor="orange"
               activeHandleColor="yellow"
+              boxShadow="0px 0px 1px 2px #000"
               offColor="linear-gradient(45deg, steelblue, black)"
               onColor="repeating-radial-gradient(ellipse farthest-corner, darkgreen, lightgreen)"
             />
@@ -92,6 +93,7 @@ handleChange(checked) {
   width={90}
   handleColor="orange"
   activeHandleColor="yellow"
+  boxShadow="0px 0px 1px 2px #000"
   offColor="linear-gradient(45deg, steelblue, black)"
   onColor="repeating-radial-gradient(ellipse farthest-corner, darkgreen, lightgreen)"
 />
