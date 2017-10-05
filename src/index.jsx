@@ -20,7 +20,7 @@ class Switch extends Component {
       left: props.checked ? props.width - props.height + 1 : 1,
       startX: null,
       isDragging: false,
-      outline: false
+      hasOutline: false
     };
   }
 
@@ -52,7 +52,7 @@ class Switch extends Component {
 
     // Simulate clicking the handle
     if (!isDragging) {
-      this.setState({ startX: null, outline: false });
+      this.setState({ startX: null, hasOutline: false });
       onChange(!checked);
       return;
     }
@@ -60,18 +60,18 @@ class Switch extends Component {
     const checkedLeft = width - height + 1;
     if (checked) {
       if (left > (checkedLeft + 1) / 2) {
-        this.setState({ left: checkedLeft, startX: null, isDragging: false, outline: false });
+        this.setState({ left: checkedLeft, startX: null, isDragging: false, hasOutline: false });
         return;
       }
-      this.setState({ startX: null, isDragging: false, outline: false });
+      this.setState({ startX: null, isDragging: false, hasOutline: false });
       onChange(false);
       return;
     }
     if (left < (checkedLeft + 1) / 2) {
-      this.setState({ left: 1, startX: null, isDragging: false, outline: false });
+      this.setState({ left: 1, startX: null, isDragging: false, hasOutline: false });
       return;
     }
-    this.setState({ startX: null, isDragging: false, outline: false });
+    this.setState({ startX: null, isDragging: false, hasOutline: false });
     onChange(true);
   }
 
@@ -101,7 +101,7 @@ class Switch extends Component {
   // TODO: Prevent mouse events from triggering on touch events.
   handleTouchStart(event) {
     console.log('touchstart');
-    this.setState({ outline: true })
+    this.setState({ hasOutline: true });
     this.handleDragStart(event.touches[0].clientX);
   }
 
@@ -118,7 +118,7 @@ class Switch extends Component {
 
   handleTouchCancel() {
     console.log('touchcancel');
-    this.setState({ startX: null, outline: false });
+    this.setState({ startX: null, hasOutline: false });
   }
 
   handleClick() {
@@ -145,13 +145,14 @@ class Switch extends Component {
       onColor,
       handleColor,
       activeHandleColor,
+      boxShadow,
       height,
       width,
       id,
       'aria-labelledby': ariaLabelledby,
       'aria-label': ariaLabel
     } = this.props;
-    const { left, isDragging, startX, outline } = this.state;
+    const { left, isDragging, startX, hasOutline } = this.state;
     const checkedLeft = width - height + 1;
 
     const backgroundStyle = {
@@ -194,7 +195,7 @@ class Switch extends Component {
       top: 1,
       border: 0,
       outline: 0,
-      boxShadow: outline ? '0px 0px 1px 2px #4D90FE' : null
+      boxShadow: hasOutline ? boxShadow : null
     };
 
     return (
@@ -218,8 +219,8 @@ class Switch extends Component {
           onTouchEnd={disabled ? null : this.handleTouchEnd}
           onTouchCancel={disabled ? null : this.handleTouchCancel}
           onKeyDown={this.handleKeyDown}
-          onFocus={() => this.setState({ outline: true })}
-          onBlur={() => this.setState({ outline: false })}
+          onFocus={() => this.setState({ hasOutline: true })}
+          onBlur={() => this.setState({ hasOutline: false })}
           onTransitionEnd={this.handleTransitionEnd}
           className="react-switch-handle"
           style={handleStyle}
@@ -243,6 +244,7 @@ Switch.propTypes = {
   onColor: PropTypes.string,
   handleColor: PropTypes.string,
   activeHandleColor: PropTypes.string,
+  boxShadow: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
   id: PropTypes.string,
@@ -257,6 +259,7 @@ Switch.defaultProps = {
   onColor: 'green',
   handleColor: 'white',
   activeHandleColor: '#ddd',
+  boxShadow: '0px 0px 1px 2px #4D90FE',
   height: 28,
   width: 56,
   className: null,
