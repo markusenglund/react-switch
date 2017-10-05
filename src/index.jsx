@@ -32,7 +32,7 @@ class Switch extends Component {
   }
 
   handleDragStart(clientX) {
-    this.setState({ startX: clientX });
+    this.setState({ startX: clientX, hasOutline: true });
   }
 
   handleDrag(clientX) {
@@ -101,7 +101,6 @@ class Switch extends Component {
   // TODO: Prevent mouse events from triggering on touch events.
   handleTouchStart(event) {
     console.log('touchstart');
-    this.setState({ hasOutline: true });
     this.handleDragStart(event.touches[0].clientX);
   }
 
