@@ -128,7 +128,7 @@ class Switch extends Component {
   handleKeyDown(event) {
     const { checked, onChange } = this.props;
     const { isDragging } = this.state;
-    // Trigger change only on spacebar key in accordance with wai-aria spec
+    // Trigger change on spacebar and enter keys (in violation of wai-aria spec).
     if ((event.keyCode === 32 || event.keyCode === 13) && !isDragging) {
       event.preventDefault();
       onChange(!checked);
