@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Glitch related to faulty 'inTransition' state fixed due to inTransition no longer existing.
 
+## Changed
+- Outline disappears when the users stops holding down the mouse. This is the same behaviour as google's switch-button implementation.
+
 ## Removed
 - The deprecated 'name' and 'value' properties are removed.
 
