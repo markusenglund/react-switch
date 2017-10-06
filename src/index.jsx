@@ -199,8 +199,7 @@ class Switch extends Component {
     };
 
     const iconStyle = {
-      marginLeft: 5,
-      marginTop: 5
+      marginTop: height / 4
     };
 
     return (
@@ -214,7 +213,11 @@ class Switch extends Component {
           style={foregroundStyle}
           onClick={disabled ? null : this.handleClick}
         >
-          <CheckedIcon style={iconStyle} />
+          <CheckedIcon
+            style={iconStyle}
+            width={Math.min(height, width - height)}
+            height={height / 2}
+          />
         </div>
         {/* eslint-enable jsx-a11y/no-static-element-interactions */}
         <div
