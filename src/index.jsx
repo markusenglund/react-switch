@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CheckedIcon from './CheckedIcon';
+import UncheckedIcon from './UncheckedIcon';
 
 class Switch extends Component {
   constructor(props) {
@@ -201,12 +202,23 @@ class Switch extends Component {
     const iconStyle = {
       marginTop: height / 4
     };
+    const uncheckedStyle = {
+      marginTop: height / 4,
+      position: 'absolute',
+      opacity: 1 - ((left - 1) / (checkedLeft - 1)),
+      right: 0
+    };
 
     return (
       <div
         className={className}
         style={backgroundStyle}
       >
+        <UncheckedIcon
+          style={uncheckedStyle}
+          width={Math.min(height, width - height)}
+          height={height / 2}
+        />
         {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
         <div
           className="react-switch-fg"
