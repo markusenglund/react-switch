@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CheckedIcon from './CheckedIcon';
 
 class Switch extends Component {
   constructor(props) {
@@ -197,6 +198,11 @@ class Switch extends Component {
       boxShadow: hasOutline ? boxShadow : null
     };
 
+    const iconStyle = {
+      marginLeft: 5,
+      marginTop: 5
+    };
+
     return (
       <div
         className={className}
@@ -207,7 +213,9 @@ class Switch extends Component {
           className="react-switch-fg"
           style={foregroundStyle}
           onClick={disabled ? null : this.handleClick}
-        />
+        >
+          <CheckedIcon style={iconStyle} />
+        </div>
         {/* eslint-enable jsx-a11y/no-static-element-interactions */}
         <div
           role="checkbox"
