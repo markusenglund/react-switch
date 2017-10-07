@@ -27,7 +27,7 @@ import PropTypes from 'prop-types';
 
 export default function CheckedIcon({ style, width, height }) {
   return (
-    <svg width={width} height={height} viewBox="0 0 14 11" style={style} >
+    <svg width={width} height={height} viewBox="-2 0 14 10" style={style} >
       <path
         d="M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12"
         fill="#fff"

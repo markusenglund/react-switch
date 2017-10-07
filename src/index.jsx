@@ -216,7 +216,7 @@ class Switch extends Component {
       >
         <UncheckedIcon
           style={uncheckedStyle}
-          width={Math.min(height, width - height)}
+          width={Math.min(height, width - height + 2)}
           height={height / 2}
         />
         {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
@@ -227,7 +227,7 @@ class Switch extends Component {
         >
           <CheckedIcon
             style={iconStyle}
-            width={Math.min(height, width - height)}
+            width={Math.min(height, width - height + 2)}
             height={height / 2}
           />
         </div>
