@@ -200,10 +200,8 @@ class Switch extends Component {
     };
 
     const iconStyle = {
-      marginTop: height / 4
     };
     const uncheckedStyle = {
-      marginTop: height / 4,
       position: 'absolute',
       opacity: 1 - ((left - 1) / (checkedLeft - 1)),
       right: 0
@@ -217,7 +215,7 @@ class Switch extends Component {
         <UncheckedIcon
           style={uncheckedStyle}
           width={Math.min(height, width - height + 2)}
-          height={height / 2}
+          height={height}
         />
         {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
         <div
@@ -228,7 +226,7 @@ class Switch extends Component {
           <CheckedIcon
             style={iconStyle}
             width={Math.min(height, width - height + 2)}
-            height={height / 2}
+            height={height}
           />
         </div>
         {/* eslint-enable jsx-a11y/no-static-element-interactions */}
