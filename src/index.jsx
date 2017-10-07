@@ -146,6 +146,7 @@ class Switch extends Component {
       onColor,
       handleColor,
       activeHandleColor,
+      icons,
       boxShadow,
       height,
       width,
@@ -199,12 +200,12 @@ class Switch extends Component {
       boxShadow: hasOutline ? boxShadow : null
     };
 
-    const iconStyle = {
-    };
     const uncheckedStyle = {
       position: 'absolute',
-      opacity: 1 - ((left - 1) / (checkedLeft - 1)),
-      right: 0
+      right: 0,
+      opacity: 1 - (left - 1) / (checkedLeft - 1),
+      width: Math.min(height, width - height + 2),
+      height
     };
 
     return (
@@ -212,19 +213,16 @@ class Switch extends Component {
         className={className}
         style={backgroundStyle}
       >
-        <UncheckedIcon
-          style={uncheckedStyle}
-          width={Math.min(height, width - height + 2)}
-          height={height}
-        />
+        <div style={uncheckedStyle} >
+          <icons.unchecked />
+        </div>
         {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
         <div
           className="react-switch-fg"
           style={foregroundStyle}
           onClick={disabled ? null : this.handleClick}
         >
-          <CheckedIcon
-            style={iconStyle}
+          <icons.checked
             width={Math.min(height, width - height + 2)}
             height={height}
           />
@@ -264,6 +262,10 @@ Switch.propTypes = {
   onColor: PropTypes.string,
   handleColor: PropTypes.string,
   activeHandleColor: PropTypes.string,
+  icons: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.shape({ checked: PropTypes.any, unchecked: PropTypes.any })
+  ]),
   boxShadow: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
@@ -279,6 +281,7 @@ Switch.defaultProps = {
   onColor: 'green',
   handleColor: 'white',
   activeHandleColor: '#ddd',
+  icons: { checked: CheckedIcon, unchecked: UncheckedIcon },
   boxShadow: '0px 0px 1px 2px #4D90FE',
   height: 28,
   width: 56,
