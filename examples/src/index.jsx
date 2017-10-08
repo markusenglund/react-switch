@@ -64,7 +64,7 @@ handleChange(checked) {
           </pre>
         </div>
         <div className="example">
-          <h2>Custom color and size</h2>
+          <h2>Custom color, size and no icons</h2>
           <div className="switch-group">
             <label htmlFor="custom-switch">Switch with custom style</label>
             <Switch
@@ -76,8 +76,8 @@ handleChange(checked) {
               width={90}
               handleColor="orange"
               activeHandleColor="yellow"
-              UncheckedIcon={false}
-              CheckedIcon={false}
+              uncheckedIcon={false}
+              checkedIcon={false}
               boxShadow="0px 0px 1px 2px #000"
               offColor="linear-gradient(45deg, steelblue, black)"
               onColor="repeating-radial-gradient(ellipse farthest-corner, darkgreen, lightgreen)"
@@ -95,6 +95,8 @@ handleChange(checked) {
   width={90}
   handleColor="orange"
   activeHandleColor="yellow"
+  uncheckedIcon={false}
+  checkedIcon={false}
   boxShadow="0px 0px 1px 2px #000"
   offColor="linear-gradient(45deg, steelblue, black)"
   onColor="repeating-radial-gradient(ellipse farthest-corner, darkgreen, lightgreen)"
