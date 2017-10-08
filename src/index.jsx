@@ -83,41 +83,34 @@ class Switch extends Component {
     this.handleDragStart(event.clientX);
     document.addEventListener('mousemove', this.handleMouseMove);
     document.addEventListener('mouseup', this.handleMouseUp);
-    console.log('mousedown');
   }
 
   handleMouseMove(event) {
     event.preventDefault();
     this.handleDrag(event.clientX);
-    console.log('mousemove');
   }
 
   handleMouseUp() {
     this.handleDragStop();
     document.removeEventListener('mousemove', this.handleMouseMove);
     document.removeEventListener('mouseup', this.handleMouseUp);
-    console.log('mouseup');
   }
 
   // TODO: Prevent mouse events from triggering on touch events.
   handleTouchStart(event) {
-    console.log('touchstart');
     this.handleDragStart(event.touches[0].clientX);
   }
 
   handleTouchMove(event) {
-    console.log('touchmove');
     this.handleDrag(event.touches[0].clientX);
   }
 
   handleTouchEnd(event) {
-    console.log('touchend');
     event.preventDefault();
     this.handleDragStop();
   }
 
   handleTouchCancel() {
-    console.log('touchcancel');
     this.setState({ startX: null, hasOutline: false });
   }
 
