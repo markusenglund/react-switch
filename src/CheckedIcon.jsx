@@ -23,11 +23,10 @@ SOFTWARE.
 */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
-export default function CheckedIcon({ style, width, height }) {
+export default function CheckedIcon() {
   return (
-    <svg width={width} height={height} viewBox="-2 -5 17 21" style={style} >
+    <svg height="100%" width="100%" viewBox="-2 -5 17 21">
       <path
         d="M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0"
         fill="#fff"
@@ -36,9 +35,3 @@ export default function CheckedIcon({ style, width, height }) {
     </svg>
   );
 }
-
-CheckedIcon.propTypes = {
-  style: PropTypes.object,
-  width: PropTypes.number,
-  height: PropTypes.number
-};

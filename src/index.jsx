@@ -207,6 +207,10 @@ class Switch extends Component {
       width: Math.min(height, width - height + 2),
       height
     };
+    const checkedStyle = {
+      width: Math.min(height, width - height + 2),
+      height
+    };
 
     return (
       <div
@@ -222,10 +226,9 @@ class Switch extends Component {
           style={foregroundStyle}
           onClick={disabled ? null : this.handleClick}
         >
-          <icons.checked
-            width={Math.min(height, width - height + 2)}
-            height={height}
-          />
+          <div style={checkedStyle}>
+            <icons.checked />
+          </div>
         </div>
         {/* eslint-enable jsx-a11y/no-static-element-interactions */}
         <div
