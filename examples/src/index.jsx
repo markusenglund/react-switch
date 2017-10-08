@@ -76,6 +76,7 @@ handleChange(checked) {
               width={90}
               handleColor="orange"
               activeHandleColor="yellow"
+              icons={false}
               boxShadow="0px 0px 1px 2px #000"
               offColor="linear-gradient(45deg, steelblue, black)"
               onColor="repeating-radial-gradient(ellipse farthest-corner, darkgreen, lightgreen)"

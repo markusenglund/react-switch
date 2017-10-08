@@ -217,18 +217,26 @@ class Switch extends Component {
         className={className}
         style={backgroundStyle}
       >
-        <div style={uncheckedStyle} >
-          <icons.unchecked />
-        </div>
+        {icons ?
+          (
+            <div style={uncheckedStyle}>
+              <icons.unchecked />
+            </div>
+          ) : null
+        }
         {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
         <div
           className="react-switch-fg"
           style={foregroundStyle}
           onClick={disabled ? null : this.handleClick}
         >
-          <div style={checkedStyle}>
-            <icons.checked />
-          </div>
+          {icons ?
+            (
+              <div style={checkedStyle}>
+                <icons.checked />
+              </div>
+            ) : null
+          }
         </div>
         {/* eslint-enable jsx-a11y/no-static-element-interactions */}
         <div
@@ -275,7 +283,6 @@ Switch.propTypes = {
   id: PropTypes.string,
   'aria-labelledby': PropTypes.string,
   'aria-label': PropTypes.string
-
 };
 
 Switch.defaultProps = {
