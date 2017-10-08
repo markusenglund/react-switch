@@ -205,11 +205,13 @@ class Switch extends Component {
       right: 0,
       opacity: 1 - (left - 1) / (checkedLeft - 1),
       width: Math.min(height, width - height + 2),
-      height
+      height,
+      pointerEvents: 'none'
     };
     const checkedStyle = {
       width: Math.min(height, width - height + 2),
-      height
+      height,
+      pointerEvents: 'none'
     };
 
     return (

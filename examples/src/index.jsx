@@ -63,6 +63,7 @@ handleChange(checked) {
             `}
           </pre>
         </div>
+
         <div className="example">
           <h2>Custom color, size and no icons</h2>
           <div className="switch-group">
@@ -104,6 +105,41 @@ handleChange(checked) {
             `}
           </pre>
         </div>
+
+        <div className="example">
+          <h2>Custom icon</h2>
+          <div className="switch-group">
+            <label htmlFor="icon-switch">Switch with a custom icon for when it's checked</label>
+            <Switch
+              className="react-switch"
+              onChange={this.handleChange}
+              checked={this.state.checked}
+              id="icon-switch"
+              checkedIcon={(
+                <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 4, fontSize: 20 }}>
+                  ❤
+                </div>
+              )}
+            />
+          </div>
+          <pre>{`
+<label htmlFor="icon-switch">Switch with a custom icon for when it's checked</label>
+<Switch
+  className="react-switch"
+  onChange={this.handleChange}
+  checked={this.state.checked}
+  id="icon-switch"
+  checkedIcon={(
+    <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 4, fontSize: 20 }}>
+      ❤
+    </div>
+  )}
+/>
+</div>
+          `}
+          </pre>
+        </div>
+
         <div className="example">
           <h2>Disabled switch</h2>
           <div className="switch-group">
