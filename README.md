@@ -59,6 +59,9 @@ class SwitchExample extends Component {
 | onColor | string | 'green' | The switch will take on this color when it is checked. |
 | handleColor | string | 'white' | The handle of the switch will take on this color when it is *not* active. If you use this prop, make sure to also change *activeHandleColor* to something appropriate. |
 | activeHandleColor | string | '#ddd' | The handle of the switch will take on this color when it is active, meaning when it is dragged or clicked. |
+| checkedIcon | element *or* bool | [Default value](https://github.com/yogaboll/react-switch/blob/master/src/icons.jsx) | An icon that will be shown on the switch when it is checked. Pass in *false* if you don't want any icon. |
+| uncheckedIcon | element *or* bool | [Default value](https://github.com/yogaboll/react-switch/blob/master/src/icons.jsx) | An icon that will be shown on the switch when it is **not** checked. Pass in *false* if you don't want any icon. |
+| boxShadow | string | '0px 0px 1px 2px #4D90FE' | The outline of the handle. You can read up on the box-shadow syntax [on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow?v=b).
 | height | number | 28 | The height of the component, measured in pixels. |
 | width | number | 56 | The width of the component, measured in pixels. |
 | className | string | null | Set as the className of the outer shell of the switch. |
