@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unfinished]
+### Added
+- New prop boxShadow. It acts just like outline, but I called it boxShadow since that is the actual css attribute that is being controlled.
+- New props checkedIcon and uncheckedIcon. They have a checkmark and an x as default. Custom elements can be given as icons or the boolean value 'false', which will remove icons.
+
 ### Refactor
 - Dependency on 'react-draggable' is removed and replaced with new drag logic.
 
@@ -17,9 +21,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Removed
 - The deprecated 'name' and 'value' properties are removed.
-
-## Added
-- New prop boxShadow. It acts just like outline, but I called it boxShadow since that is the actual css attribute that is being controlled.
 
 ## [1.2.0 - 2017-09-29]
 ### Fixed
