@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CheckedIcon from './CheckedIcon';
-import UncheckedIcon from './UncheckedIcon';
+import { checkedIcon as defaultCheckedIcon, uncheckedIcon as defaultUncheckedIcon } from './icons';
 
 class Switch extends Component {
   constructor(props) {
@@ -146,7 +145,8 @@ class Switch extends Component {
       onColor,
       handleColor,
       activeHandleColor,
-      icons,
+      checkedIcon,
+      uncheckedIcon,
       boxShadow,
       height,
       width,
@@ -217,10 +217,10 @@ class Switch extends Component {
         className={className}
         style={backgroundStyle}
       >
-        {icons ?
+        {uncheckedIcon ?
           (
             <div style={uncheckedStyle}>
-              <icons.unchecked />
+              {uncheckedIcon}
             </div>
           ) : null
         }
@@ -230,10 +230,10 @@ class Switch extends Component {
           style={foregroundStyle}
           onClick={disabled ? null : this.handleClick}
         >
-          {icons ?
+          {checkedIcon ?
             (
               <div style={checkedStyle}>
-                <icons.checked />
+                {checkedIcon}
               </div>
             ) : null
           }
@@ -273,9 +273,13 @@ Switch.propTypes = {
   onColor: PropTypes.string,
   handleColor: PropTypes.string,
   activeHandleColor: PropTypes.string,
-  icons: PropTypes.oneOfType([
+  checkedIcon: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.shape({ checked: PropTypes.any, unchecked: PropTypes.any })
+    PropTypes.element
+  ]),
+  uncheckedIcon: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.element
   ]),
   boxShadow: PropTypes.string,
   height: PropTypes.number,
@@ -291,7 +295,8 @@ Switch.defaultProps = {
   onColor: 'green',
   handleColor: 'white',
   activeHandleColor: '#ddd',
-  icons: { checked: CheckedIcon, unchecked: UncheckedIcon },
+  checkedIcon: defaultCheckedIcon,
+  uncheckedIcon: defaultUncheckedIcon,
   boxShadow: '0px 0px 1px 2px #4D90FE',
   height: 28,
   width: 56,
