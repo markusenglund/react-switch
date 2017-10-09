@@ -158,9 +158,9 @@ class Switch extends Component {
       display: 'inline-block',
       position: 'relative',
       opacity: disabled ? 0.5 : 1,
-      WebkitTransition: 'all 0.2s',
-      MozTransition: 'all 0.2s',
-      transition: 'all 0.2s',
+      WebkitTransition: 'opacity 0.2s',
+      MozTransition: 'opacity 0.2s',
+      transition: 'opacity 0.2s',
       cursor: disabled ? 'default' : 'pointer'
     };
 
@@ -221,8 +221,8 @@ class Switch extends Component {
         }
         {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
         <div
-          className="react-switch-fg"
           style={foregroundStyle}
+          className="react-switch-fg"
           onClick={disabled ? null : this.handleClick}
         >
           {checkedIcon ?
@@ -235,6 +235,7 @@ class Switch extends Component {
         </div>
         {/* eslint-enable jsx-a11y/no-static-element-interactions */}
         <div
+          className="react-switch-handle"
           role="checkbox"
           tabIndex={disabled ? null : 0}
           onMouseDown={disabled ? null : this.handleMouseDown}
@@ -246,7 +247,6 @@ class Switch extends Component {
           onFocus={() => this.setState({ hasOutline: true })}
           onBlur={() => this.setState({ hasOutline: false })}
           onTransitionEnd={this.handleTransitionEnd}
-          className="react-switch-handle"
           style={handleStyle}
           id={id}
           aria-checked={checked}
