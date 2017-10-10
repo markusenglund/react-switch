@@ -73,15 +73,15 @@ handleChange(checked) {
               className="react-switch"
               onChange={this.handleChange}
               checked={this.state.checked}
-              height={64}
+              height={24}
               width={90}
               handleColor="orange"
               activeHandleColor="yellow"
-              uncheckedIcon={false}
-              checkedIcon={false}
+              /* uncheckedIcon={false} */
+              /* checkedIcon={false} */
               boxShadow="0px 0px 1px 2px #000"
-              offColor="linear-gradient(45deg, steelblue, black)"
-              onColor="repeating-radial-gradient(ellipse farthest-corner, darkgreen, lightgreen)"
+              offColor="#dddddd"
+              onColor="#3d9dfd"
             />
           </div>
           <pre>

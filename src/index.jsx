@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { checkedIcon as defaultCheckedIcon, uncheckedIcon as defaultUncheckedIcon } from './icons';
+import getBackgroundColor from './getBackgroundColor';
 
 class Switch extends Component {
   constructor(props) {
@@ -162,7 +163,7 @@ class Switch extends Component {
       height,
       width,
       position: 'relative',
-      background: checked ? onColor : offColor,
+      background: getBackgroundColor(left, checkedLeft, offColor, onColor),
       borderRadius: height / 2,
       opacity: disabled ? 0.5 : 1,
       WebkitTransition: 'background 0.2s',
