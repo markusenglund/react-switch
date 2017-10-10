@@ -115,8 +115,8 @@ handleChange(checked) {
               onChange={this.handleChange}
               checked={this.state.checked}
               id="icon-switch"
-              offColor="green"
-              onColor="white"
+              offColor="#008000"
+              onColor="#ffffff"
               checkedIcon={(
                 <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 4, fontSize: 20 }}>
                   ❤

@@ -288,8 +288,8 @@ Switch.propTypes = {
 
 Switch.defaultProps = {
   disabled: false,
-  offColor: 'grey',
-  onColor: 'green',
+  offColor: '#808080',
+  onColor: '#008000',
   handleColor: 'white',
   activeHandleColor: '#ddd',
   checkedIcon: defaultCheckedIcon,
