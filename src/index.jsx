@@ -156,6 +156,7 @@ class Switch extends Component {
     const rootStyle = {
       position: 'relative',
       cursor: disabled ? 'default' : 'pointer',
+      opacity: disabled ? 0.5 : 1,
       borderRadius: height / 2
     };
 
@@ -165,7 +166,6 @@ class Switch extends Component {
       position: 'relative',
       background: getBackgroundColor(left, checkedLeft, offColor, onColor),
       borderRadius: height / 2,
-      opacity: disabled ? 0.5 : 1,
       WebkitTransition: 'background 0.2s',
       MozTransition: 'background 0.2s',
       transition: 'background 0.2s'
