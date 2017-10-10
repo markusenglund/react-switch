@@ -158,7 +158,8 @@ class Switch extends Component {
       borderRadius: height / 2,
       WebkitTransition: 'opacity 0.2s',
       MozTransition: 'opacity 0.2s',
-      transition: 'opacity 0.2s'
+      transition: 'opacity 0.2s',
+      width
     };
 
     const backgroundStyle = {
@@ -173,13 +174,14 @@ class Switch extends Component {
     };
 
     const checkedStyle = {
+      opacity: (left - 1) / (checkedLeft - 1),
       width: Math.min(height, width - height + 2),
       height,
       pointerEvents: 'none'
     };
 
     const uncheckedStyle = {
-      // opacity: 1 - (left - 1) / (checkedLeft - 1),
+      opacity: 1 - (left - 1) / (checkedLeft - 1),
       width: Math.min(height, width - height + 2),
       height,
       position: 'absolute',
