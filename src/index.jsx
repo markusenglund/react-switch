@@ -151,13 +151,14 @@ class Switch extends Component {
     const { left, isDragging, startX, hasOutline } = this.state;
     const checkedLeft = width - height + 1;
 
-    // USE THIS: (left - 1) / (checkedLeft - 1),
-
     const rootStyle = {
       position: 'relative',
       cursor: disabled ? 'default' : 'pointer',
       opacity: disabled ? 0.5 : 1,
-      borderRadius: height / 2
+      borderRadius: height / 2,
+      WebkitTransition: 'opacity 0.2s',
+      MozTransition: 'opacity 0.2s',
+      transition: 'opacity 0.2s'
     };
 
     const backgroundStyle = {
