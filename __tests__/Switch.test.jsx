@@ -32,17 +32,17 @@ describe('Props', () => {
 });
 
 describe('onClick', () => {
-  it('calls onChange when fg is clicked with !checked as argument', () => {
+  it('calls onChange when bg is clicked with !checked as argument', () => {
     const mockOnChange = jest.fn();
     const wrapper = shallow(<Switch onChange={mockOnChange} checked={false} />);
-    wrapper.find('.react-switch-fg').simulate('click');
+    wrapper.find('.react-switch-bg').simulate('click');
     expect(mockOnChange).toBeCalledWith(true);
   });
 
   it('does not call onChange when disabled', () => {
     const mockOnChange = jest.fn();
     const wrapper = shallow(<Switch onChange={mockOnChange} checked={false} disabled />);
-    wrapper.find('.react-switch-fg').simulate('click');
+    wrapper.find('.react-switch-bg').simulate('click');
     expect(mockOnChange).not.toBeCalled();
   });
 });
@@ -84,12 +84,12 @@ describe('checked prop', () => {
     expect(wrapper.find('.react-switch-handle').get(0).props.style.left).toBe(1);
   });
 
-  it('affects fg-opacity when it changes', () => {
+  it('affects bg-opacity when it changes', () => {
     const wrapper = shallow(<Switch onChange={noop} checked={false} />);
     wrapper.setProps({ checked: true });
-    expect(wrapper.find('.react-switch-fg').get(0).props.style.opacity).toBe(1);
+    expect(wrapper.find('.react-switch-bg').get(0).props.style.opacity).toBe(1);
     wrapper.setProps({ checked: false });
-    expect(wrapper.find('.react-switch-fg').get(0).props.style.opacity).toBe(0);
+    expect(wrapper.find('.react-switch-bg').get(0).props.style.opacity).toBe(0);
   });
 });
 

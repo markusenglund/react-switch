@@ -165,9 +165,9 @@ class Switch extends Component {
       background: checked ? onColor : offColor,
       borderRadius: height / 2,
       opacity: disabled ? 0.5 : 1,
-      WebkitTransition: 'opacity 0.2s',
-      MozTransition: 'opacity 0.2s',
-      transition: 'opacity 0.2s'
+      WebkitTransition: 'background 0.2s',
+      MozTransition: 'background 0.2s',
+      transition: 'background 0.2s'
     };
 
     const checkedStyle = {
@@ -207,6 +207,7 @@ class Switch extends Component {
     return (
       <div className={className} style={rootStyle}>
         <div
+          className="react-switch-bg"
           style={backgroundStyle}
           onClick={disabled ? null : this.handleClick}
         >
