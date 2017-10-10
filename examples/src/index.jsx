@@ -73,14 +73,14 @@ handleChange(checked) {
               className="react-switch"
               onChange={this.handleChange}
               checked={this.state.checked}
-              height={24}
-              width={290}
-              handleColor="orange"
-              activeHandleColor="yellow"
-              /* uncheckedIcon={false} */
-              /* checkedIcon={false} */
+              height={64}
+              width={90}
+              handleColor="#ffff00"
+              activeHandleColor="#ffcc00"
+              uncheckedIcon={false}
+              checkedIcon={false}
               boxShadow="0px 0px 1px 2px #000"
-              offColor="#dddddd"
+              offColor="#400000"
               onColor="#3d9dfd"
             />
           </div>
@@ -92,15 +92,15 @@ handleChange(checked) {
   className="react-switch"
   onChange={this.handleChange}
   checked={this.state.checked}
-  height={20}
+  height={64}
   width={90}
-  handleColor="orange"
-  activeHandleColor="yellow"
+  handleColor="#ffff00"
+  activeHandleColor="#ffcc00"
   uncheckedIcon={false}
   checkedIcon={false}
   boxShadow="0px 0px 1px 2px #000"
-  offColor="linear-gradient(45deg, steelblue, black)"
-  onColor="repeating-radial-gradient(ellipse farthest-corner, darkgreen, lightgreen)"
+  offColor="#400000"
+  onColor="#3d9dfd"
 />
             `}
           </pre>
@@ -115,8 +115,6 @@ handleChange(checked) {
               onChange={this.handleChange}
               checked={this.state.checked}
               id="icon-switch"
-              offColor="#008000"
-              onColor="#ffffff"
               checkedIcon={(
                 <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 4, fontSize: 20 }}>
                   ❤
@@ -131,13 +129,14 @@ handleChange(checked) {
   onChange={this.handleChange}
   checked={this.state.checked}
   id="icon-switch"
+  offColor="#008000"
+  onColor="#ffffff"
   checkedIcon={(
     <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 4, fontSize: 20 }}>
       ❤
     </div>
   )}
 />
-</div>
           `}
           </pre>
         </div>
