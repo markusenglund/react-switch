@@ -168,9 +168,9 @@ class Switch extends Component {
       position: 'relative',
       background: getBackgroundColor(pos, checkedPos, offColor, onColor),
       borderRadius: height / 2,
-      WebkitTransition: 'background 0.2s',
-      MozTransition: 'background 0.2s',
-      transition: 'background 0.2s'
+      WebkitTransition: isDragging ? null : 'background 0.2s',
+      MozTransition: isDragging ? null : 'background 0.2s',
+      transition: isDragging ? null : 'background 0.2s'
     };
 
     const checkedStyle = {
@@ -178,9 +178,9 @@ class Switch extends Component {
       width: Math.min(height, width - height + 2),
       height,
       pointerEvents: 'none',
-      WebkitTransition: 'opacity 0.2s',
-      MozTransition: 'opacity 0.2s',
-      transition: 'opacity 0.2s'
+      WebkitTransition: isDragging ? null : 'opacity 0.2s',
+      MozTransition: isDragging ? null : 'opacity 0.2s',
+      transition: isDragging ? null : 'opacity 0.2s'
     };
 
     const uncheckedStyle = {
@@ -191,9 +191,9 @@ class Switch extends Component {
       right: 0,
       top: 0,
       pointerEvents: 'none',
-      WebkitTransition: 'opacity 0.2s',
-      MozTransition: 'opacity 0.2s',
-      transition: 'opacity 0.2s'
+      WebkitTransition: isDragging ? null : 'opacity 0.2s',
+      MozTransition: isDragging ? null : 'opacity 0.2s',
+      transition: isDragging ? null : 'opacity 0.2s'
     };
 
     const handleStyle = {

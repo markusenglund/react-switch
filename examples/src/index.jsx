@@ -74,7 +74,7 @@ handleChange(checked) {
               onChange={this.handleChange}
               checked={this.state.checked}
               height={24}
-              width={90}
+              width={290}
               handleColor="orange"
               activeHandleColor="yellow"
               /* uncheckedIcon={false} */
