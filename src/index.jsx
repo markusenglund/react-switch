@@ -177,7 +177,10 @@ class Switch extends Component {
       opacity: (left - 1) / (checkedLeft - 1),
       width: Math.min(height, width - height + 2),
       height,
-      pointerEvents: 'none'
+      pointerEvents: 'none',
+      WebkitTransition: 'opacity 0.2s',
+      MozTransition: 'opacity 0.2s',
+      transition: 'opacity 0.2s'
     };
 
     const uncheckedStyle = {
@@ -187,7 +190,10 @@ class Switch extends Component {
       position: 'absolute',
       right: 0,
       top: 0,
-      pointerEvents: 'none'
+      pointerEvents: 'none',
+      WebkitTransition: 'opacity 0.2s',
+      MozTransition: 'opacity 0.2s',
+      transition: 'opacity 0.2s'
     };
 
     const handleStyle = {
