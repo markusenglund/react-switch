@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unfinished]
+### Refactor
+- The switch no longer uses the opacity hack to transition between color. This involved stacking two divs on top of each other and varying the opacity of the top div. This caused some weird visual artifacts.
+
+### Changed
+- onColor and offColor props can now only take colors in the form of '#xxxxxx'. Gradients and rgb(xxx, xxx, xxx) are no longer supported.
+
+### Fixed
+- The switch no longer has a pixel wide gloria of the offColor when checked.
 
 ## [2.0.0-rc.1] - 2017-10-08
 ### Added
