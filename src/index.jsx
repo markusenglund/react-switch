@@ -174,8 +174,9 @@ class Switch extends Component {
     };
 
     const checkedStyle = {
+      position: 'relative',
       opacity: (pos - 1) / (checkedPos - 1),
-      width: Math.min(height, width - height + 2),
+      width: Math.min(height * 1.5, width - height + 1),
       height,
       pointerEvents: 'none',
       WebkitTransition: isDragging ? null : 'opacity 0.2s',
@@ -185,7 +186,7 @@ class Switch extends Component {
 
     const uncheckedStyle = {
       opacity: 1 - (pos - 1) / (checkedPos - 1),
-      width: Math.min(height, width - height + 2),
+      width: Math.min(height * 1.5, width - height + 1),
       height,
       position: 'absolute',
       right: 0,
