@@ -19,7 +19,7 @@ class Switch extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.state = {
-      left: props.checked ? props.width - props.height + 1 : 1,
+      pos: props.checked ? props.width - props.height + 1 : 1,
       startX: null,
       isDragging: false,
       hasOutline: false
@@ -28,9 +28,9 @@ class Switch extends Component {
 
   componentWillReceiveProps({ checked }) {
     const { width, height } = this.props;
-    const checkedLeft = width - height + 1;
-    const left = checked ? checkedLeft : 1;
-    this.setState({ left });
+    const checkedPos = width - height + 1;
+    const pos = checked ? checkedPos : 1;
+    this.setState({ pos });
   }
 
   handleDragStart(clientX) {
@@ -40,16 +40,16 @@ class Switch extends Component {
   handleDrag(clientX) {
     const { startX } = this.state;
     const { checked, width, height } = this.props;
-    const checkedLeft = width - height + 1;
+    const checkedPos = width - height + 1;
 
-    const startLeft = checked ? checkedLeft : 1;
+    const startLeft = checked ? checkedPos : 1;
     const newLeft = startLeft + clientX - startX;
-    const left = Math.min(checkedLeft, Math.max(1, newLeft));
-    this.setState({ left, isDragging: true });
+    const pos = Math.min(checkedPos, Math.max(1, newLeft));
+    this.setState({ pos, isDragging: true });
   }
 
   handleDragStop() {
-    const { left, isDragging } = this.state;
+    const { pos, isDragging } = this.state;
     const { checked, onChange, width, height } = this.props;
 
     // Simulate clicking the handle
@@ -59,18 +59,18 @@ class Switch extends Component {
       return;
     }
 
-    const checkedLeft = width - height + 1;
+    const checkedPos = width - height + 1;
     if (checked) {
-      if (left > (checkedLeft + 1) / 2) {
-        this.setState({ left: checkedLeft, startX: null, isDragging: false, hasOutline: false });
+      if (pos > (checkedPos + 1) / 2) {
+        this.setState({ pos: checkedPos, startX: null, isDragging: false, hasOutline: false });
         return;
       }
       this.setState({ startX: null, isDragging: false, hasOutline: false });
       onChange(false);
       return;
     }
-    if (left < (checkedLeft + 1) / 2) {
-      this.setState({ left: 1, startX: null, isDragging: false, hasOutline: false });
+    if (pos < (checkedPos + 1) / 2) {
+      this.setState({ pos: 1, startX: null, isDragging: false, hasOutline: false });
       return;
     }
     this.setState({ startX: null, isDragging: false, hasOutline: false });
@@ -148,8 +148,8 @@ class Switch extends Component {
       'aria-labelledby': ariaLabelledby,
       'aria-label': ariaLabel
     } = this.props;
-    const { left, isDragging, startX, hasOutline } = this.state;
-    const checkedLeft = width - height + 1;
+    const { pos, isDragging, startX, hasOutline } = this.state;
+    const checkedPos = width - height + 1;
 
     const rootStyle = {
       position: 'relative',
@@ -166,7 +166,7 @@ class Switch extends Component {
       height,
       width,
       position: 'relative',
-      background: getBackgroundColor(left, checkedLeft, offColor, onColor),
+      background: getBackgroundColor(pos, checkedPos, offColor, onColor),
       borderRadius: height / 2,
       WebkitTransition: 'background 0.2s',
       MozTransition: 'background 0.2s',
@@ -174,7 +174,7 @@ class Switch extends Component {
     };
 
     const checkedStyle = {
-      opacity: (left - 1) / (checkedLeft - 1),
+      opacity: (pos - 1) / (checkedPos - 1),
       width: Math.min(height, width - height + 2),
       height,
       pointerEvents: 'none',
@@ -184,7 +184,7 @@ class Switch extends Component {
     };
 
     const uncheckedStyle = {
-      opacity: 1 - (left - 1) / (checkedLeft - 1),
+      opacity: 1 - (pos - 1) / (checkedPos - 1),
       width: Math.min(height, width - height + 2),
       height,
       position: 'absolute',
@@ -207,7 +207,7 @@ class Switch extends Component {
       display: 'inline-block',
       borderRadius: '50%',
       position: 'absolute',
-      left,
+      left: pos,
       top: 1,
       border: 0,
       outline: 0,
