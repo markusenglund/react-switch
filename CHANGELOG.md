@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unfinished]
+
 ## [2.0.0-rc.1] - 2017-10-08
 ### Added
 - New prop boxShadow. It acts just like outline, but I called it boxShadow since that is the actual css attribute that is being controlled.

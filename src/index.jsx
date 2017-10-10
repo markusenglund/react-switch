@@ -150,29 +150,40 @@ class Switch extends Component {
     const { left, isDragging, startX, hasOutline } = this.state;
     const checkedLeft = width - height + 1;
 
+    // USE THIS: (left - 1) / (checkedLeft - 1),
+
+    const rootStyle = {
+      position: 'relative',
+      cursor: disabled ? 'default' : 'pointer',
+      borderRadius: height / 2
+    };
+
     const backgroundStyle = {
       height,
       width,
-      background: offColor,
-      borderRadius: height / 2,
-      display: 'inline-block',
       position: 'relative',
+      background: checked ? onColor : offColor,
+      borderRadius: height / 2,
       opacity: disabled ? 0.5 : 1,
       WebkitTransition: 'opacity 0.2s',
       MozTransition: 'opacity 0.2s',
-      transition: 'opacity 0.2s',
-      cursor: disabled ? 'default' : 'pointer'
+      transition: 'opacity 0.2s'
     };
 
-    const foregroundStyle = {
+    const checkedStyle = {
+      width: Math.min(height, width - height + 2),
       height,
-      width,
-      opacity: (left - 1) / (checkedLeft - 1),
-      background: onColor,
-      WebkitTransition: isDragging ? null : 'opacity 0.2s ease-out',
-      MozTransition: isDragging ? null : 'opacity 0.2s ease-out',
-      transition: isDragging ? null : 'opacity 0.2s ease-out',
-      borderRadius: height / 2
+      pointerEvents: 'none'
+    };
+
+    const uncheckedStyle = {
+      // opacity: 1 - (left - 1) / (checkedLeft - 1),
+      width: Math.min(height, width - height + 2),
+      height,
+      position: 'absolute',
+      right: 0,
+      top: 0,
+      pointerEvents: 'none'
     };
 
     const handleStyle = {
@@ -193,36 +204,10 @@ class Switch extends Component {
       boxShadow: hasOutline ? boxShadow : null
     };
 
-    const uncheckedStyle = {
-      position: 'absolute',
-      right: 0,
-      opacity: 1 - (left - 1) / (checkedLeft - 1),
-      width: Math.min(height, width - height + 2),
-      height,
-      pointerEvents: 'none'
-    };
-    const checkedStyle = {
-      width: Math.min(height, width - height + 2),
-      height,
-      pointerEvents: 'none'
-    };
-
     return (
-      <div
-        className={className}
-        style={backgroundStyle}
-      >
-        {uncheckedIcon ?
-          (
-            <div style={uncheckedStyle}>
-              {uncheckedIcon}
-            </div>
-          ) : null
-        }
-        {/* eslint-disable jsx-a11y/no-static-element-interactions */ }
+      <div className={className} style={rootStyle}>
         <div
-          style={foregroundStyle}
-          className="react-switch-fg"
+          style={backgroundStyle}
           onClick={disabled ? null : this.handleClick}
         >
           {checkedIcon ?
@@ -232,8 +217,14 @@ class Switch extends Component {
               </div>
             ) : null
           }
+          {uncheckedIcon ?
+            (
+              <div style={uncheckedStyle}>
+                {uncheckedIcon}
+              </div>
+            ) : null
+          }
         </div>
-        {/* eslint-enable jsx-a11y/no-static-element-interactions */}
         <div
           className="react-switch-handle"
           role="checkbox"
