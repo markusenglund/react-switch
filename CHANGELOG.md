@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - onColor and offColor props can now only take colors in the form of '#xxxxxx'. Gradients and rgb(xxx, xxx, xxx) are no longer supported.
 - handleColor prop is replaced by onHandleColor and offHandleColor.
+- The boxShadow the handle gets when selected is now available in the activeBoxShadow prop. The boxShadow prop is now the boxShadow the handle has when it is not selected, and is null by default.
 
 ### Fixed
 - The switch no longer has a pixel wide gloria of the offColor when checked.

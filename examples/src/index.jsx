@@ -80,7 +80,7 @@ handleChange(checked) {
               onHandleColor="#2693e6"
               uncheckedIcon={false}
               checkedIcon={false}
-              boxShadow="0px 0px 1px 2px #000"
+              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
             />
           </div>
           <pre>

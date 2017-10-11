@@ -142,6 +142,7 @@ class Switch extends Component {
       checkedIcon,
       uncheckedIcon,
       boxShadow,
+      activeBoxShadow,
       height,
       width,
       id,
@@ -149,7 +150,7 @@ class Switch extends Component {
       'aria-label': ariaLabel
     } = this.props;
 
-    const { pos, isDragging, startX, hasOutline } = this.state;
+    const { pos, isDragging, hasOutline } = this.state;
 
     const rootStyle = {
       position: 'relative',
@@ -229,7 +230,7 @@ class Switch extends Component {
       top: Math.max(0, (height - this.handleDiameter) / 2),
       border: 0,
       outline: 0,
-      boxShadow: hasOutline ? boxShadow : null
+      boxShadow: hasOutline ? activeBoxShadow : boxShadow
     };
 
     return (
@@ -298,6 +299,7 @@ Switch.propTypes = {
     PropTypes.element
   ]),
   boxShadow: PropTypes.string,
+  activeBoxShadow: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
   id: PropTypes.string,
@@ -314,7 +316,8 @@ Switch.defaultProps = {
   handleDiameter: null,
   checkedIcon: defaultCheckedIcon,
   uncheckedIcon: defaultUncheckedIcon,
-  boxShadow: '0px 0px 1px 2px #4D90FE',
+  boxShadow: null,
+  activeBoxShadow: '0px 0px 1px 2px #4D90FE',
   height: 28,
   width: 56,
   className: null,
