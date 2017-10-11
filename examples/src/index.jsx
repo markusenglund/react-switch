@@ -116,7 +116,7 @@ handleChange(checked) {
               checked={this.state.checked}
               id="icon-switch"
               checkedIcon={(
-                <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 4, fontSize: 20 }}>
+                <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 6, fontSize: 20 }}>
                   ❤
                 </div>
               )}
@@ -132,7 +132,7 @@ handleChange(checked) {
   offColor="#008000"
   onColor="#ffffff"
   checkedIcon={(
-    <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 4, fontSize: 20 }}>
+    <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 6, fontSize: 20 }}>
       ❤
     </div>
   )}
