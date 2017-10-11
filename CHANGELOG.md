@@ -10,9 +10,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - onColor and offColor props can now only take colors in the form of '#xxxxxx'. Gradients and rgb(xxx, xxx, xxx) are no longer supported.
+- handleColor prop is replaced by onHandleColor and offHandleColor.
 
 ### Fixed
 - The switch no longer has a pixel wide gloria of the offColor when checked.
+
+### Removed
+- activeHandleColor prop is removed because of lack of usefulness.
 
 ## [2.0.0-rc.1] - 2017-10-08
 ### Added
