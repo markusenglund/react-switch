@@ -35,6 +35,9 @@ class Examples extends Component {
               onChange={this.handleChange}
               checked={this.state.checked}
               id="normal-switch"
+              offHandleColor="steelblue"
+              onHandleColor="steelblue"
+              handleDiameter={20}
             />
           </div>
           <p>The switch is <span>{this.state.checked ? 'on' : 'off'}</span>.</p>
@@ -73,10 +76,11 @@ handleChange(checked) {
               className="react-switch"
               onChange={this.handleChange}
               checked={this.state.checked}
-              height={64}
-              width={90}
-              handleColor="#ffff00"
-              activeHandleColor="#ffcc00"
+              height={24}
+              width={50}
+              handleDiameter={34}
+              onHandleColor="#ffff00"
+              offHandleColor="#ffcc00"
               uncheckedIcon={false}
               checkedIcon={false}
               boxShadow="0px 0px 1px 2px #000"

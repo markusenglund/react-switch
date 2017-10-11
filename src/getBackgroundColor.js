@@ -1,5 +1,5 @@
-export default function getBackgroundColor(pos, checkedPos, offColor, onColor) {
-  const relativePos = (pos - 1) / (checkedPos - 1);
+export default function getBackgroundColor(pos, checkedPos, uncheckedPos, offColor, onColor) {
+  const relativePos = (pos - uncheckedPos) / (checkedPos - uncheckedPos);
   if (relativePos === 0) {
     return offColor;
   }

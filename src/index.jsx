@@ -18,8 +18,13 @@ class Switch extends Component {
     this.handleTouchCancel = this.handleTouchCancel.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+
+    const { height, width, handleDiameter, checked } = props;
+    this.handleDiameter = handleDiameter || height - 2;
+    this.checkedPos = Math.max(width - height, width - (height + this.handleDiameter) / 2);
+    this.uncheckedPos = Math.max(0, (height - this.handleDiameter) / 2);
     this.state = {
-      pos: props.checked ? props.width - props.height + 1 : 1,
+      pos: checked ? this.checkedPos : this.uncheckedPos,
       startX: null,
       isDragging: false,
       hasOutline: false
@@ -27,9 +32,7 @@ class Switch extends Component {
   }
 
   componentWillReceiveProps({ checked }) {
-    const { width, height } = this.props;
-    const checkedPos = width - height + 1;
-    const pos = checked ? checkedPos : 1;
+    const pos = checked ? this.checkedPos : this.uncheckedPos;
     this.setState({ pos });
   }
 
@@ -39,18 +42,17 @@ class Switch extends Component {
 
   handleDrag(clientX) {
     const { startX } = this.state;
-    const { checked, width, height } = this.props;
-    const checkedPos = width - height + 1;
+    const { checked } = this.props;
 
-    const startLeft = checked ? checkedPos : 1;
-    const newLeft = startLeft + clientX - startX;
-    const pos = Math.min(checkedPos, Math.max(1, newLeft));
+    const startPos = checked ? this.checkedPos : this.uncheckedPos;
+    const newPos = startPos + clientX - startX;
+    const pos = Math.min(this.checkedPos, Math.max(this.uncheckedPos, newPos));
     this.setState({ pos, isDragging: true });
   }
 
   handleDragStop() {
     const { pos, isDragging } = this.state;
-    const { checked, onChange, width, height } = this.props;
+    const { checked, onChange } = this.props;
 
     // Simulate clicking the handle
     if (!isDragging) {
@@ -58,19 +60,17 @@ class Switch extends Component {
       onChange(!checked);
       return;
     }
-
-    const checkedPos = width - height + 1;
     if (checked) {
-      if (pos > (checkedPos + 1) / 2) {
-        this.setState({ pos: checkedPos, startX: null, isDragging: false, hasOutline: false });
+      if (pos > (this.checkedPos + this.uncheckedPos) / 2) {
+        this.setState({ pos: this.checkedPos, startX: null, isDragging: false, hasOutline: false });
         return;
       }
       this.setState({ startX: null, isDragging: false, hasOutline: false });
       onChange(false);
       return;
     }
-    if (pos < (checkedPos + 1) / 2) {
-      this.setState({ pos: 1, startX: null, isDragging: false, hasOutline: false });
+    if (pos < (this.checkedPos + this.uncheckedPos) / 2) {
+      this.setState({ pos: this.uncheckedPos, startX: null, isDragging: false, hasOutline: false });
       return;
     }
     this.setState({ startX: null, isDragging: false, hasOutline: false });
@@ -137,8 +137,8 @@ class Switch extends Component {
       className,
       offColor,
       onColor,
-      handleColor,
-      activeHandleColor,
+      offHandleColor,
+      onHandleColor,
       checkedIcon,
       uncheckedIcon,
       boxShadow,
@@ -148,26 +148,27 @@ class Switch extends Component {
       'aria-labelledby': ariaLabelledby,
       'aria-label': ariaLabel
     } = this.props;
+
     const { pos, isDragging, startX, hasOutline } = this.state;
-    const checkedPos = width - height + 1;
 
     const rootStyle = {
       position: 'relative',
       display: 'inline-block',
-      cursor: disabled ? 'default' : 'pointer',
       opacity: disabled ? 0.5 : 1,
       borderRadius: height / 2,
       WebkitTransition: 'opacity 0.2s',
       MozTransition: 'opacity 0.2s',
-      transition: 'opacity 0.2s',
-      width
+      transition: 'opacity 0.2s'
+      // width
     };
 
     const backgroundStyle = {
       height,
       width,
+      margin: Math.max(0, (this.handleDiameter - height) / 2),
       position: 'relative',
-      background: getBackgroundColor(pos, checkedPos, offColor, onColor),
+      cursor: disabled ? 'default' : 'pointer',
+      background: getBackgroundColor(pos, this.checkedPos, this.uncheckedPos, offColor, onColor),
       borderRadius: height / 2,
       WebkitTransition: isDragging ? null : 'background 0.2s',
       MozTransition: isDragging ? null : 'background 0.2s',
@@ -176,8 +177,12 @@ class Switch extends Component {
 
     const checkedStyle = {
       position: 'relative',
-      opacity: (pos - 1) / (checkedPos - 1),
-      width: Math.min(height * 1.5, width - height + 1),
+      opacity: (pos - this.uncheckedPos) / (this.checkedPos - this.uncheckedPos),
+      width: Math.min(
+        height * 1.5,
+        width - height + 1,
+        width - (this.handleDiameter + height) / 2 + 1
+      ),
       height,
       pointerEvents: 'none',
       WebkitTransition: isDragging ? null : 'opacity 0.2s',
@@ -186,8 +191,12 @@ class Switch extends Component {
     };
 
     const uncheckedStyle = {
-      opacity: 1 - (pos - 1) / (checkedPos - 1),
-      width: Math.min(height * 1.5, width - height + 1),
+      opacity: 1 - (pos - this.uncheckedPos) / (this.checkedPos - this.uncheckedPos),
+      width: Math.min(
+        height * 1.5,
+        width - height + 1,
+        width - (this.handleDiameter + height) / 2 + 1
+      ),
       height,
       position: 'absolute',
       right: 0,
@@ -199,18 +208,19 @@ class Switch extends Component {
     };
 
     const handleStyle = {
-      height: height - 2,
-      width: height - 2,
-      background: startX ? activeHandleColor : handleColor,
+      height: this.handleDiameter,
+      width: this.handleDiameter,
+      background: checked ? onHandleColor : offHandleColor,
       touchAction: 'none',
-      WebkitTransition: isDragging ? null : 'left 0.2s ease-out',
-      MozTransition: isDragging ? null : 'left 0.2s ease-out',
-      transition: isDragging ? null : 'left 0.2s ease-out',
+      cursor: disabled ? 'default' : 'pointer',
+      WebkitTransition: isDragging ? null : 'left 0.2s',
+      MozTransition: isDragging ? null : 'left 0.2s',
+      transition: isDragging ? null : 'left 0.2s',
       display: 'inline-block',
       borderRadius: '50%',
       position: 'absolute',
       left: pos,
-      top: 1,
+      top: Math.max(0, (height - this.handleDiameter) / 2),
       border: 0,
       outline: 0,
       boxShadow: hasOutline ? boxShadow : null
@@ -270,8 +280,9 @@ Switch.propTypes = {
   className: PropTypes.string,
   offColor: PropTypes.string,
   onColor: PropTypes.string,
-  handleColor: PropTypes.string,
-  activeHandleColor: PropTypes.string,
+  offHandleColor: PropTypes.string,
+  onHandleColor: PropTypes.string,
+  handleDiameter: PropTypes.number,
   checkedIcon: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.element
@@ -292,8 +303,9 @@ Switch.defaultProps = {
   disabled: false,
   offColor: '#808080',
   onColor: '#008000',
-  handleColor: 'white',
-  activeHandleColor: '#ddd',
+  offHandleColor: 'white',
+  onHandleColor: '#ddd',
+  handleDiameter: null,
   checkedIcon: defaultCheckedIcon,
   uncheckedIcon: defaultUncheckedIcon,
   boxShadow: '0px 0px 1px 2px #4D90FE',
