@@ -153,6 +153,7 @@ class Switch extends Component {
 
     const rootStyle = {
       position: 'relative',
+      display: 'inline-block',
       cursor: disabled ? 'default' : 'pointer',
       opacity: disabled ? 0.5 : 1,
       borderRadius: height / 2,
