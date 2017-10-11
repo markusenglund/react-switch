@@ -12,10 +12,9 @@ html, body, #app, .examples {
 .switch-group label {
   vertical-align: middle;
 }
-
 .react-switch {
   vertical-align: middle;
-  margin-left: 3px;
+  margin-left: 4px;
 }
 
 pre {

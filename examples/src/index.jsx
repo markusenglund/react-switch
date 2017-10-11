@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Switch from '../../dist';
 import './styles.css';
+import BasicExample from './BasicExample';
+import MaterialDesign from './MaterialDesign';
+import SmallRadius from './SmallRadius';
+import CustomIcons from './CustomIcons';
 
 class Examples extends Component {
   constructor() {
@@ -26,120 +30,10 @@ class Examples extends Component {
     return (
       <div id="examples">
         <h1>React Switch</h1>
-        <div className="example">
-          <h2>Simple usage</h2>
-          <div className="switch-group">
-            <label htmlFor="normal-switch">Switch with default style</label>
-            <Switch
-              className="react-switch"
-              onChange={this.handleChange}
-              checked={this.state.checked}
-              id="normal-switch"
-            />
-          </div>
-          <p>The switch is <span>{this.state.checked ? 'on' : 'off'}</span>.</p>
-          <pre>{`
-constructor() {
-  super();
-  this.state = {
-    checked: false
-  };
-  this.handleChange = this.handleChange.bind(this);
-}
-
-handleChange(checked) {
-  this.setState({ checked });
-}
-          `}
-          </pre>
-          <pre>
-            {`
-<label htmlFor="normal-switch">Switch with default style</label>
-<Switch
-  onChange={this.handleChange}
-  checked={this.state.checked}
-  id="normal-switch"
-/>
-            `}
-          </pre>
-        </div>
-
-        <div className="example">
-          <h2>Custom color, size and no icons</h2>
-          <div className="switch-group">
-            <label htmlFor="custom-switch">Switch with custom style</label>
-            <Switch
-              id="custom-switch"
-              className="react-switch"
-              onChange={this.handleChange}
-              checked={this.state.checked}
-              height={20}
-              width={48}
-              handleDiameter={30}
-              onColor="#86d3ff"
-              onHandleColor="#2693e6"
-              uncheckedIcon={false}
-              checkedIcon={false}
-              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-            />
-          </div>
-          <pre>
-            {`
-<label htmlFor="custom-switch">Switch with custom style</label>
-<Switch
-  id="custom-switch"
-  className="react-switch"
-  onChange={this.handleChange}
-  checked={this.state.checked}
-  height={64}
-  width={90}
-  handleColor="#ffff00"
-  activeHandleColor="#ffcc00"
-  uncheckedIcon={false}
-  checkedIcon={false}
-  boxShadow="0px 0px 1px 2px #000"
-  offColor="#400000"
-  onColor="#3d9dfd"
-/>
-            `}
-          </pre>
-        </div>
-
-        <div className="example">
-          <h2>Custom icon</h2>
-          <div className="switch-group">
-            <label htmlFor="icon-switch">Switch with a custom icon for when it is checked</label>
-            <Switch
-              className="react-switch"
-              onChange={this.handleChange}
-              checked={this.state.checked}
-              id="icon-switch"
-              checkedIcon={(
-                <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 6, fontSize: 20 }}>
-                  ❤
-                </div>
-              )}
-            />
-          </div>
-          <pre>{`
-<label htmlFor="icon-switch">Switch with a custom icon for when it is checked</label>
-<Switch
-  className="react-switch"
-  onChange={this.handleChange}
-  checked={this.state.checked}
-  id="icon-switch"
-  offColor="#008000"
-  onColor="#ffffff"
-  checkedIcon={(
-    <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 6, fontSize: 20 }}>
-      ❤
-    </div>
-  )}
-/>
-          `}
-          </pre>
-        </div>
-
+        <BasicExample />
+        <MaterialDesign />
+        <SmallRadius />
+        <CustomIcons />
         <div className="example">
           <h2>Disabled switch</h2>
           <div className="switch-group">

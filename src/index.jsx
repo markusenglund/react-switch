@@ -284,17 +284,16 @@ Switch.propTypes = {
   checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
-  className: PropTypes.string,
   offColor: PropTypes.string,
   onColor: PropTypes.string,
   offHandleColor: PropTypes.string,
   onHandleColor: PropTypes.string,
   handleDiameter: PropTypes.number,
-  checkedIcon: PropTypes.oneOfType([
+  uncheckedIcon: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.element
   ]),
-  uncheckedIcon: PropTypes.oneOfType([
+  checkedIcon: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.element
   ]),
@@ -302,6 +301,7 @@ Switch.propTypes = {
   activeBoxShadow: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
+  className: PropTypes.string,
   id: PropTypes.string,
   'aria-labelledby': PropTypes.string,
   'aria-label': PropTypes.string
@@ -314,8 +314,8 @@ Switch.defaultProps = {
   offHandleColor: '#ffffff',
   onHandleColor: '#ffffff',
   handleDiameter: null,
-  checkedIcon: defaultCheckedIcon,
   uncheckedIcon: defaultUncheckedIcon,
+  checkedIcon: defaultCheckedIcon,
   boxShadow: null,
   activeBoxShadow: '0px 0px 1px 2px #4D90FE',
   height: 28,
