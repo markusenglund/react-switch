@@ -1,0 +1,41 @@
+import React, { Component } from 'react';
+import Switch from '../../dist';
+
+export default class BasicExample extends Component {
+  constructor() {
+    super();
+    this.state = { checked: false };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(checked) {
+    this.setState({ checked });
+  }
+
+  render() {
+    return (
+      <div className="example">
+        <h2>Switch using aria-labelledby</h2>
+        <div className="switch-group">
+          <p id="neat-label">Use this if you do not want your label to be a label element</p>
+          <Switch
+            className="react-switch"
+            onChange={this.handleChange}
+            checked={this.state.checked}
+            aria-labelledby="neat-label"
+          />
+        </div>
+        <pre>{`
+<p id="neat-label">Use this if you do not want your label to be a label element</p>
+<Switch
+  className="react-switch"
+  onChange={this.handleChange}
+  checked={this.state.checked}
+  aria-labelledby="neat-label"
+/>
+        `}
+        </pre>
+      </div>
+    );
+  }
+}

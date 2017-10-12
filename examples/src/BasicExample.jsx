@@ -19,9 +19,9 @@ export default class BasicExample extends Component {
         <div className="switch-group">
           <label htmlFor="normal-switch">Switch with default style</label>
           <Switch
-            className="react-switch"
             onChange={this.handleChange}
             checked={this.state.checked}
+            className="react-switch"
             id="normal-switch"
           />
         </div>
@@ -45,9 +45,9 @@ export default class BasicExample extends Component {
         <div className="switch-group">
           <label htmlFor="normal-switch">Switch with default style</label>
           <Switch
-            className="react-switch"
             onChange={this.handleChange}
             checked={this.state.checked}
+            className="react-switch"
             id="normal-switch"
           />
         </div>

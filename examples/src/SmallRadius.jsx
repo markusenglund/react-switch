@@ -21,30 +21,30 @@ export default class SmallRadiusSwitch extends Component {
           <Switch
             checked={this.state.checked}
             onChange={this.handleChange}
-            handleDiameter={16}
+            handleDiameter={28}
             offColor="#0088ff"
             onColor="#00ffff"
             offHandleColor="#00ffff"
             onHandleColor="#0088ff"
             height={40}
-            width={60}
+            width={70}
             className="react-switch"
             id="small-radius-switch"
           />
         </div>
         <pre>
           {`
-<label htmlFor="small-radius-switch">Switch with small radius</label>
+<label htmlFor="small-radius-switch">Switch with small handle radius</label>
 <Switch
   checked={this.state.checked}
   onChange={this.handleChange}
-  handleDiameter={16}
+  handleDiameter={28}
   offColor="#0088ff"
   onColor="#00ffff"
   offHandleColor="#00ffff"
   onHandleColor="#0088ff"
   height={40}
-  width={60}
+  width={70}
   className="react-switch"
   id="small-radius-switch"
 />
