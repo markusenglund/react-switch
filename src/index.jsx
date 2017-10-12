@@ -157,9 +157,9 @@ class Switch extends Component {
       display: 'inline-block',
       opacity: disabled ? 0.5 : 1,
       borderRadius: height / 2,
-      WebkitTransition: 'opacity 0.2s',
-      MozTransition: 'opacity 0.2s',
-      transition: 'opacity 0.2s'
+      WebkitTransition: 'opacity 0.25s',
+      MozTransition: 'opacity 0.25s',
+      transition: 'opacity 0.25s'
       // width
     };
 
@@ -171,9 +171,9 @@ class Switch extends Component {
       cursor: disabled ? 'default' : 'pointer',
       background: getBackgroundColor(pos, this.checkedPos, this.uncheckedPos, offColor, onColor),
       borderRadius: height / 2,
-      WebkitTransition: isDragging ? null : 'background 0.2s',
-      MozTransition: isDragging ? null : 'background 0.2s',
-      transition: isDragging ? null : 'background 0.2s'
+      WebkitTransition: isDragging ? null : 'background 0.25s',
+      MozTransition: isDragging ? null : 'background 0.25s',
+      transition: isDragging ? null : 'background 0.25s'
     };
 
     const checkedStyle = {
@@ -185,9 +185,9 @@ class Switch extends Component {
       ),
       height,
       pointerEvents: 'none',
-      WebkitTransition: isDragging ? null : 'opacity 0.2s',
-      MozTransition: isDragging ? null : 'opacity 0.2s',
-      transition: isDragging ? null : 'opacity 0.2s'
+      WebkitTransition: isDragging ? null : 'opacity 0.25s',
+      MozTransition: isDragging ? null : 'opacity 0.25s',
+      transition: isDragging ? null : 'opacity 0.25s'
     };
 
     const uncheckedStyle = {
@@ -201,9 +201,9 @@ class Switch extends Component {
       right: 0,
       top: 0,
       pointerEvents: 'none',
-      WebkitTransition: isDragging ? null : 'opacity 0.2s',
-      MozTransition: isDragging ? null : 'opacity 0.2s',
-      transition: isDragging ? null : 'opacity 0.2s'
+      WebkitTransition: isDragging ? null : 'opacity 0.25s',
+      MozTransition: isDragging ? null : 'opacity 0.25s',
+      transition: isDragging ? null : 'opacity 0.25s'
     };
 
     const handleStyle = {
@@ -218,9 +218,9 @@ class Switch extends Component {
       ),
       touchAction: 'none',
       cursor: disabled ? 'default' : 'pointer',
-      WebkitTransition: isDragging ? null : 'background-color 0.2s, left 0.2s, box-shadow 0.1s',
-      MozTransition: isDragging ? null : 'background-color 0.2s, left 0.2s, box-shadow 0.1s',
-      transition: isDragging ? null : 'background-color 0.2s, left 0.2s, box-shadow 0.1s',
+      WebkitTransition: isDragging ? null : 'background-color 0.25s, left 0.25s, box-shadow 0.1s',
+      MozTransition: isDragging ? null : 'background-color 0.25s, left 0.25s, box-shadow 0.1s',
+      transition: isDragging ? null : 'background-color 0.25s, left 0.25s, box-shadow 0.1s',
       display: 'inline-block',
       borderRadius: '50%',
       position: 'absolute',
