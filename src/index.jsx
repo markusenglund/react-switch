@@ -181,7 +181,6 @@ class Switch extends Component {
       opacity: (pos - this.uncheckedPos) / (this.checkedPos - this.uncheckedPos),
       width: Math.min(
         height * 1.5,
-        width - height + 1,
         width - (this.handleDiameter + height) / 2 + 1
       ),
       height,
@@ -195,7 +194,6 @@ class Switch extends Component {
       opacity: 1 - (pos - this.uncheckedPos) / (this.checkedPos - this.uncheckedPos),
       width: Math.min(
         height * 1.5,
-        width - height + 1,
         width - (this.handleDiameter + height) / 2 + 1
       ),
       height,
