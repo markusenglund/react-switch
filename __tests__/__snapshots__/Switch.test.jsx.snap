@@ -54,7 +54,7 @@ exports[`Props matches snapshot with default props 1`] = `
 >
   <div
     class="react-switch-bg"
-    style="height:28px;width:56px;margin:0;position:relative;cursor:pointer;background:#808080;border-radius:14px;-webkit-transition:background 0.25s;-moz-transition:background 0.25s;transition:background 0.25s"
+    style="height:28px;width:56px;margin:0;position:relative;cursor:pointer;background:#888888;border-radius:14px;-webkit-transition:background 0.25s;-moz-transition:background 0.25s;transition:background 0.25s"
   >
     <div
       style="position:relative;opacity:0;width:30px;height:28px;pointer-events:none;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s"
