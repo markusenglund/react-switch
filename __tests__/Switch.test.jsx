@@ -5,31 +5,38 @@ import Switch from '../src';
 
 const noop = () => {};
 
-// describe('Props', () => {
-//   it('matches snapshot with default props', () => {
-//     const wrapper = render(<Switch onChange={noop} checked={false} />);
-//     expect(toJson(wrapper)).toMatchSnapshot();
-//   });
+describe('Props', () => {
+  it('matches snapshot with default props', () => {
+    const wrapper = render(<Switch checked={false} onChange={noop} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 
-//   it('matches snapshot with custom props', () => {
-//     const wrapper = render(
-//       <Switch
-//         onChange={noop}
-//         checked
-//         disabled
-//         onColor="#abc"
-//         handleColor="#def"
-//         height={13}
-//         width={37}
-//         id="foo"
-//         aria-label="bar"
-//         aria-labelledby="baz"
-//         className="qux"
-//       />
-//     );
-//     expect(toJson(wrapper)).toMatchSnapshot();
-//   });
-// });
+  it('matches snapshot with custom props', () => {
+    const wrapper = render(
+      <Switch
+        checked
+        onChange={noop}
+        disabled
+        onColor="#abc"
+        offHandleColor="#def"
+        handleDiameter={9}
+        checkedIcon={(
+          <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 6, fontSize: 20 }}>
+            ❤
+          </div>
+        )}
+        boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+        height={13}
+        width={37}
+        className="qux"
+        id="foo"
+        aria-labelledby="baz"
+        aria-label="bar"
+      />
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+});
 
 describe('onClick', () => {
   it('calls onChange when bg is clicked with !checked as argument', () => {
@@ -51,7 +58,7 @@ describe('handle', () => {
   it('sets a boxShadow on focus and loses it on blur', () => {
     const wrapper = shallow(<Switch onChange={noop} checked={false} />);
     wrapper.find('.react-switch-handle').simulate('focus');
-    expect(wrapper.find('.react-switch-handle').get(0).props.style.boxShadow).toBe('0px 0px 1px 2px #4D90FE');
+    expect(wrapper.find('.react-switch-handle').get(0).props.style.boxShadow).toBe('0px 0px 2px 3px #33bbff');
     wrapper.find('.react-switch-handle').simulate('blur');
     expect(wrapper.find('.react-switch-handle').get(0).props.style.boxShadow).toBeNull();
   });
@@ -83,14 +90,16 @@ describe('checked prop', () => {
     wrapper.setProps({ checked: false });
     expect(wrapper.find('.react-switch-handle').get(0).props.style.left).toBe(1);
   });
-  // This should be 'affects background when it changes
-  // it('affects bg-opacity when it changes', () => {
-  //   const wrapper = shallow(<Switch onChange={noop} checked={false} />);
-  //   wrapper.setProps({ checked: true });
-  //   expect(wrapper.find('.react-switch-bg').get(0).props.style.opacity).toBe(1);
-  //   wrapper.setProps({ checked: false });
-  //   expect(wrapper.find('.react-switch-bg').get(0).props.style.opacity).toBe(0);
-  // });
+
+  it('affects background when it changes', () => {
+    const wrapper = shallow(
+      <Switch onChange={noop} checked={false} offColor="#aabbcc" onColor="#ddeeff" />
+    );
+    wrapper.setProps({ checked: true });
+    expect(wrapper.find('.react-switch-bg').get(0).props.style.background).toBe('#ddeeff');
+    wrapper.setProps({ checked: false });
+    expect(wrapper.find('.react-switch-bg').get(0).props.style.background).toBe('#aabbcc');
+  });
 });
 
 // Test dragging behaviour
