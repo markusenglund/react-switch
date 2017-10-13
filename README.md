@@ -10,7 +10,7 @@ A draggable, customizable and accessible toggle-switch component for React.
 
 ## Demo
 
-[Take a look at the demo.](https://yogaboll.github.io/react-switch/)
+[Take a look at the demo](https://yogaboll.github.io/react-switch/)
 
 ## Installation
 ```bash
@@ -55,18 +55,20 @@ class SwitchExample extends Component {
 | checked | bool | **Required** | If true, the switch is set to checked. If false, it is not checked. |
 | onChange | func | **Required** | Invoked when the user clicks or drags the switch. It is passed one argument, *checked*, which is a boolean that describes the presumed future state of the checked prop. |
 | disabled | bool | false | When disabled, the switch will no longer be interactive and its colors will be greyed out. |
-| offColor | string | 'grey' | The switch will take on this color when it is *not* checked |
-| onColor | string | 'green' | The switch will take on this color when it is checked. |
-| handleColor | string | 'white' | The handle of the switch will take on this color when it is *not* active. If you use this prop, make sure to also change *activeHandleColor* to something appropriate. |
-| activeHandleColor | string | '#ddd' | The handle of the switch will take on this color when it is active, meaning when it is dragged or clicked. |
-| checkedIcon | element *or* bool | [Default value](https://github.com/yogaboll/react-switch/blob/master/src/icons.jsx) | An icon that will be shown on the switch when it is checked. Pass in *false* if you don't want any icon. |
+| offColor | string | '#888' | The switch will take on this color when it is *not* checked |
+| onColor | string | '#080' | The switch will take on this color when it is checked. |
+| offHandleColor | string | '#fff' | The handle of the switch will take on this color when it is *not* checked. |
+| onHandleColor | string | '#fff' | The handle of the switch will take on this color when it is checked. |
+| handleDiameter | number | null | The diameter of the handle, measured in pixels. By default it will be slightly smaller than the height of the switch. |
 | uncheckedIcon | element *or* bool | [Default value](https://github.com/yogaboll/react-switch/blob/master/src/icons.jsx) | An icon that will be shown on the switch when it is **not** checked. Pass in *false* if you don't want any icon. |
-| boxShadow | string | '0px 0px 1px 2px #4D90FE' | The outline of the handle. You can read up on the box-shadow syntax [on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow?v=b).
-| height | number | 28 | The height of the component, measured in pixels. |
-| width | number | 56 | The width of the component, measured in pixels. |
-| className | string | null | Set as the className of the outer shell of the switch. |
+| checkedIcon | element *or* bool | [Default value](https://github.com/yogaboll/react-switch/blob/master/src/icons.jsx) | An icon that will be shown on the switch when it is checked. Pass in *false* if you don't want any icon. |
+| boxShadow | string | null | The default box-shadow of the handle. You can read up on the box-shadow syntax [on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow?v=b). |
+| activeBoxShadow | string | '0px 0px 2px 3px #33bbff' | The box-shadow of the handle when it is active or focused. Do not set this to null, since it is important for accessibility.
+| height | number | 28 | The height of the background of the switch, measured in pixels. |
+| width | number | 56 | The width of the background of the switch, measured in pixels. |
+| className | string | null | Set as the className of the outer shell of the switch. Useful for positioning the switch. |
 | id | string | null | Set as an attribute to the embedded checkbox. This is useful for the associated label, which can point to the id in its htmlFor attribute. |
-| aria-labelledby | string | null | Set as an attribute of the embedded checkbox. This should be the same as the id of a label. |
+| aria-labelledby | string | null | Set as an attribute of the embedded checkbox. This should be the same as the id of a label. You should use this if you don't want your label to be a \<label> element|
 | aria-label | string | null | Set as an attribute of the embedded checkbox. Its value will only be seen by screen readers. |
 
 ## License
