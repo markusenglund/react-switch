@@ -28,9 +28,8 @@ class Switch extends Component {
   }
 
   handleDrag = (clientX) => {
-    const { startX } = this.state
+    const { startX } = this.state;
     const { checked } = this.props;
-
     const startPos = checked ? this.checkedPos : this.uncheckedPos;
     const newPos = startPos + clientX - startX;
     const pos = Math.min(this.checkedPos, Math.max(this.uncheckedPos, newPos));
@@ -84,7 +83,6 @@ class Switch extends Component {
     document.removeEventListener('mouseup', this.handleMouseUp);
   }
 
-  // TODO: Prevent mouse events from triggering on touch events.
   handleTouchStart = (event) => {
     this.handleDragStart(event.touches[0].clientX);
   }
@@ -147,7 +145,6 @@ class Switch extends Component {
       WebkitTransition: 'opacity 0.25s',
       MozTransition: 'opacity 0.25s',
       transition: 'opacity 0.25s'
-      // width
     };
 
     const backgroundStyle = {
@@ -163,13 +160,10 @@ class Switch extends Component {
       transition: isDragging ? null : 'background 0.25s'
     };
 
-    const checkedStyle = {
+    const checkedIconStyle = {
       position: 'relative',
       opacity: (pos - this.uncheckedPos) / (this.checkedPos - this.uncheckedPos),
-      width: Math.min(
-        height * 1.5,
-        width - (this.handleDiameter + height) / 2 + 1
-      ),
+      width: Math.min(height * 1.5, width - (this.handleDiameter + height) / 2 + 1),
       height,
       pointerEvents: 'none',
       WebkitTransition: isDragging ? null : 'opacity 0.25s',
@@ -177,12 +171,9 @@ class Switch extends Component {
       transition: isDragging ? null : 'opacity 0.25s'
     };
 
-    const uncheckedStyle = {
+    const uncheckedIconStyle = {
       opacity: 1 - (pos - this.uncheckedPos) / (this.checkedPos - this.uncheckedPos),
-      width: Math.min(
-        height * 1.5,
-        width - (this.handleDiameter + height) / 2 + 1
-      ),
+      width: Math.min(height * 1.5, width - (this.handleDiameter + height) / 2 + 1),
       height,
       position: 'absolute',
       right: 0,
@@ -226,12 +217,12 @@ class Switch extends Component {
           onClick={disabled ? null : this.handleClick}
         >
           {checkedIcon &&
-            <div style={checkedStyle}>
+            <div style={checkedIconStyle}>
               {checkedIcon}
             </div>
           }
           {uncheckedIcon &&
-            <div style={uncheckedStyle}>
+            <div style={uncheckedIconStyle}>
               {uncheckedIcon}
             </div>
           }
