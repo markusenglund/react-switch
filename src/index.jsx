@@ -6,19 +6,6 @@ import getBackgroundColor from './getBackgroundColor';
 class Switch extends Component {
   constructor(props) {
     super(props);
-    this.handleDragStart = this.handleDragStart.bind(this);
-    this.handleDrag = this.handleDrag.bind(this);
-    this.handleDragStop = this.handleDragStop.bind(this);
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.handleMouseMove = this.handleMouseMove.bind(this);
-    this.handleMouseUp = this.handleMouseUp.bind(this);
-    this.handleTouchStart = this.handleTouchStart.bind(this);
-    this.handleTouchMove = this.handleTouchMove.bind(this);
-    this.handleTouchEnd = this.handleTouchEnd.bind(this);
-    this.handleTouchCancel = this.handleTouchCancel.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-
     const { height, width, handleDiameter, checked } = props;
     this.handleDiameter = handleDiameter || height - 2;
     this.checkedPos = Math.max(width - height, width - (height + this.handleDiameter) / 2);
@@ -36,12 +23,12 @@ class Switch extends Component {
     this.setState({ pos });
   }
 
-  handleDragStart(clientX) {
+  handleDragStart = (clientX) => {
     this.setState({ startX: clientX, hasOutline: true });
   }
 
-  handleDrag(clientX) {
-    const { startX } = this.state;
+  handleDrag = (clientX) => {
+    const { startX } = this.state
     const { checked } = this.props;
 
     const startPos = checked ? this.checkedPos : this.uncheckedPos;
@@ -50,7 +37,7 @@ class Switch extends Component {
     this.setState({ pos, isDragging: true });
   }
 
-  handleDragStop() {
+  handleDragStop = () => {
     const { pos, isDragging } = this.state;
     const { checked, onChange } = this.props;
 
@@ -77,7 +64,7 @@ class Switch extends Component {
     onChange(true);
   }
 
-  handleMouseDown(event) {
+  handleMouseDown = (event) => {
     // Ignore right click and scroll
     if (typeof event.button === 'number' && event.button !== 0) { return; }
 
@@ -86,41 +73,41 @@ class Switch extends Component {
     document.addEventListener('mouseup', this.handleMouseUp);
   }
 
-  handleMouseMove(event) {
+  handleMouseMove = (event) => {
     event.preventDefault();
     this.handleDrag(event.clientX);
   }
 
-  handleMouseUp() {
+  handleMouseUp = () => {
     this.handleDragStop();
     document.removeEventListener('mousemove', this.handleMouseMove);
     document.removeEventListener('mouseup', this.handleMouseUp);
   }
 
   // TODO: Prevent mouse events from triggering on touch events.
-  handleTouchStart(event) {
+  handleTouchStart = (event) => {
     this.handleDragStart(event.touches[0].clientX);
   }
 
-  handleTouchMove(event) {
+  handleTouchMove = (event) => {
     this.handleDrag(event.touches[0].clientX);
   }
 
-  handleTouchEnd(event) {
+  handleTouchEnd = (event) => {
     event.preventDefault();
     this.handleDragStop();
   }
 
-  handleTouchCancel() {
+  handleTouchCancel = () => {
     this.setState({ startX: null, hasOutline: false });
   }
 
-  handleClick() {
+  handleClick = () => {
     const { checked, onChange } = this.props;
     onChange(!checked);
   }
 
-  handleKeyDown(event) {
+  handleKeyDown = (event) => {
     const { checked, onChange } = this.props;
     const { isDragging } = this.state;
     // Trigger change on spacebar and enter keys (in violation of wai-aria spec).
