@@ -225,19 +225,15 @@ class Switch extends Component {
           style={backgroundStyle}
           onClick={disabled ? null : this.handleClick}
         >
-          {checkedIcon ?
-            (
-              <div style={checkedStyle}>
-                {checkedIcon}
-              </div>
-            ) : null
+          {checkedIcon &&
+            <div style={checkedStyle}>
+              {checkedIcon}
+            </div>
           }
-          {uncheckedIcon ?
-            (
-              <div style={uncheckedStyle}>
-                {uncheckedIcon}
-              </div>
-            ) : null
+          {uncheckedIcon &&
+            <div style={uncheckedStyle}>
+              {uncheckedIcon}
+            </div>
           }
         </div>
         <div
