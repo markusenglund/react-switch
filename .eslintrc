@@ -14,7 +14,9 @@
     },
     "rules": {
       "comma-dangle": ["warn", "never"],
-      "no-mixed-operators": "off"
+      "no-mixed-operators": "off",
+      "object-curly-newline": "off",
+      "jsx-a11y/click-events-have-key-events": "off"
     }
   }
   
