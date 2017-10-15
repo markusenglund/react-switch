@@ -5,6 +5,7 @@
       "jest": true
     },
     "extends": "airbnb",
+    "parser": "babel-eslint",
     "parserOptions": {
       "ecmaFeatures": {
         "jsx": true
