@@ -15,7 +15,7 @@ A draggable, customizable and accessible toggle-switch component for React.
 
 ## Installation
 ```bash
-npm install react-switch --save
+npm install react-switch
 ```
 
 ## Usage
@@ -51,15 +51,22 @@ class SwitchExample extends Component {
 
 ## API
 
+If you provide any of the following props, they have to be either 3-digit or 6-digit hex-colors:
+**offColor, onColor, offHandleColor,** and **onHandleColor.** This is because this library calculates intermediate color values based on the hex-color strings.
+
+Examples of valid colors: '#abc', '#123456'
+
+(**These will NOT work**) Examples of *invalid* colors: 'red', 'rgb(0,0,0)'
+
 | Prop | Type | Default | Description |
 | ---- |----- | ------- | ----------- |
 | checked | bool | **Required** | If true, the switch is set to checked. If false, it is not checked. |
 | onChange | func | **Required** | Invoked when the user clicks or drags the switch. It is passed one argument, *checked*, which is a boolean that describes the presumed future state of the checked prop. |
 | disabled | bool | false | When disabled, the switch will no longer be interactive and its colors will be greyed out. |
-| offColor | string | '#888' | The switch will take on this color when it is *not* checked |
-| onColor | string | '#080' | The switch will take on this color when it is checked. |
-| offHandleColor | string | '#fff' | The handle of the switch will take on this color when it is *not* checked. |
-| onHandleColor | string | '#fff' | The handle of the switch will take on this color when it is checked. |
+| offColor | string | '#888' | The switch will take on this color when it is *not* checked. Only accepts hex-colors.|
+| onColor | string | '#080' | The switch will take on this color when it is checked. Only accepts hex-colors. |
+| offHandleColor | string | '#fff' | The handle of the switch will take on this color when it is *not* checked. Only accepts hex-colors. |
+| onHandleColor | string | '#fff' | The handle of the switch will take on this color when it is checked. Only accepts hex-colors. |
 | handleDiameter | number | null | The diameter of the handle, measured in pixels. By default it will be slightly smaller than the height of the switch. |
 | uncheckedIcon | element *or* bool | [Default value](https://github.com/yogaboll/react-switch/blob/master/src/icons.jsx) | An icon that will be shown on the switch when it is **not** checked. Pass in *false* if you don't want any icon. |
 | checkedIcon | element *or* bool | [Default value](https://github.com/yogaboll/react-switch/blob/master/src/icons.jsx) | An icon that will be shown on the switch when it is checked. Pass in *false* if you don't want any icon. |
