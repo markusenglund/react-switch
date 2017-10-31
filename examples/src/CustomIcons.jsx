@@ -22,9 +22,9 @@ export default class CustomIconSwitch extends Component {
             checked={this.state.checked}
             onChange={this.handleChange}
             uncheckedIcon={(
-              <svg viewBox="-6 -5 14 20" height="100%" width="100%">
-                <rect width="2" height="10" fill="#227" />
-              </svg>
+              <div style={{ paddingTop: 5, paddingLeft: 3, fontSize: 14 }}>
+                Off
+              </div>
             )}
             checkedIcon={(
               <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 6, fontSize: 20 }}>
