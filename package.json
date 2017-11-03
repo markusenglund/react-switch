@@ -6,15 +6,13 @@
   "scripts": {
     "build": "babel src -d dist",
     "build:watch": "babel src -w -d dist",
-    "push-examples":
-      "webpack -p && git subtree push --prefix examples/dist origin gh-pages",
+    "push-examples": "webpack -p && git subtree push --prefix examples/dist origin gh-pages",
     "lint": "eslint --ext .js,.jsx src/ examples/src",
     "prepublishOnly": "npm run build",
     "test": "jest",
     "test:watch": "jest --watch",
     "start": "webpack-dev-server",
-    "stats":
-      "webpack -p --profile --json > stats.json && webpack-bundle-analyzer stats.json examples/dist -s gzip"
+    "stats": "webpack -p --profile --json > stats.json && webpack-bundle-analyzer stats.json examples/dist -s gzip"
   },
   "repository": {
     "type": "git",
@@ -27,9 +25,8 @@
   },
   "homepage": "https://github.com/yogaboll/react-switch#readme",
   "peerDependencies": {
-    "react": ">=15",
-    "react-dom": ">=15",
-    "prop-types": ">=15"
+    "react": "^15.3.0 || ^16.0.0",
+    "react-dom": "^15.3.0 || ^16.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -50,7 +47,6 @@
     "eslint-plugin-react": "^7.4.0",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^21.2.1",
-    "prop-types": "^15.6.0",
     "raf": "^3.4.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -68,5 +64,8 @@
     "checkbox",
     "react",
     "react-component"
-  ]
+  ],
+  "dependencies": {
+    "prop-types": "^15.6.0"
+  }
 }
