@@ -51,13 +51,6 @@ class SwitchExample extends Component {
 
 ## API
 
-If you provide any of the following props, they have to be either 3-digit or 6-digit hex-colors:
-**offColor, onColor, offHandleColor,** and **onHandleColor.** This is because this library calculates intermediate color values based on the hex-color strings.
-
-Examples of valid colors: '#abc', '#123456'
-
-(**These will NOT work**) Examples of *invalid* colors: 'red', 'rgb(0,0,0)'
-
 | Prop | Type | Default | Description |
 | ---- |----- | ------- | ----------- |
 | checked | bool | **Required** | If true, the switch is set to checked. If false, it is not checked. |
@@ -78,6 +71,13 @@ Examples of valid colors: '#abc', '#123456'
 | id | string | null | Set as an attribute to the embedded checkbox. This is useful for the associated label, which can point to the id in its htmlFor attribute. |
 | aria-labelledby | string | null | Set as an attribute of the embedded checkbox. This should be the same as the id of a label. You should use this if you don't want your label to be a \<label> element|
 | aria-label | string | null | Set as an attribute of the embedded checkbox. Its value will only be seen by screen readers. |
+
+The following props have to be either 3-digit or 6-digit hex-colors:
+**offColor, onColor, offHandleColor,** and **onHandleColor.** This is because this library calculates intermediate color values based on the hex-color strings.
+
+Examples of valid colors: '#abc', '#123456'
+
+Examples of **invalid** colors: 'red', 'rgb(0,0,0)'
 
 ## License
 
