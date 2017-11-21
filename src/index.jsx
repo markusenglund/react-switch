@@ -36,14 +36,14 @@ class Switch extends Component {
     this.setState({ pos, isDragging: true });
   }
 
-  handleDragStop = () => {
+  handleDragStop = (event) => {
     const { pos, isDragging } = this.state;
     const { checked, onChange } = this.props;
 
     // Simulate clicking the handle
     if (!isDragging) {
       this.setState({ startX: null, hasOutline: false });
-      onChange(!checked);
+      onChange(!checked, event);
       return;
     }
     if (checked) {
@@ -52,7 +52,7 @@ class Switch extends Component {
         return;
       }
       this.setState({ startX: null, isDragging: false, hasOutline: false });
-      onChange(false);
+      onChange(false, event);
       return;
     }
     if (pos < (this.checkedPos + this.uncheckedPos) / 2) {
@@ -60,7 +60,7 @@ class Switch extends Component {
       return;
     }
     this.setState({ startX: null, isDragging: false, hasOutline: false });
-    onChange(true);
+    onChange(true, event);
   }
 
   handleMouseDown = (event) => {
@@ -77,8 +77,8 @@ class Switch extends Component {
     this.handleDrag(event.clientX);
   }
 
-  handleMouseUp = () => {
-    this.handleDragStop();
+  handleMouseUp = (event) => {
+    this.handleDragStop(event);
     document.removeEventListener('mousemove', this.handleMouseMove);
     document.removeEventListener('mouseup', this.handleMouseUp);
   }
@@ -93,16 +93,16 @@ class Switch extends Component {
 
   handleTouchEnd = (event) => {
     event.preventDefault();
-    this.handleDragStop();
+    this.handleDragStop(event);
   }
 
   handleTouchCancel = () => {
     this.setState({ startX: null, hasOutline: false });
   }
 
-  handleClick = () => {
+  handleClick = (event) => {
     const { checked, onChange } = this.props;
-    onChange(!checked);
+    onChange(!checked, event);
   }
 
   handleKeyDown = (event) => {
@@ -111,7 +111,7 @@ class Switch extends Component {
     // Trigger change on spacebar and enter keys (in violation of wai-aria spec).
     if ((event.keyCode === 32 || event.keyCode === 13) && !isDragging) {
       event.preventDefault();
-      onChange(!checked);
+      onChange(!checked, event);
     }
   }
 
