@@ -43,7 +43,7 @@ describe('onClick', () => {
     const mockOnChange = jest.fn();
     const wrapper = shallow(<Switch onChange={mockOnChange} checked={false} />);
     wrapper.find('.react-switch-bg').simulate('click');
-    expect(mockOnChange).toBeCalledWith(true);
+    expect(mockOnChange.mock.calls[mockOnChange.mock.calls.length - 1][0]).toBe(true);
   });
 
   it('does not call onChange when disabled', () => {
@@ -109,7 +109,7 @@ describe('drag related behaviour', () => {
     const wrapper = shallow(<Switch onChange={mockOnChange} checked={false} />);
     wrapper.find('.react-switch-handle').simulate('touchstart', { touches: [{ clientX: 100 }] });
     wrapper.find('.react-switch-handle').simulate('touchend', { preventDefault: noop });
-    expect(mockOnChange).toBeCalledWith(true);
+    expect(mockOnChange.mock.calls[mockOnChange.mock.calls.length - 1][0]).toBe(true);
   });
   it('triggers onChange when handle is dragged half way or more', () => {
     const mockOnChange = jest.fn();
@@ -124,7 +124,7 @@ describe('drag related behaviour', () => {
     wrapper.find('.react-switch-handle').simulate('touchstart', { touches: [{ clientX: 100 }] });
     wrapper.find('.react-switch-handle').simulate('touchmove', { touches: [{ clientX: 107.5 }] });
     wrapper.find('.react-switch-handle').simulate('touchend', { preventDefault: noop });
-    expect(mockOnChange).toBeCalledWith(true);
+    expect(mockOnChange.mock.calls[mockOnChange.mock.calls.length - 1][0]).toBe(true);
   });
   it('doesn\'t trigger onChange when handle is dragged less than half way', () => {
     const mockOnChange = jest.fn();
