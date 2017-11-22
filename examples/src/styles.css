@@ -1,17 +1,11 @@
-html, body, #app, .examples {
-  margin: 0px;
-  height: 100%;
+body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #examples {
-  overflow: auto;
   margin: 20px;
 }
 
-.switch-group label {
-  vertical-align: middle;
-}
 .react-switch {
   vertical-align: middle;
   margin-left: 4px;

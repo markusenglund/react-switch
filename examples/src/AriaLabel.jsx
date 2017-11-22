@@ -16,21 +16,18 @@ export default class BasicExample extends Component {
     return (
       <div className="example">
         <h2>Switch with invisible label only readable by screen readers</h2>
-        <div className="switch-group">
-          <Switch
-            className="react-switch"
-            onChange={this.handleChange}
-            checked={this.state.checked}
-            aria-label="super secret label that is not visible"
-          />
-        </div>
+        <Switch
+          className="react-switch"
+          onChange={this.handleChange}
+          checked={this.state.checked}
+          aria-label="super secret label that is not visible"
+        />
         <pre>{`
-<p id="neat-label">Use this if you do not want your label to be a label element</p>
 <Switch
   className="react-switch"
   onChange={this.handleChange}
   checked={this.state.checked}
-  aria-labelledby="neat-label"
+  aria-label="super secret label that is not visible"
 />
         `}
         </pre>

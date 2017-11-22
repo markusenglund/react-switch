@@ -16,15 +16,13 @@ export default class BasicExample extends Component {
     return (
       <div className="example">
         <h2>Switch using aria-labelledby</h2>
-        <div className="switch-group">
-          <p id="neat-label">Use this if you do not want your label to be a label element</p>
-          <Switch
-            className="react-switch"
-            onChange={this.handleChange}
-            checked={this.state.checked}
-            aria-labelledby="neat-label"
-          />
-        </div>
+        <p id="neat-label">Use this if you do not want your label to be a label element</p>
+        <Switch
+          className="react-switch"
+          onChange={this.handleChange}
+          checked={this.state.checked}
+          aria-labelledby="neat-label"
+        />
         <pre>{`
 <p id="neat-label">Use this if you do not want your label to be a label element</p>
 <Switch

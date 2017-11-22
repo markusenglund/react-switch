@@ -16,17 +16,15 @@ export default class BasicExample extends Component {
     return (
       <div className="example">
         <h2>Simple usage</h2>
-        <div className="switch-group">
-          <label htmlFor="normal-switch">
-            <span>Switch with default style</span>
-            <Switch
-              onChange={this.handleChange}
-              checked={this.state.checked}
-              className="react-switch"
-              id="normal-switch"
-            />
-          </label>
-        </div>
+        <label htmlFor="normal-switch">
+          <span>Switch with default style</span>
+          <Switch
+            onChange={this.handleChange}
+            checked={this.state.checked}
+            className="react-switch"
+            id="normal-switch"
+          />
+        </label>
         <p>The switch is <span>{this.state.checked ? 'on' : 'off'}</span>.</p>
         <pre>{`
 export default class BasicExample extends Component {
@@ -44,17 +42,15 @@ export default class BasicExample extends Component {
     return (
       <div className="example">
         <h2>Simple usage</h2>
-        <div className="switch-group">
-          <label htmlFor="normal-switch">
-            <span>Switch with default style</span>
-            <Switch
-              onChange={this.handleChange}
-              checked={this.state.checked}
-              className="react-switch"
-              id="normal-switch"
-            />
-          </label>
-        </div>
+        <label htmlFor="normal-switch">
+          <span>Switch with default style</span>
+          <Switch
+            onChange={this.handleChange}
+            checked={this.state.checked}
+            className="react-switch"
+            id="normal-switch"
+          />
+        </label>
         <p>The switch is <span>{this.state.checked ? 'on' : 'off'}</span>.</p>
       </div>
     );
@@ -63,12 +59,9 @@ export default class BasicExample extends Component {
 
 /* styles.css */
 
-.switch-group label {
-  vertical-align: middle;
-}
 .react-switch {
   vertical-align: middle;
-  margin-left: 3px;
+  margin-left: 4px;
 }
         `}
         </pre>
