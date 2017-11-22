@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.1.0 - 2017-11-22]
+### Added
+- onChange callback function is now given the event that activated the callback as a second argument.
+
 ## [2.0.1 - 2017-11-03]
 ### Changed
 - prop-types is switched from peerDependency to dependency. This should reduce frustration for devs who don't use prop-types in their project, but shouldn't affect anyone else.
