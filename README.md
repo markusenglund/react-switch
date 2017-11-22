@@ -36,18 +36,26 @@ class SwitchExample extends Component {
 
   render() {
     return (
-      <div>
-        <label htmlFor="example-switch">Look, an example switch!</label>
+      <label htmlFor="normal-switch">
+        <span>Switch with default style</span>
         <Switch
           onChange={this.handleChange}
           checked={this.state.checked}
-          id="example-switch"
+          id="normal-switch"
         />
-      </div>
+      </label>
     );
   }
 }
 ```
+### Accessibility considerations
+
+The Switch component in the above example is nested inside a label tag. The label tag has an htmlFor-value that is identical to the id-value that is passed to the Switch ("normal-switch").
+These features are there to make the toggle-switch accessible to people with reduced sight who use screen readers. It will make screen readers read out the label text when the toggle-switch is selected. If you instead just put some text next to the switch, the screen reader will just read out "checkbox - not checked" or something like that and the user will have no idea what it is for. (The switch is actually a checkbox under the hood.)
+
+It's not strictly necessary to both nest the switch inside the label AND use the htmlFor prop to link the label and the switch. It should be enough to do just one. However, using both will ["cover 100% of assistive devices"](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md) and free you from annoying eslint errors.
+
+Alternatively, you can use the aria-labelledby or aria-label props to give the switch a label. You can see examples of this at the bottom of the [demo page](https://yogaboll.github.io/react-switch/).
 
 ## API
 
