@@ -230,17 +230,17 @@ class Switch extends Component {
       cursor: disabled ? "default" : "pointer",
       WebkitTransition: isDragging
         ? null
-        : "background-color 0.25s, left 0.25s, box-shadow 0.1s",
+        : "background-color 0.25s, transform 0.25s, box-shadow 0.1s",
       MozTransition: isDragging
         ? null
-        : "background-color 0.25s, left 0.25s, box-shadow 0.1s",
+        : "background-color 0.25s, transform 0.25s, box-shadow 0.1s",
       transition: isDragging
         ? null
-        : "background-color 0.25s, left 0.25s, box-shadow 0.1s",
+        : "background-color 0.25s, transform 0.25s, box-shadow 0.1s",
       display: "inline-block",
       borderRadius: "50%",
       position: "absolute",
-      left: pos,
+      transform: `translateX(${pos}px)`,
       top: Math.max(0, (height - this.handleDiameter) / 2),
       border: 0,
       outline: 0,
