@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Switch from '../../dist';
+import React, { Component } from "react";
+import Switch from "../../dist";
 
 export default class MaterialDesignSwitch extends Component {
   constructor() {

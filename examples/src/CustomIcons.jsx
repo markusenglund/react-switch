@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Switch from '../../dist';
+import React, { Component } from "react";
+import Switch from "../../dist";
 
 export default class CustomIconSwitch extends Component {
   constructor() {
@@ -21,21 +21,29 @@ export default class CustomIconSwitch extends Component {
           <Switch
             checked={this.state.checked}
             onChange={this.handleChange}
-            uncheckedIcon={(
+            uncheckedIcon={
               <div style={{ paddingTop: 5, paddingLeft: 3, fontSize: 14 }}>
                 Off
               </div>
-            )}
-            checkedIcon={(
-              <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 6, fontSize: 20 }}>
+            }
+            checkedIcon={
+              <div
+                style={{
+                  color: "pink",
+                  paddingTop: 2,
+                  paddingLeft: 6,
+                  fontSize: 20
+                }}
+              >
                 ❤
               </div>
-            )}
+            }
             className="react-switch"
             id="icon-switch"
           />
         </label>
-        <pre>{`
+        <pre>
+          {`
 <label htmlFor="icon-switch">
   <span>Switch with custom icons</span>
   <Switch

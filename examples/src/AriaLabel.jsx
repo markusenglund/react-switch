@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Switch from '../../dist';
+import React, { Component } from "react";
+import Switch from "../../dist";
 
 export default class BasicExample extends Component {
   constructor() {
@@ -22,7 +22,8 @@ export default class BasicExample extends Component {
           checked={this.state.checked}
           aria-label="super secret label that is not visible"
         />
-        <pre>{`
+        <pre>
+          {`
 <Switch
   className="react-switch"
   onChange={this.handleChange}

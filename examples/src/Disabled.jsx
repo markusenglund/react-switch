@@ -1,5 +1,5 @@
-import React from 'react';
-import Switch from '../../dist';
+import React from "react";
+import Switch from "../../dist";
 
 export default function DisabledSwitch() {
   return (
@@ -15,7 +15,8 @@ export default function DisabledSwitch() {
           id="disabled-switch"
         />
       </label>
-      <pre>{`
+      <pre>
+        {`
 <label htmlFor="disabled-switch">
   <span>You can not click, drag or tab to it</span>
   <Switch

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Switch from '../../dist';
+import React, { Component } from "react";
+import Switch from "../../dist";
 
 export default class BasicExample extends Component {
   constructor() {
@@ -25,8 +25,11 @@ export default class BasicExample extends Component {
             id="normal-switch"
           />
         </label>
-        <p>The switch is <span>{this.state.checked ? 'on' : 'off'}</span>.</p>
-        <pre>{`
+        <p>
+          The switch is <span>{this.state.checked ? "on" : "off"}</span>.
+        </p>
+        <pre>
+          {`
 export default class BasicExample extends Component {
   constructor() {
     super();

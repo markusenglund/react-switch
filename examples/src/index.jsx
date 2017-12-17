@@ -1,13 +1,13 @@
-import React from 'react';
-import { render } from 'react-dom';
-import './styles.css';
-import BasicExample from './BasicExample';
-import MaterialDesign from './MaterialDesign';
-import SmallRadius from './SmallRadius';
-import CustomIcons from './CustomIcons';
-import Disabled from './Disabled';
-import AriaLabelledby from './AriaLabelledby';
-import AriaLabel from './AriaLabel';
+import React from "react";
+import { render } from "react-dom";
+import "./styles.css";
+import BasicExample from "./BasicExample";
+import MaterialDesign from "./MaterialDesign";
+import SmallRadius from "./SmallRadius";
+import CustomIcons from "./CustomIcons";
+import Disabled from "./Disabled";
+import AriaLabelledby from "./AriaLabelledby";
+import AriaLabel from "./AriaLabel";
 
 function Examples() {
   return (
@@ -35,7 +35,4 @@ function Examples() {
   );
 }
 
-render(
-  <Examples />,
-  document.getElementById('app')
-);
+render(<Examples />, document.getElementById("app"));
