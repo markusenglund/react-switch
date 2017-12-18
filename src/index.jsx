@@ -272,7 +272,6 @@ class Switch extends Component {
           onKeyDown={this.handleKeyDown}
           onFocus={() => this.setState({ hasOutline: true })}
           onBlur={() => this.setState({ hasOutline: false })}
-          onTransitionEnd={this.handleTransitionEnd}
           style={handleStyle}
           id={id}
           aria-checked={checked}
