@@ -162,7 +162,9 @@ class Switch extends Component {
       borderRadius: height / 2,
       WebkitTransition: "opacity 0.25s",
       MozTransition: "opacity 0.25s",
-      transition: "opacity 0.25s"
+      transition: "opacity 0.25s",
+      touchAction: "none",
+      WebkitTapHighlightColor: "rgba(0, 0, 0, 0)"
     };
 
     const backgroundStyle = {
@@ -226,7 +228,6 @@ class Switch extends Component {
         offHandleColor,
         onHandleColor
       ),
-      touchAction: "none",
       cursor: disabled ? "default" : "pointer",
       WebkitTransition: isDragging
         ? null
