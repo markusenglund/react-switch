@@ -44,12 +44,12 @@ class Switch extends Component {
 
   handleDragStop = event => {
     const { pos, isDragging } = this.state;
-    const { checked, onChange } = this.props;
+    const { checked, onChange, id } = this.props;
 
     // Simulate clicking the handle
     if (!isDragging) {
       this.setState({ startX: null, hasOutline: false });
-      onChange(!checked, event);
+      onChange(!checked, event, id);
       return;
     }
     if (checked) {
@@ -63,7 +63,7 @@ class Switch extends Component {
         return;
       }
       this.setState({ startX: null, isDragging: false, hasOutline: false });
-      onChange(false, event);
+      onChange(false, event, id);
       return;
     }
     if (pos < (this.checkedPos + this.uncheckedPos) / 2) {
@@ -76,7 +76,7 @@ class Switch extends Component {
       return;
     }
     this.setState({ startX: null, isDragging: false, hasOutline: false });
-    onChange(true, event);
+    onChange(true, event, id);
   };
 
   handleMouseDown = event => {
@@ -119,17 +119,17 @@ class Switch extends Component {
   };
 
   handleClick = event => {
-    const { checked, onChange } = this.props;
-    onChange(!checked, event);
+    const { checked, onChange, id } = this.props;
+    onChange(!checked, event, id);
   };
 
   handleKeyDown = event => {
-    const { checked, onChange } = this.props;
+    const { checked, onChange, id } = this.props;
     const { isDragging } = this.state;
     // Trigger change on spacebar and enter keys (in violation of wai-aria spec).
     if ((event.keyCode === 32 || event.keyCode === 13) && !isDragging) {
       event.preventDefault();
-      onChange(!checked, event);
+      onChange(!checked, event, id);
     }
   };
 
