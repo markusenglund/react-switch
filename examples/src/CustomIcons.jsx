@@ -22,16 +22,26 @@ export default class CustomIconSwitch extends Component {
             checked={this.state.checked}
             onChange={this.handleChange}
             uncheckedIcon={
-              <div style={{ paddingTop: 5, paddingLeft: 3, fontSize: 14 }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100%",
+                  fontSize: 13
+                }}
+              >
                 Off
               </div>
             }
             checkedIcon={
               <div
                 style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100%",
                   color: "pink",
-                  paddingTop: 2,
-                  paddingLeft: 6,
                   fontSize: 20
                 }}
               >
@@ -45,23 +55,40 @@ export default class CustomIconSwitch extends Component {
         <pre>
           {`
 <label htmlFor="icon-switch">
-  <span>Switch with custom icons</span>
-  <Switch
-    checked={this.state.checked}
-    onChange={this.handleChange}
-    uncheckedIcon={(
-      <div style={{ paddingTop: 5, paddingLeft: 3, fontSize: 14 }}>
-        Off
-      </div>
-    )}
-    checkedIcon={(
-      <div style={{ color: 'pink', paddingTop: 2, paddingLeft: 6, fontSize: 20 }}>
-        ❤
-      </div>
-    )}
-    className="react-switch"
-    id="icon-switch"
-  />
+<span>Switch with custom icons</span>
+<Switch
+  checked={this.state.checked}
+  onChange={this.handleChange}
+  uncheckedIcon={
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+        fontSize: 13
+      }}
+    >
+      Off
+    </div>
+  }
+  checkedIcon={
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+        color: "pink",
+        fontSize: 20
+      }}
+    >
+      ❤
+    </div>
+  }
+  className="react-switch"
+  id="icon-switch"
+/>
 </label>
         `}
         </pre>
