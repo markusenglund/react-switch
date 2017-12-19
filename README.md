@@ -4,10 +4,14 @@
 [![npm](https://img.shields.io/npm/dm/react-switch.svg)](https://www.npmjs.com/package/react-switch)
 [![GitHub stars](https://img.shields.io/github/stars/yogaboll/react-switch.svg?style=social&label=Stars)](https://github.com/yogaboll/react-switch)
 
-A draggable, customizable and accessible toggle-switch component for React.
-
 <img src="https://media.giphy.com/media/l0IsI0EHlJx2kyCrK/giphy.gif" />
 <img src="https://media.giphy.com/media/3ov9k7TupiaveDlQ5O/giphy.gif" />
+
+* **Draggable** with the mouse or with a touch screen.
+* **Accessible** to visually impaired users and those who can't use a mouse.
+* **Customizable** - Easy to customize size, color and more.
+* **Small package size** (<3kb). No dependencies other than _prop-types_.
+* **It Just Works** - Sensible default styling. Uses inline styles, so no need to import a separate css file.
 
 ## Demo
 
