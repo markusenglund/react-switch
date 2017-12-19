@@ -28,25 +28,18 @@ export default class CustomIconSwitch extends Component {
                   justifyContent: "center",
                   alignItems: "center",
                   height: "100%",
-                  fontSize: 13
+                  fontSize: 15,
+                  color: "orange",
+                  paddingRight: 2
                 }}
               >
                 Off
               </div>
             }
             checkedIcon={
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "100%",
-                  color: "pink",
-                  fontSize: 20
-                }}
-              >
-                ❤
-              </div>
+              <svg viewBox="0 0 10 10" height="100%" width="100%" fill="aqua">
+                <circle r={3} cx={5} cy={5} />
+              </svg>
             }
             className="react-switch"
             id="icon-switch"
@@ -55,40 +48,33 @@ export default class CustomIconSwitch extends Component {
         <pre>
           {`
 <label htmlFor="icon-switch">
-<span>Switch with custom icons</span>
-<Switch
-  checked={this.state.checked}
-  onChange={this.handleChange}
-  uncheckedIcon={
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        fontSize: 13
-      }}
-    >
-      Off
-    </div>
-  }
-  checkedIcon={
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        color: "pink",
-        fontSize: 20
-      }}
-    >
-      ❤
-    </div>
-  }
-  className="react-switch"
-  id="icon-switch"
-/>
+  <span>Switch with custom icons</span>
+  <Switch
+    checked={this.state.checked}
+    onChange={this.handleChange}
+    uncheckedIcon={
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          fontSize: 15,
+          color: "orange",
+          paddingRight: 2
+        }}
+      >
+        Off
+      </div>
+    }
+    checkedIcon={
+      <svg viewBox="0 0 10 10" height="100%" width="100%" fill="aqua">
+        <circle r={3} cx={5} cy={5} />
+      </svg>
+    }
+    className="react-switch"
+    id="icon-switch"
+  />
 </label>
         `}
         </pre>
