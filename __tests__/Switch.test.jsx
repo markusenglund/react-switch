@@ -104,16 +104,16 @@ describe("handle", () => {
 });
 
 describe("checked prop", () => {
-  it("affects left-position when it changes", () => {
+  it("affects transform style when it changes", () => {
     const wrapper = shallow(<Switch onChange={noop} checked={false} />);
     wrapper.setProps({ checked: true });
-    expect(wrapper.find(".react-switch-handle").get(0).props.style.left).toBe(
-      29
-    );
+    expect(
+      wrapper.find(".react-switch-handle").get(0).props.style.transform
+    ).toBe("translateX(29px)");
     wrapper.setProps({ checked: false });
-    expect(wrapper.find(".react-switch-handle").get(0).props.style.left).toBe(
-      1
-    );
+    expect(
+      wrapper.find(".react-switch-handle").get(0).props.style.transform
+    ).toBe("translateX(1px)");
   });
 
   it("affects background when it changes", () => {
