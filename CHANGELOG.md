@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unfinished]
+## [2.2.0]
 
 ### Added
 
@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Improved responsiveness on mobile by removing the 300 ms delay when clicking the background.
 * It is no longer possible to select text while holding down the switch.
 * Highlighting effect when clicking the switch on mobile webkit browsers has been removed.
+* Fixed bug where dragging the switch would create a strange shadow on IOS.
 
 ## [2.1.0 - 2017-11-22]
 
