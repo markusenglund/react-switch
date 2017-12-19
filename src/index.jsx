@@ -164,7 +164,11 @@ class Switch extends Component {
       MozTransition: "opacity 0.25s",
       transition: "opacity 0.25s",
       touchAction: "none",
-      WebkitTapHighlightColor: "rgba(0, 0, 0, 0)"
+      WebkitTapHighlightColor: "rgba(0, 0, 0, 0)",
+      WebkitUserSelect: "none",
+      MozUserSelect: "none",
+      msUserSelect: "none",
+      userSelect: "none"
     };
 
     const backgroundStyle = {
@@ -172,7 +176,6 @@ class Switch extends Component {
       width,
       margin: Math.max(0, (this.handleDiameter - height) / 2),
       position: "relative",
-      cursor: disabled ? "default" : "pointer",
       background: getBackgroundColor(
         pos,
         this.checkedPos,
@@ -181,20 +184,21 @@ class Switch extends Component {
         onColor
       ),
       borderRadius: height / 2,
+      cursor: disabled ? "default" : "pointer",
       WebkitTransition: isDragging ? null : "background 0.25s",
       MozTransition: isDragging ? null : "background 0.25s",
       transition: isDragging ? null : "background 0.25s"
     };
 
     const checkedIconStyle = {
-      position: "relative",
-      opacity:
-        (pos - this.uncheckedPos) / (this.checkedPos - this.uncheckedPos),
+      height,
       width: Math.min(
         height * 1.5,
         width - (this.handleDiameter + height) / 2 + 1
       ),
-      height,
+      position: "relative",
+      opacity:
+        (pos - this.uncheckedPos) / (this.checkedPos - this.uncheckedPos),
       pointerEvents: "none",
       WebkitTransition: isDragging ? null : "opacity 0.25s",
       MozTransition: isDragging ? null : "opacity 0.25s",
@@ -202,14 +206,14 @@ class Switch extends Component {
     };
 
     const uncheckedIconStyle = {
-      opacity:
-        1 - (pos - this.uncheckedPos) / (this.checkedPos - this.uncheckedPos),
+      height,
       width: Math.min(
         height * 1.5,
         width - (this.handleDiameter + height) / 2 + 1
       ),
-      height,
       position: "absolute",
+      opacity:
+        1 - (pos - this.uncheckedPos) / (this.checkedPos - this.uncheckedPos),
       right: 0,
       top: 0,
       pointerEvents: "none",
@@ -229,23 +233,23 @@ class Switch extends Component {
         onHandleColor
       ),
       cursor: disabled ? "default" : "pointer",
-      WebkitTransition: isDragging
-        ? null
-        : "background-color 0.25s, transform 0.25s, box-shadow 0.1s",
-      MozTransition: isDragging
-        ? null
-        : "background-color 0.25s, transform 0.25s, box-shadow 0.1s",
-      transition: isDragging
-        ? null
-        : "background-color 0.25s, transform 0.25s, box-shadow 0.1s",
       display: "inline-block",
       borderRadius: "50%",
       position: "absolute",
       transform: `translateX(${pos}px)`,
       top: Math.max(0, (height - this.handleDiameter) / 2),
-      border: 0,
       outline: 0,
-      boxShadow: hasOutline ? activeBoxShadow : boxShadow
+      boxShadow: hasOutline ? activeBoxShadow : boxShadow,
+      border: 0,
+      WebkitTransition: isDragging
+        ? null
+        : "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+      MozTransition: isDragging
+        ? null
+        : "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+      transition: isDragging
+        ? null
+        : "background-color 0.25s, transform 0.25s, box-shadow 0.15s"
     };
 
     return (
