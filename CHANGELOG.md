@@ -1,76 +1,114 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [2.1.0 - 2017-11-22]
+## [Unfinished]
+
 ### Added
-- onChange callback function is now given the event that activated the callback as a second argument.
+
+* onChange callback function is now given the id prop that the user has given as the third argument.
+
+### Fixed
+
+* Improved responsiveness on mobile by removing the 300 ms delay when clicking the background.
+* It is no longer possible to select text while holding down the switch.
+* Highlighting effect when clicking the switch on mobile webkit browsers has been removed.
+
+## [2.1.0 - 2017-11-22]
+
+### Added
+
+* onChange callback function is now given the event that activated the callback as a second argument.
 
 ## [2.0.1 - 2017-11-03]
-### Changed
-- prop-types is switched from peerDependency to dependency. This should reduce frustration for devs who don't use prop-types in their project, but shouldn't affect anyone else.
 
-## [2,0.0 - 2017-10-31]
+### Changed
+
+* prop-types is switched from peerDependency to dependency. This should reduce frustration for devs who don't use prop-types in their project, but shouldn't affect anyone else.
+
+## [2.0.0 - 2017-10-31]
+
 ### Added
-- Added some keywords
+
+* Added some keywords
 
 ### Changed
-- Improved demo with best practices for labels.
-- README clarifications
+
+* Improved demo with best practices for labels.
+* README clarifications
 
 ## [2.0.0-rc.2.1]
+
 ### Fixed
-- Removed some unnecessary files from the package.
+
+* Removed some unnecessary files from the package.
 
 ## [2.0.0-rc.2] - 2017-10-13
+
 ### Refactor
-- The switch no longer uses the opacity hack to transition between color. This involved stacking two divs on top of each other and varying the opacity of the top div. This caused some weird visual artifacts.
+
+* The switch no longer uses the opacity hack to transition between color. This involved stacking two divs on top of each other and varying the opacity of the top div. This caused some weird visual artifacts.
 
 ### Changed
-- onColor and offColor props can now only take colors in the form of '#xxxxxx'. Gradients and rgb(xxx, xxx, xxx) are no longer supported.
-- handleColor prop is replaced by onHandleColor and offHandleColor.
-- The boxShadow the handle gets when selected is now available in the activeBoxShadow prop. The boxShadow prop is now the boxShadow the handle has when it is not selected, and is null by default.
+
+* onColor and offColor props can now only take colors in the form of '#xxxxxx'. Gradients and rgb(xxx, xxx, xxx) are no longer supported.
+* handleColor prop is replaced by onHandleColor and offHandleColor.
+* The boxShadow the handle gets when selected is now available in the activeBoxShadow prop. The boxShadow prop is now the boxShadow the handle has when it is not selected, and is null by default.
 
 ### Fixed
-- The switch no longer has a pixel wide gloria of the offColor when checked.
+
+* The switch no longer has a pixel wide gloria of the offColor when checked.
 
 ### Removed
-- activeHandleColor prop is removed because of lack of usefulness.
+
+* activeHandleColor prop is removed because of lack of usefulness.
 
 ## [2.0.0-rc.1] - 2017-10-08
+
 ### Added
-- New prop boxShadow. It acts just like outline, but I called it boxShadow since that is the actual css attribute that is being controlled.
-- New props checkedIcon and uncheckedIcon. They have a checkmark and an x as default. Custom elements can be given as icons or the boolean value 'false', which will remove icons.
+
+* New prop boxShadow. It acts just like outline, but I called it boxShadow since that is the actual css attribute that is being controlled.
+* New props checkedIcon and uncheckedIcon. They have a checkmark and an x as default. Custom elements can be given as icons or the boolean value 'false', which will remove icons.
 
 ### Refactor
-- Dependency on 'react-draggable' is removed and replaced with new drag logic.
+
+* Dependency on 'react-draggable' is removed and replaced with new drag logic.
 
 ### Fixed
-- Glitch related to faulty 'inTransition' state fixed due to inTransition no longer existing.
+
+* Glitch related to faulty 'inTransition' state fixed due to inTransition no longer existing.
 
 ## Changed
-- Outline disappears when the users stops holding down the mouse. This is the same behaviour as google's switch-button implementation.
-- onChange callback function is now also triggered when enter key is pressed in violation of wai-aria checkbox spec. This is reasonably since it's in the toggle-button spec.
+
+* Outline disappears when the users stops holding down the mouse. This is the same behaviour as google's switch-button implementation.
+* onChange callback function is now also triggered when enter key is pressed in violation of wai-aria checkbox spec. This is reasonably since it's in the toggle-button spec.
 
 ## Removed
-- The deprecated 'name' and 'value' properties are removed.
+
+* The deprecated 'name' and 'value' properties are removed.
 
 ## [1.2.0 - 2017-09-29]
+
 ### Fixed
-- Removed react and react-dom from dependencies.
-- Css-file replaced with inline styles to avoid webpack style-loader dependence.
+
+* Removed react and react-dom from dependencies.
+* Css-file replaced with inline styles to avoid webpack style-loader dependence.
 
 ### Changed
-- Cursor style of handle changed to pointer instead of grabbing.
 
+* Cursor style of handle changed to pointer instead of grabbing.
 
 ## [1.1.0] - 2017-09-26
+
 ### Fixed
-- Pressing the spacebar while the switch is focused no longer causes the page to scroll.
-- Disabling the switch now sets opacity to 0.5 as it should.
-- Fixed glitch where the left property of the switch-handle would be off by one if checked was initially set to true.
+
+* Pressing the spacebar while the switch is focused no longer causes the page to scroll.
+* Disabling the switch now sets opacity to 0.5 as it should.
+* Fixed glitch where the left property of the switch-handle would be off by one if checked was initially set to true.
 
 ### Deprecated
-- The 'name' and 'value' properties will be removed in the next major version since I don't believe they serve any purpose in a controlled component.
+
+* The 'name' and 'value' properties will be removed in the next major version since I don't believe they serve any purpose in a controlled component.
