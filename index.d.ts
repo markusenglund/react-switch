@@ -9,12 +9,17 @@ export interface ReactSwitchProps {
   /** 
    * Invoked when the user clicks or drags the switch. 
    * 
-   * **checked** describes the presumed future state of the checked prop, **event** is the change event, and **id** is the ID prop of the switch.
+   * **checked** describes the presumed future state of the checked prop.
+   * 
+   * **event** is a native MouseEvent when the handle is clicked or dragged, and a SyntheticEvent at all other times.
+   * 
+   *  **id** is the ID prop of the switch.
+   * 
    * @param {boolean} checked
    * @param {object} event
    * @param {string} id
    */
-  onChange: (checked: boolean, event:  React.SyntheticEvent<React.ChangeEvent<HTMLInputElement>>, id: string) => void;
+  onChange: (checked: boolean, event:  React.SyntheticEvent<MouseEvent | KeyboardEvent> | MouseEvent, id: string) => void;
 
   /** 
    * When true, the switch will no longer be interactive and its colors will be greyed out.
