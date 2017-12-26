@@ -4,6 +4,7 @@ examples
 .babelrc
 .eslintrc
 .gitignore
+.prettierignore
 .vscode
 stats.json
 webpack.config.js
