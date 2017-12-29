@@ -94,6 +94,25 @@ Examples of valid colors: '#abc', '#123456'
 
 Examples of **invalid** colors: 'red', 'rgb(0,0,0)'
 
+## Contributors
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img src="https://avatars3.githubusercontent.com/u/22945927?s=150&v=4" width="120">
+        <br />
+        <a href="https://github.com/yogaboll">Markus Englund<a/>
+      </td>
+      <td align="center">
+        <img src="https://avatars0.githubusercontent.com/u/4565854?v=4" width="120">
+        <br />
+        <a href="https://github.com/timothymclane">Timothy McLane<a/>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## License
 
 MIT
