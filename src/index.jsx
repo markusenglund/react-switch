@@ -288,14 +288,25 @@ class Switch extends Component {
   }
 }
 
+const hexColorPropType = (props, propName, componentName) => {
+  // Make sure color props are strings that start with "#" since other ways to write colors are not supported.
+  const prop = props[propName];
+  if (typeof prop !== "string" || prop[0] !== "#") {
+    return new Error(
+      `Invalid prop '${propName}' supplied to '${componentName}'. '${propName}' has to be either a 3-digit or 6-digit hex-color string. Valid examples: '#abc', '#123456'`
+    );
+  }
+  return null;
+};
+
 Switch.propTypes = {
   checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
-  offColor: PropTypes.string,
-  onColor: PropTypes.string,
-  offHandleColor: PropTypes.string,
-  onHandleColor: PropTypes.string,
+  offColor: hexColorPropType,
+  onColor: hexColorPropType,
+  offHandleColor: hexColorPropType,
+  onHandleColor: hexColorPropType,
   handleDiameter: PropTypes.number,
   uncheckedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
   checkedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
