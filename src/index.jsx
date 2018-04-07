@@ -7,7 +7,7 @@ import {
 import getBackgroundColor from "./getBackgroundColor";
 import hexColorPropType from "./hexColorPropType";
 
-class Switch extends Component {
+class ReactSwitch extends Component {
   static propTypes = {
     checked: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -329,4 +329,4 @@ class Switch extends Component {
   }
 }
 
-export default Switch;
+export default ReactSwitch;
