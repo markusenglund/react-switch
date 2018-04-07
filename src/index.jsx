@@ -5,8 +5,49 @@ import {
   uncheckedIcon as defaultUncheckedIcon
 } from "./icons";
 import getBackgroundColor from "./getBackgroundColor";
+import hexColorPropType from "./hexColorPropType";
 
 class Switch extends Component {
+  static propTypes = {
+    checked: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
+    offColor: hexColorPropType,
+    onColor: hexColorPropType,
+    offHandleColor: hexColorPropType,
+    onHandleColor: hexColorPropType,
+    handleDiameter: PropTypes.number,
+    uncheckedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
+    checkedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
+    boxShadow: PropTypes.string,
+    activeBoxShadow: PropTypes.string,
+    height: PropTypes.number,
+    width: PropTypes.number,
+    className: PropTypes.string,
+    id: PropTypes.string,
+    "aria-labelledby": PropTypes.string,
+    "aria-label": PropTypes.string
+  };
+
+  static defaultProps = {
+    disabled: false,
+    offColor: "#888",
+    onColor: "#080",
+    offHandleColor: "#fff",
+    onHandleColor: "#fff",
+    handleDiameter: null,
+    uncheckedIcon: defaultUncheckedIcon,
+    checkedIcon: defaultCheckedIcon,
+    boxShadow: null,
+    activeBoxShadow: "0px 0px 2px 3px #33bbff",
+    height: 28,
+    width: 56,
+    className: null,
+    id: null,
+    "aria-labelledby": null,
+    "aria-label": null
+  };
+
   constructor(props) {
     super(props);
     const { height, width, handleDiameter, checked } = props;
@@ -287,56 +328,5 @@ class Switch extends Component {
     );
   }
 }
-
-const hexColorPropType = (props, propName, componentName) => {
-  // Make sure color props are strings that start with "#" since other ways to write colors are not supported.
-  const prop = props[propName];
-  if (typeof prop !== "string" || prop[0] !== "#") {
-    return new Error(
-      `Invalid prop '${propName}' supplied to '${componentName}'. '${propName}' has to be either a 3-digit or 6-digit hex-color string. Valid examples: '#abc', '#123456'`
-    );
-  }
-  return null;
-};
-
-Switch.propTypes = {
-  checked: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
-  disabled: PropTypes.bool,
-  offColor: hexColorPropType,
-  onColor: hexColorPropType,
-  offHandleColor: hexColorPropType,
-  onHandleColor: hexColorPropType,
-  handleDiameter: PropTypes.number,
-  uncheckedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
-  checkedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
-  boxShadow: PropTypes.string,
-  activeBoxShadow: PropTypes.string,
-  height: PropTypes.number,
-  width: PropTypes.number,
-  className: PropTypes.string,
-  id: PropTypes.string,
-  "aria-labelledby": PropTypes.string,
-  "aria-label": PropTypes.string
-};
-
-Switch.defaultProps = {
-  disabled: false,
-  offColor: "#888",
-  onColor: "#080",
-  offHandleColor: "#fff",
-  onHandleColor: "#fff",
-  handleDiameter: null,
-  uncheckedIcon: defaultUncheckedIcon,
-  checkedIcon: defaultCheckedIcon,
-  boxShadow: null,
-  activeBoxShadow: "0px 0px 2px 3px #33bbff",
-  height: 28,
-  width: 56,
-  className: null,
-  id: null,
-  "aria-labelledby": null,
-  "aria-label": null
-};
 
 export default Switch;
