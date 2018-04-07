@@ -96,6 +96,19 @@ Examples of valid colors: '#abc', '#123456'
 
 Examples of **invalid** colors: 'red', 'rgb(0,0,0)'
 
+## Development
+
+You're welcome to contribute to react-switch.
+
+To set up the project:
+
+1.  Fork and clone the repository
+2.  `$ npm install`
+3.  `$ npm run build:dev`
+4.  `$ npm run examples:dev` in a separate terminal window
+
+The demo page will then be served on http://localhost:8000/ in watch mode, meaning you don't have refresh the page to see your changes.
+
 ## Contributors
 
 <table>
