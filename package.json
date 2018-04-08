@@ -1,6 +1,6 @@
 {
   "name": "react-switch",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Draggable toggle-switch component for react",
   "main": "dist/index.js",
   "scripts": {
@@ -8,14 +8,12 @@
     "build:dev": "babel src -w -d dist",
     "examples:dev": "webpack-dev-server --mode development",
     "examples:prod": "webpack --mode production",
-    "push-examples":
-      "npm run examples:prod && git subtree push --prefix examples/dist origin gh-pages",
+    "push-examples": "npm run examples:prod && git subtree push --prefix examples/dist origin gh-pages",
     "format": "prettier --write '**/*.{js,jsx,json}'",
     "lint": "eslint --ext .js,.jsx src/ examples/src",
     "test": "jest",
     "test:watch": "jest --watch",
-    "analyze-bundle":
-      "webpack -p --profile --json > stats.json && webpack-bundle-analyzer stats.json examples/dist -s gzip"
+    "analyze-bundle": "webpack -p --profile --json > stats.json && webpack-bundle-analyzer stats.json examples/dist -s gzip"
   },
   "repository": {
     "type": "git",
