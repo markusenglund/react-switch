@@ -15,9 +15,9 @@ export default class SmallRadiusSwitch extends Component {
   render() {
     return (
       <div className="example">
-        <h2>Small handle</h2>
+        <h2>Smaller handle</h2>
         <label htmlFor="small-radius-switch">
-          <span>Switch with small handle radius</span>
+          <span>Thick switch with smaller handle radius</span>
           <Switch
             checked={this.state.checked}
             onChange={this.handleChange}
