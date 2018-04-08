@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hexColorPropType() returns error when passed 8-digit hex-color 1`] = `[Error: Invalid prop 'offHandleColor' supplied to 'ReactSwitch'. 'offHandleColor' has to be either a 3-digit or 6-digit hex-color string. Valid examples: '#abc', '#123456']`;
+
+exports[`hexColorPropType() returns error when passed non string 1`] = `[Error: Invalid prop 'undefined' supplied to 'undefined'. 'undefined' has to be either a 3-digit or 6-digit hex-color string. Valid examples: '#abc', '#123456']`;
+
+exports[`hexColorPropType() returns error when passed plain text color 1`] = `[Error: Invalid prop 'offColor' supplied to 'ReactSwitch'. 'offColor' has to be either a 3-digit or 6-digit hex-color string. Valid examples: '#abc', '#123456']`;
