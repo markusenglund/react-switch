@@ -1,5 +1,3 @@
-# react-switch
-
 A draggable toggle-switch component for React.
 
 [![npm](https://img.shields.io/npm/v/react-switch.svg)](https://www.npmjs.com/package/react-switch)
