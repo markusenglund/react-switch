@@ -2,7 +2,7 @@ A draggable toggle-switch component for React.
 
 [![npm](https://img.shields.io/npm/v/react-switch.svg)](https://www.npmjs.com/package/react-switch)
 [![npm](https://img.shields.io/npm/dm/react-switch.svg)](https://www.npmjs.com/package/react-switch)
-[![GitHub stars](https://img.shields.io/github/stars/yogaboll/react-switch.svg?style=social&label=Stars)](https://github.com/yogaboll/react-switch)
+[![GitHub stars](https://img.shields.io/github/stars/markusenglund/react-switch.svg?style=social&label=Stars)](https://github.com/markusenglund/react-switch)
 
 <img src="https://media.giphy.com/media/l0IsI0EHlJx2kyCrK/giphy.gif" />
 <img src="https://media.giphy.com/media/3ov9k7TupiaveDlQ5O/giphy.gif" />
@@ -15,7 +15,7 @@ A draggable toggle-switch component for React.
 
 ## Demo
 
-[Take a look at the demo](https://yogaboll.github.io/react-switch/)
+[Take a look at the demo](https://markusenglund.github.io/react-switch/)
 
 ## Installation
 
