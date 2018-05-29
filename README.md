@@ -62,7 +62,7 @@ These features are there to make the toggle-switch accessible to people with red
 
 It's not strictly necessary to both nest the switch inside the label AND use the htmlFor prop to link the label and the switch. It should be enough to do just one. However, using both will ["cover 100% of assistive devices"](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md) and free you from annoying eslint errors.
 
-Alternatively, you can use the aria-labelledby or aria-label props to give the switch a label. You can see examples of this at the bottom of the [demo page](https://yogaboll.github.io/react-switch/).
+Alternatively, you can use the aria-labelledby or aria-label props to give the switch a label. You can see examples of this at the bottom of the [demo page](https://markusenglund.github.io/react-switch/).
 
 ## API
 
