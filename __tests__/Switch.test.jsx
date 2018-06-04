@@ -71,11 +71,11 @@ describe("handle", () => {
     wrapper.find(".react-switch-handle").simulate("focus");
     expect(
       wrapper.find(".react-switch-handle").get(0).props.style.boxShadow
-    ).toBe("0px 0px 2px 3px #33bbff");
+    ).toBe("0px 0px 2px 3px #3bf");
     wrapper.find(".react-switch-handle").simulate("blur");
     expect(
       wrapper.find(".react-switch-handle").get(0).props.style.boxShadow
-    ).toBeNull();
+    ).toBeUndefined();
   });
 
   it("calls onChange and prevent default on spacebar and enter", () => {

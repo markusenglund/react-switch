@@ -35,17 +35,11 @@ class ReactSwitch extends Component {
     onColor: "#080",
     offHandleColor: "#fff",
     onHandleColor: "#fff",
-    handleDiameter: null,
     uncheckedIcon: defaultUncheckedIcon,
     checkedIcon: defaultCheckedIcon,
-    boxShadow: null,
-    activeBoxShadow: "0px 0px 2px 3px #33bbff",
+    activeBoxShadow: "0px 0px 2px 3px #3bf",
     height: 28,
-    width: 56,
-    className: null,
-    id: null,
-    "aria-labelledby": null,
-    "aria-label": null
+    width: 56
   };
 
   constructor(props) {
@@ -58,10 +52,7 @@ class ReactSwitch extends Component {
     );
     this.uncheckedPos = Math.max(0, (height - this.handleDiameter) / 2);
     this.state = {
-      pos: checked ? this.checkedPos : this.uncheckedPos,
-      startX: null,
-      isDragging: false,
-      hasOutline: false
+      pos: checked ? this.checkedPos : this.uncheckedPos
     };
   }
 
@@ -89,7 +80,7 @@ class ReactSwitch extends Component {
 
     // Simulate clicking the handle
     if (!isDragging) {
-      this.setState({ startX: null, hasOutline: false });
+      this.setState({ hasOutline: false });
       onChange(!checked, event, id);
       return;
     }
@@ -97,26 +88,24 @@ class ReactSwitch extends Component {
       if (pos > (this.checkedPos + this.uncheckedPos) / 2) {
         this.setState({
           pos: this.checkedPos,
-          startX: null,
           isDragging: false,
           hasOutline: false
         });
         return;
       }
-      this.setState({ startX: null, isDragging: false, hasOutline: false });
+      this.setState({ isDragging: false, hasOutline: false });
       onChange(false, event, id);
       return;
     }
     if (pos < (this.checkedPos + this.uncheckedPos) / 2) {
       this.setState({
         pos: this.uncheckedPos,
-        startX: null,
         isDragging: false,
         hasOutline: false
       });
       return;
     }
-    this.setState({ startX: null, isDragging: false, hasOutline: false });
+    this.setState({ isDragging: false, hasOutline: false });
     onChange(true, event, id);
   };
 
@@ -156,7 +145,7 @@ class ReactSwitch extends Component {
   };
 
   handleTouchCancel = () => {
-    this.setState({ startX: null, hasOutline: false });
+    this.setState({ hasOutline: false });
   };
 
   handleClick = event => {
