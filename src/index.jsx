@@ -61,11 +61,11 @@ class ReactSwitch extends Component {
     this.setState({ pos });
   }
 
-  handleDragStart = clientX => {
+  onDragStart = clientX => {
     this.setState({ startX: clientX, hasOutline: true });
   };
 
-  handleDrag = clientX => {
+  onDrag = clientX => {
     const { startX } = this.state;
     const { checked } = this.props;
     const startPos = checked ? this.checkedPos : this.uncheckedPos;
@@ -74,7 +74,7 @@ class ReactSwitch extends Component {
     this.setState({ pos, isDragging: true });
   };
 
-  handleDragStop = event => {
+  onDragStop = event => {
     const { pos, isDragging } = this.state;
     const { checked, onChange, id } = this.props;
 
@@ -109,51 +109,51 @@ class ReactSwitch extends Component {
     onChange(true, event, id);
   };
 
-  handleMouseDown = event => {
+  onMouseDown = event => {
     // Ignore right click and scroll
     if (typeof event.button === "number" && event.button !== 0) {
       return;
     }
 
-    this.handleDragStart(event.clientX);
-    document.addEventListener("mousemove", this.handleMouseMove);
-    document.addEventListener("mouseup", this.handleMouseUp);
+    this.onDragStart(event.clientX);
+    document.addEventListener("mousemove", this.onMouseMove);
+    document.addEventListener("mouseup", this.onMouseUp);
   };
 
-  handleMouseMove = event => {
+  onMouseMove = event => {
     event.preventDefault();
-    this.handleDrag(event.clientX);
+    this.onDrag(event.clientX);
   };
 
-  handleMouseUp = event => {
-    this.handleDragStop(event);
-    document.removeEventListener("mousemove", this.handleMouseMove);
-    document.removeEventListener("mouseup", this.handleMouseUp);
+  onMouseUp = event => {
+    this.onDragStop(event);
+    document.removeEventListener("mousemove", this.onMouseMove);
+    document.removeEventListener("mouseup", this.onMouseUp);
   };
 
-  handleTouchStart = event => {
-    this.handleDragStart(event.touches[0].clientX);
+  onTouchStart = event => {
+    this.onDragStart(event.touches[0].clientX);
   };
 
-  handleTouchMove = event => {
-    this.handleDrag(event.touches[0].clientX);
+  onTouchMove = event => {
+    this.onDrag(event.touches[0].clientX);
   };
 
-  handleTouchEnd = event => {
+  onTouchEnd = event => {
     event.preventDefault();
-    this.handleDragStop(event);
+    this.onDragStop(event);
   };
 
-  handleTouchCancel = () => {
+  onTouchCancel = () => {
     this.setState({ hasOutline: false });
   };
 
-  handleClick = event => {
+  onClick = event => {
     const { checked, onChange, id } = this.props;
     onChange(!checked, event, id);
   };
 
-  handleKeyDown = event => {
+  onKeyDown = event => {
     const { checked, onChange, id } = this.props;
     const { isDragging } = this.state;
     // Trigger change on spacebar and enter keys (in violation of wai-aria spec).
@@ -287,7 +287,7 @@ class ReactSwitch extends Component {
         <div
           className="react-switch-bg"
           style={backgroundStyle}
-          onClick={disabled ? null : this.handleClick}
+          onClick={disabled ? null : this.onClick}
         >
           {checkedIcon && <div style={checkedIconStyle}>{checkedIcon}</div>}
           {uncheckedIcon && (
@@ -298,12 +298,12 @@ class ReactSwitch extends Component {
           className="react-switch-handle"
           role="checkbox"
           tabIndex={disabled ? null : 0}
-          onMouseDown={disabled ? null : this.handleMouseDown}
-          onTouchStart={disabled ? null : this.handleTouchStart}
-          onTouchMove={disabled ? null : this.handleTouchMove}
-          onTouchEnd={disabled ? null : this.handleTouchEnd}
-          onTouchCancel={disabled ? null : this.handleTouchCancel}
-          onKeyDown={this.handleKeyDown}
+          onMouseDown={disabled ? null : this.onMouseDown}
+          onTouchStart={disabled ? null : this.onTouchStart}
+          onTouchMove={disabled ? null : this.onTouchMove}
+          onTouchEnd={disabled ? null : this.onTouchEnd}
+          onTouchCancel={disabled ? null : this.onTouchCancel}
+          onKeyDown={this.onKeyDown}
           onFocus={() => this.setState({ hasOutline: true })}
           onBlur={() => this.setState({ hasOutline: false })}
           style={handleStyle}
