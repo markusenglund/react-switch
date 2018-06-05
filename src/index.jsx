@@ -100,8 +100,8 @@ class ReactSwitch extends Component {
     }
 
     this.$onDragStart(event.clientX);
-    document.addEventListener("mousemove", this.$onMouseMove);
-    document.addEventListener("mouseup", this.$onMouseUp);
+    window.addEventListener("mousemove", this.$onMouseMove);
+    window.addEventListener("mouseup", this.$onMouseUp);
   }
 
   $onMouseMove(event) {
@@ -111,8 +111,8 @@ class ReactSwitch extends Component {
 
   $onMouseUp(event) {
     this.$onDragStop(event);
-    document.removeEventListener("mousemove", this.$onMouseMove);
-    document.removeEventListener("mouseup", this.$onMouseUp);
+    window.removeEventListener("mousemove", this.$onMouseMove);
+    window.removeEventListener("mouseup", this.$onMouseUp);
   }
 
   $onTouchStart(event) {
@@ -331,7 +331,7 @@ ReactSwitch.defaultProps = {
   onHandleColor: "#fff",
   uncheckedIcon: defaultUncheckedIcon,
   checkedIcon: defaultCheckedIcon,
-  activeBoxShadow: "0px 0px 2px 3px #3bf",
+  activeBoxShadow: "0 0 2px 3px #3bf",
   height: 28,
   width: 56
 };
