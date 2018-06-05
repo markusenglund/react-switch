@@ -1,5 +1,5 @@
 import React from "react";
-import Switch from "../../dist";
+import Switch from "../../dist/react-switch.prod";
 
 export default function DisabledSwitch() {
   return (

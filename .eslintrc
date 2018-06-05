@@ -4,7 +4,11 @@
     "es6": true,
     "jest": true
   },
-  "extends": ["airbnb", "prettier", "prettier/react"],
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
@@ -13,10 +17,14 @@
     "sourceType": "module"
   },
   "rules": {
-    "comma-dangle": ["warn", "never"],
+    "comma-dangle": [
+      "warn",
+      "never"
+    ],
     "no-mixed-operators": "off",
     "object-curly-newline": "off",
     "jsx-a11y/click-events-have-key-events": "off",
-    "function-paren-newline": "off"
+    "function-paren-newline": "off",
+    "react/require-default-props": "off"
   }
 }
