@@ -1,6 +1,6 @@
 __tests__
 src
-examples
+demo
 .babelrc
 .eslintrc
 .gitignore
