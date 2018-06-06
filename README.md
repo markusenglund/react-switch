@@ -10,7 +10,7 @@ A draggable toggle-switch component for React.
 - **Draggable** with the mouse or with a touch screen.
 - **Accessible** to visually impaired users and those who can't use a mouse.
 - **Customizable** - Easy to customize size, color and more.
-- **Small package size** (<3kb). No dependencies other than _prop-types_.
+- **Small package size** - only 2 kb minified and gzipped.
 - **It Just Works** - Sensible default styling. Uses inline styles, so no need to import a separate css file.
 
 ## Demo
@@ -55,7 +55,7 @@ class SwitchExample extends Component {
 }
 ```
 
-### Accessibility considerations
+### What's the deal with the label tag?
 
 The Switch component in the above example is nested inside a label tag. The label tag has an htmlFor-value that is identical to the id-value that is passed to the Switch ("normal-switch").
 These features are there to make the toggle-switch accessible to people with reduced sight who use screen readers. It will make screen readers read out the label text when the toggle-switch is selected. If you instead just put some text next to the switch, the screen reader will just read out "checkbox - not checked" or something like that and the user will have no idea what it is for. (The switch is actually a checkbox under the hood.)
@@ -75,17 +75,17 @@ Alternatively, you can use the aria-labelledby or aria-label props to give the s
 | onColor                               | string            | '#080'                                                                                   | The switch will take on this color when it is checked. Only accepts hex-colors.                                                                                                                                           |
 | offHandleColor                        | string            | '#fff'                                                                                   | The handle of the switch will take on this color when it is _not_ checked. Only accepts hex-colors.                                                                                                                       |
 | onHandleColor                         | string            | '#fff'                                                                                   | The handle of the switch will take on this color when it is checked. Only accepts hex-colors.                                                                                                                             |
-| handleDiameter                        | number            | null                                                                                     | The diameter of the handle, measured in pixels. By default it will be slightly smaller than the height of the switch.                                                                                                     |
+| handleDiameter                        | number            | _undefined_                                                                              | The diameter of the handle, measured in pixels. By default it will be 2 pixels smaller than the height of the switch.                                                                                                     |
 | uncheckedIcon                         | element _or_ bool | [Default value](https://github.com/markusenglund/react-switch/blob/master/src/icons.jsx) | An icon that will be shown on the switch when it is **not** checked. Pass in _false_ if you don't want any icon.                                                                                                          |
 | checkedIcon                           | element _or_ bool | [Default value](https://github.com/markusenglund/react-switch/blob/master/src/icons.jsx) | An icon that will be shown on the switch when it is checked. Pass in _false_ if you don't want any icon.                                                                                                                  |
-| boxShadow                             | string            | null                                                                                     | The default box-shadow of the handle. You can read up on the box-shadow syntax [on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow?v=b).                                                                 |
-| activeBoxShadow                       | string            | '0 0 2px 3px #33bbff'                                                                    | The box-shadow of the handle when it is active or focused. Do not set this to null, since it is important for accessibility.                                                                                              |
+| boxShadow                             | string            | _undefined_                                                                              | The default box-shadow of the handle. You can read up on the box-shadow syntax [on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow?v=b).                                                                 |
+| activeBoxShadow                       | string            | '0 0 2px 3px #3bf'                                                                       | The box-shadow of the handle when it is active or focused. Do not set this to null, since it is important for accessibility.                                                                                              |
 | height                                | number            | 28                                                                                       | The height of the background of the switch, measured in pixels.                                                                                                                                                           |
 | width                                 | number            | 56                                                                                       | The width of the background of the switch, measured in pixels.                                                                                                                                                            |
-| className                             | string            | null                                                                                     | Set as the className of the outer shell of the switch. Useful for positioning the switch.                                                                                                                                 |
-| id                                    | string            | null                                                                                     | Set as an attribute to the embedded checkbox. This is useful for the associated label, which can point to the id in its htmlFor attribute.                                                                                |
-| aria-labelledby                       | string            | null                                                                                     | Set as an attribute of the embedded checkbox. This should be the same as the id of a label. You should use this if you don't want your label to be a \<label> element                                                     |
-| aria-label                            | string            | null                                                                                     | Set as an attribute of the embedded checkbox. Its value will only be seen by screen readers.                                                                                                                              |
+| className                             | string            | _undefined_                                                                              | Set as the className of the outer shell of the switch. Useful for positioning the switch.                                                                                                                                 |
+| id                                    | string            | _undefined_                                                                              | Set as an attribute to the embedded checkbox. This is useful for the associated label, which can point to the id in its htmlFor attribute.                                                                                |
+| aria-labelledby                       | string            | _undefined_                                                                              | Set as an attribute of the embedded checkbox. This should be the same as the id of a label. You should use this if you don't want your label to be a \<label> element                                                     |
+| aria-label                            | string            | _undefined_                                                                              | Set as an attribute of the embedded checkbox. Its value will only be seen by screen readers.                                                                                                                              |
 
 The following props have to be either 3-digit or 6-digit hex-colors:
 **offColor, onColor, offHandleColor,** and **onHandleColor.** This is because this library calculates intermediate color values based on the hex-color strings.
@@ -102,8 +102,7 @@ To set up the project:
 
 1.  Fork and clone the repository
 2.  `$ npm install`
-3.  `$ npm run build:dev`
-4.  `$ npm run examples:dev` in a separate terminal window
+3.  `$ npm run dev`
 
 The demo page will then be served on http://localhost:8000/ in watch mode, meaning you don't have refresh the page to see your changes.
 
