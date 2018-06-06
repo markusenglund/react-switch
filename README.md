@@ -3,6 +3,7 @@ A draggable toggle-switch component for React.
 [![npm](https://img.shields.io/npm/v/react-switch.svg)](https://www.npmjs.com/package/react-switch)
 [![npm](https://img.shields.io/npm/dm/react-switch.svg)](https://www.npmjs.com/package/react-switch)
 [![GitHub stars](https://img.shields.io/github/stars/markusenglund/react-switch.svg?style=social&label=Stars)](https://github.com/markusenglund/react-switch)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/react-switch.svg)](https://bundlephobia.com/result?p=react-switch)
 
 <img src="https://media.giphy.com/media/l0IsI0EHlJx2kyCrK/giphy.gif" />
 <img src="https://media.giphy.com/media/3ov9k7TupiaveDlQ5O/giphy.gif" />
@@ -10,7 +11,7 @@ A draggable toggle-switch component for React.
 - **Draggable** with the mouse or with a touch screen.
 - **Accessible** to visually impaired users and those who can't use a mouse.
 - **Customizable** - Easy to customize size, color and more.
-- **Small package size** - only 2 kb minified and gzipped.
+- **Small package size** - Just 2 kb minified and gzipped.
 - **It Just Works** - Sensible default styling. Uses inline styles, so no need to import a separate css file.
 
 ## Demo
