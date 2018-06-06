@@ -25,7 +25,7 @@ function Examples() {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://github.com/yogaboll/react-switch/tree/master/examples/src"
+          href="https://github.com/markusenglund/react-switch/tree/master/demo/src"
         >
           here
         </a>
