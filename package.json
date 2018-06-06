@@ -4,8 +4,8 @@
   "description": "Draggable toggle-switch component for react",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel src -d dist",
-    "build:dev": "babel src -w -d dist",
+    "build:prod": "NODE_ENV=production rollup -c -f cjs -o dist/react-switch.min.js",
+    "build:dev": "rollup -c -w -f cjs -o dist/react-switch.dev.js",
     "rollup": "BABEL_ENV=production rollup -c",
     "examples:dev": "webpack-dev-server --mode development",
     "examples:prod": "webpack --mode production",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yogaboll/react-switch.git"
+    "url": "git+https://github.com/markusenglund/react-switch.git"
   },
   "author": "Markus Englund <markus.s.englund@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yogaboll/react-switch/issues"
+    "url": "https://github.com/markusenglund/react-switch/issues"
   },
-  "homepage": "https://github.com/yogaboll/react-switch#readme",
+  "homepage": "https://github.com/markusenglund/react-switch#readme",
   "peerDependencies": {
     "react": "^15.3.0 || ^16.0.0",
     "react-dom": "^15.3.0 || ^16.0.0"
@@ -33,8 +33,6 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.49",
     "@babel/core": "^7.0.0-beta.49",
-    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.49",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
     "@babel/preset-react": "^7.0.0-beta.49",
     "babel-core": "^7.0.0-bridge.0",

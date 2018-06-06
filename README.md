@@ -7,11 +7,11 @@ A draggable toggle-switch component for React.
 <img src="https://media.giphy.com/media/l0IsI0EHlJx2kyCrK/giphy.gif" />
 <img src="https://media.giphy.com/media/3ov9k7TupiaveDlQ5O/giphy.gif" />
 
-* **Draggable** with the mouse or with a touch screen.
-* **Accessible** to visually impaired users and those who can't use a mouse.
-* **Customizable** - Easy to customize size, color and more.
-* **Small package size** (<3kb). No dependencies other than _prop-types_.
-* **It Just Works** - Sensible default styling. Uses inline styles, so no need to import a separate css file.
+- **Draggable** with the mouse or with a touch screen.
+- **Accessible** to visually impaired users and those who can't use a mouse.
+- **Customizable** - Easy to customize size, color and more.
+- **Small package size** (<3kb). No dependencies other than _prop-types_.
+- **It Just Works** - Sensible default styling. Uses inline styles, so no need to import a separate css file.
 
 ## Demo
 
@@ -79,7 +79,7 @@ Alternatively, you can use the aria-labelledby or aria-label props to give the s
 | uncheckedIcon                         | element _or_ bool | [Default value](https://github.com/yogaboll/react-switch/blob/master/src/icons.jsx) | An icon that will be shown on the switch when it is **not** checked. Pass in _false_ if you don't want any icon.                                                                                                          |
 | checkedIcon                           | element _or_ bool | [Default value](https://github.com/yogaboll/react-switch/blob/master/src/icons.jsx) | An icon that will be shown on the switch when it is checked. Pass in _false_ if you don't want any icon.                                                                                                                  |
 | boxShadow                             | string            | null                                                                                | The default box-shadow of the handle. You can read up on the box-shadow syntax [on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow?v=b).                                                                 |
-| activeBoxShadow                       | string            | '0px 0px 2px 3px #33bbff'                                                           | The box-shadow of the handle when it is active or focused. Do not set this to null, since it is important for accessibility.                                                                                              |
+| activeBoxShadow                       | string            | '0 0 2px 3px #33bbff'                                                               | The box-shadow of the handle when it is active or focused. Do not set this to null, since it is important for accessibility.                                                                                              |
 | height                                | number            | 28                                                                                  | The height of the background of the switch, measured in pixels.                                                                                                                                                           |
 | width                                 | number            | 56                                                                                  | The width of the background of the switch, measured in pixels.                                                                                                                                                            |
 | className                             | string            | null                                                                                | Set as the className of the outer shell of the switch. Useful for positioning the switch.                                                                                                                                 |
