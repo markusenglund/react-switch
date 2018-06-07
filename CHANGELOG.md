@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [3.0.0 - 2018-06-07]
+
+### Changed
+
+- Shave off some extra bytes by setting interop: false in rollup config.
+
+### Fixed
+
+- Fix peculiar glitch when used with preact-compat.
+
 ## [3.0.0-beta.0 - 2018-06-06]
 
 ### Changed
