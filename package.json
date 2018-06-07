@@ -6,17 +6,17 @@
   "scripts": {
     "dev": "concurrently \"npm run lib:dev\" \"npm run demo:dev\"",
     "build": "npm run lib:prod && npm run demo:prod",
-    "lib:dev": "rollup -c -w -f cjs -o dist/react-switch.dev.js",
-    "lib:prod": "NODE_ENV=production rollup -c -f cjs -o dist/react-switch.min.js",
+    "lib:dev": "rollup -c -w -o dist/react-switch.dev.js",
+    "lib:prod": "NODE_ENV=production rollup -c -o dist/react-switch.min.js",
     "demo:dev": "webpack-dev-server --mode development",
     "demo:prod": "webpack --mode production",
-    "deploy-demo": "npm run test && npm run build && git subtree push --prefix examples/dist origin gh-pages",
+    "deploy-demo": "npm run test && npm run build && git subtree push --prefix demo/dist origin gh-pages",
     "format": "prettier --write '**/*.{js,jsx,json}'",
-    "lint": "eslint --ext .js,.jsx src/ examples/src",
+    "lint": "eslint --ext .js,.jsx src/ demo/src",
     "test": "jest",
     "test:watch": "jest --watch",
     "gzip-size": "node -e \"process.stdout.write('gzip size: ')\" && gzip-size dist/react-switch.min.js",
-    "analyze-bundle": "webpack --mode production --profile --json > stats.json && webpack-bundle-analyzer stats.json examples/dist -s gzip"
+    "analyze-bundle": "webpack --mode production --profile --json > stats.json && webpack-bundle-analyzer stats.json demo/dist -s gzip"
   },
   "repository": {
     "type": "git",

@@ -4,6 +4,10 @@ import { uglify } from "rollup-plugin-uglify";
 
 const config = {
   input: "src/index.jsx",
+  output: {
+    format: "cjs",
+    interop: false
+  },
   plugins: [buble()],
   external: ["react", "prop-types"]
 };
