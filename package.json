@@ -15,7 +15,7 @@
     "lint": "eslint --ext .js,.jsx src/ demo/src",
     "test": "jest",
     "test:watch": "jest --watch",
-    "gzip-size": "node -e \"process.stdout.write('gzip size: ')\" && gzip-size dist/react-switch.min.js",
+    "gzip-size": "node -e \"process.stdout.write('gzip size: ')\" && gzip-size --raw dist/react-switch.min.js",
     "analyze-bundle": "webpack --mode production --profile --json > stats.json && webpack-bundle-analyzer stats.json demo/dist -s gzip"
   },
   "repository": {

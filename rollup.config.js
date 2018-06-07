@@ -6,7 +6,8 @@ const config = {
   input: "src/index.jsx",
   output: {
     format: "cjs",
-    interop: false
+    interop: false,
+    strict: false
   },
   plugins: [buble()],
   external: ["react", "prop-types"]
