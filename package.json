@@ -1,6 +1,6 @@
 {
   "name": "react-switch",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Draggable toggle-switch component for react",
   "main": "index.js",
   "scripts": {
