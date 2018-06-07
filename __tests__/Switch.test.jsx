@@ -75,7 +75,7 @@ describe("handle", () => {
     wrapper.find(".react-switch-handle").simulate("blur");
     expect(
       wrapper.find(".react-switch-handle").get(0).props.style.boxShadow
-    ).toBeUndefined();
+    ).toBeNull();
   });
 
   it("calls onChange and prevent default on spacebar and enter", () => {

@@ -331,6 +331,7 @@ ReactSwitch.defaultProps = {
   onHandleColor: "#fff",
   uncheckedIcon: defaultUncheckedIcon,
   checkedIcon: defaultCheckedIcon,
+  boxShadow: null,
   activeBoxShadow: "0 0 2px 3px #3bf",
   height: 28,
   width: 56
