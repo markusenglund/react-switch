@@ -20,9 +20,6 @@ class ReactSwitch extends Component {
     this.state = {
       $pos: checked ? this.$checkedPos : this.$uncheckedPos
     };
-    this.$onDragStart = this.$onDragStart.bind(this);
-    this.$onDrag = this.$onDrag.bind(this);
-    this.$onDragStop = this.$onDragStop.bind(this);
 
     this.$onMouseDown = this.$onMouseDown.bind(this);
     this.$onMouseMove = this.$onMouseMove.bind(this);
