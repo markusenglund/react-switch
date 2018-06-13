@@ -169,6 +169,7 @@ class ReactSwitch extends Component {
     const rootStyle = {
       position: "relative",
       display: "inline-block",
+      textAlign: "left",
       opacity: disabled ? 0.5 : 1,
       borderRadius: height / 2,
       WebkitTransition: "opacity 0.25s",

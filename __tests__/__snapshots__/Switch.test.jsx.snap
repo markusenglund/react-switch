@@ -3,7 +3,7 @@
 exports[`Props matches snapshot with custom props 1`] = `
 <div
   class="qux"
-  style="position:relative;display:inline-block;opacity:0.5;border-radius:6.5px;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s;touch-action:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none"
+  style="position:relative;display:inline-block;text-align:left;opacity:0.5;border-radius:6.5px;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s;touch-action:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none"
 >
   <div
     class="react-switch-bg"
@@ -50,7 +50,7 @@ exports[`Props matches snapshot with custom props 1`] = `
 
 exports[`Props matches snapshot with default props 1`] = `
 <div
-  style="position:relative;display:inline-block;opacity:1;border-radius:14px;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s;touch-action:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none"
+  style="position:relative;display:inline-block;text-align:left;opacity:1;border-radius:14px;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s;touch-action:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none"
 >
   <div
     class="react-switch-bg"
