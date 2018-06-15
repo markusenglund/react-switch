@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [3.0.3 - 2018-06-15]
+
+### Fixed
+
+- Fix glitch where the switch would disintegrate if it had a parent with text-align set to _center_ or _right_
+
 ## [3.0.2 - 2018-06-07]
 
 ### Changed
