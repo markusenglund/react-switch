@@ -52,7 +52,17 @@ class ReactSwitch extends Component {
       this.$checkedPos,
       Math.max(this.$uncheckedPos, newPos)
     );
-    this.setState({ $pos, $isDragging: true });
+    this.setState({ $pos: $pos });
+
+    if (checked) {
+      if ((startPos - $pos) > 10) {
+        this.setState({ $isDragging: true });
+      }
+    } else {
+      if (newPos > 10) {
+        this.setState({ $isDragging: true });
+      }
+    }
   }
 
   $onDragStop(event) {
