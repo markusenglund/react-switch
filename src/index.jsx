@@ -32,11 +32,19 @@ class ReactSwitch extends Component {
 
     this.$onClick = this.$onClick.bind(this);
     this.$onKeyDown = this.$onKeyDown.bind(this);
+
+    this.$onInputChange = this.$onInputChange.bind(this);
+
+    this.lastCheckedChanged = 0;
   }
 
   componentWillReceiveProps({ checked }) {
     const $pos = checked ? this.$checkedPos : this.$uncheckedPos;
     this.setState({ $pos });
+
+    if (checked !== this.props.checked) {
+      this.lastCheckedChanged = Date.now();
+    }
   }
 
   $onDragStart(clientX) {
@@ -141,6 +149,18 @@ class ReactSwitch extends Component {
     if ((event.keyCode === 32 || event.keyCode === 13) && !$isDragging) {
       event.preventDefault();
       onChange(!checked, event, id);
+    }
+  }
+
+  $onInputChange(event) {
+    /*
+      If we receive an onChange event and there is at least 50ms
+      since we last updated the component, we can be fairly sure that
+      it originated from an associated label
+    */
+    if (Date.now() - this.lastCheckedChanged > 50) {
+      const { onChange, id } = this.props;
+      onChange(event.target.checked, event, id);
     }
   }
 
@@ -265,6 +285,14 @@ class ReactSwitch extends Component {
         : "background-color 0.25s, transform 0.25s, box-shadow 0.15s"
     };
 
+    const inputStyle = {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      opacity: 0,
+      zIndex: -1
+    };
+
     return (
       <div className={className} style={rootStyle}>
         <div
@@ -279,7 +307,7 @@ class ReactSwitch extends Component {
         </div>
         <div
           className="react-switch-handle"
-          role="checkbox"
+          role="button"
           tabIndex={disabled ? null : 0}
           onMouseDown={disabled ? null : this.$onMouseDown}
           onTouchStart={disabled ? null : this.$onTouchStart}
@@ -290,11 +318,16 @@ class ReactSwitch extends Component {
           onFocus={() => this.setState({ $hasOutline: true })}
           onBlur={() => this.setState({ $hasOutline: false })}
           style={handleStyle}
+        />
+        <input
+          type="checkbox"
           id={id}
-          aria-checked={checked}
-          aria-disabled={disabled}
+          checked={checked}
+          disabled={disabled}
+          onChange={this.$onInputChange}
           aria-labelledby={ariaLabelledby}
           aria-label={ariaLabel}
+          style={inputStyle}
         />
       </div>
     );
