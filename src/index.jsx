@@ -35,6 +35,9 @@ class ReactSwitch extends Component {
 
     this.$onInputChange = this.$onInputChange.bind(this);
 
+    this.setHasOutline = this.setHasOutline.bind(this);
+    this.setHasNoOutline = this.setHasNoOutline.bind(this);
+
     this.lastCheckedChanged = 0;
   }
 
@@ -162,6 +165,13 @@ class ReactSwitch extends Component {
       const { onChange, id } = this.props;
       onChange(event.target.checked, event, id);
     }
+  }
+
+  setHasOutline() {
+    this.setState({ $hasOutline: true });
+  }
+  setHasNoOutline() {
+    this.setState({ $hasOutline: false });
   }
 
   render() {
@@ -315,8 +325,8 @@ class ReactSwitch extends Component {
           onTouchEnd={disabled ? null : this.$onTouchEnd}
           onTouchCancel={disabled ? null : this.$onTouchCancel}
           onKeyDown={this.$onKeyDown}
-          onFocus={() => this.setState({ $hasOutline: true })}
-          onBlur={() => this.setState({ $hasOutline: false })}
+          onFocus={this.setHasOutline}
+          onBlur={this.setHasNoOutline}
           style={handleStyle}
         />
         <input
