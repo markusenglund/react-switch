@@ -289,7 +289,7 @@ class ReactSwitch extends Component {
         </div>
         <div
           className="react-switch-handle"
-          role="checkbox"
+          role="switch"
           tabIndex={disabled ? null : 0}
           onMouseDown={disabled ? null : this.$onMouseDown}
           onTouchStart={disabled ? null : this.$onTouchStart}

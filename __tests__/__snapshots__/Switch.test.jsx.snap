@@ -42,7 +42,7 @@ exports[`Props matches snapshot with custom props 1`] = `
     aria-labelledby="baz"
     class="react-switch-handle"
     id="foo"
-    role="checkbox"
+    role="switch"
     style="height:9px;width:9px;background:#ffffff;cursor:default;display:inline-block;border-radius:50%;position:absolute;transform:translateX(26px);top:2px;outline:0;box-shadow:0px 1px 5px rgba(0, 0, 0, 0.6);border:0;-webkit-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;-moz-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s"
   />
 </div>
@@ -93,7 +93,7 @@ exports[`Props matches snapshot with default props 1`] = `
     aria-checked="false"
     aria-disabled="false"
     class="react-switch-handle"
-    role="checkbox"
+    role="switch"
     style="height:26px;width:26px;background:#ffffff;cursor:pointer;display:inline-block;border-radius:50%;position:absolute;transform:translateX(1px);top:1px;outline:0;border:0;-webkit-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;-moz-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s"
     tabindex="0"
   />
