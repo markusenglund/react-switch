@@ -40,7 +40,11 @@ class ReactSwitch extends Component {
   }
 
   $onDragStart(clientX) {
-    this.setState({ $startX: clientX, $hasOutline: true });
+    this.setState({
+      $startX: clientX,
+      $hasOutline: true,
+      $dragStartingTime: Date.now()
+    });
   }
 
   $onDrag(clientX) {
@@ -56,12 +60,18 @@ class ReactSwitch extends Component {
   }
 
   $onDragStop(event) {
-    const { $pos, $isDragging } = this.state;
+    const { $pos, $isDragging, $dragStartingTime } = this.state;
     const { checked, onChange, id } = this.props;
 
     // Simulate clicking the handle
     if (!$isDragging) {
       this.setState({ $hasOutline: false });
+      onChange(!checked, event, id);
+      return;
+    }
+    const timeSinceStart = Date.now() - $dragStartingTime;
+    if (timeSinceStart < 250) {
+      this.setState({ $isDragging: false, $hasOutline: false });
       onChange(!checked, event, id);
       return;
     }
