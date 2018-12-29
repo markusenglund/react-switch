@@ -71,40 +71,23 @@ class ReactSwitch extends Component {
     const { checked, onChange, id } = this.props;
 
     // Simulate clicking the handle
-    if (!$isDragging) {
-      this.setState({ $hasOutline: false });
-      onChange(!checked, event, id);
-      return;
-    }
     const timeSinceStart = Date.now() - $dragStartingTime;
-    if (timeSinceStart < 250) {
-      this.setState({ $isDragging: false, $hasOutline: false });
+    if (!$isDragging || timeSinceStart < 250) {
       onChange(!checked, event, id);
-      return;
-    }
-    if (checked) {
+    // Handle dragging from checked position
+    } else if (checked) {
       if ($pos > (this.$checkedPos + this.$uncheckedPos) / 2) {
-        this.setState({
-          $pos: this.$checkedPos,
-          $isDragging: false,
-          $hasOutline: false
-        });
-        return;
+        this.setState({ $pos: this.$checkedPos });
+      } else {
+        onChange(false, event, id);
       }
-      this.setState({ $isDragging: false, $hasOutline: false });
-      onChange(false, event, id);
-      return;
+    // Handle dragging from unchecked position
+    } else if ($pos < (this.$checkedPos + this.$uncheckedPos) / 2) {
+      this.setState({ $pos: this.$uncheckedPos });
+    } else {
+      onChange(true, event, id);
     }
-    if ($pos < (this.$checkedPos + this.$uncheckedPos) / 2) {
-      this.setState({
-        $pos: this.$uncheckedPos,
-        $isDragging: false,
-        $hasOutline: false
-      });
-      return;
-    }
-    this.setState({ $isDragging: false, $hasOutline: false });
-    onChange(true, event, id);
+    this.setState({ $hasOutline: false, $isDragging: false });
   }
 
   $onMouseDown(event) {
