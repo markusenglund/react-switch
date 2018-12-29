@@ -54,7 +54,7 @@ class ReactSwitch extends Component {
     const mousePos = startPos + clientX - $startX;
     // We need this check to fix a windows glitch where onDrag is triggered onMouseDown in some cases
     if (!$isDragging && clientX !== $startX) {
-      this.setState({ $isDragging: true })
+      this.setState({ $isDragging: true });
     }
     const newPos = Math.min(
       this.$checkedPos,
@@ -74,14 +74,14 @@ class ReactSwitch extends Component {
     const timeSinceStart = Date.now() - $dragStartingTime;
     if (!$isDragging || timeSinceStart < 250) {
       onChange(!checked, event, id);
-    // Handle dragging from checked position
+      // Handle dragging from checked position
     } else if (checked) {
       if ($pos > (this.$checkedPos + this.$uncheckedPos) / 2) {
         this.setState({ $pos: this.$checkedPos });
       } else {
         onChange(false, event, id);
       }
-    // Handle dragging from unchecked position
+      // Handle dragging from unchecked position
     } else if ($pos < (this.$checkedPos + this.$uncheckedPos) / 2) {
       this.setState({ $pos: this.$uncheckedPos });
     } else {
