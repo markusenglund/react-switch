@@ -48,15 +48,22 @@ class ReactSwitch extends Component {
   }
 
   $onDrag(clientX) {
-    const { $startX } = this.state;
+    const { $startX, $isDragging, $pos } = this.state;
     const { checked } = this.props;
     const startPos = checked ? this.$checkedPos : this.$uncheckedPos;
-    const newPos = startPos + clientX - $startX;
-    const $pos = Math.min(
+    const mousePos = startPos + clientX - $startX;
+    // We need this check to fix a windows glitch where onDrag is triggered onMouseDown in some cases
+    if (!$isDragging && clientX !== $startX) {
+      this.setState({ $isDragging: true })
+    }
+    const newPos = Math.min(
       this.$checkedPos,
-      Math.max(this.$uncheckedPos, newPos)
+      Math.max(this.$uncheckedPos, mousePos)
     );
-    this.setState({ $pos, $isDragging: true });
+    // Prevent unnecessary rerenders
+    if (newPos !== $pos) {
+      this.setState({ $pos: newPos });
+    }
   }
 
   $onDragStop(event) {
