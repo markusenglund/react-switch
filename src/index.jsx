@@ -29,14 +29,11 @@ class ReactSwitch extends Component {
     this.$onTouchMove = this.$onTouchMove.bind(this);
     this.$onTouchEnd = this.$onTouchEnd.bind(this);
     this.$onTouchCancel = this.$onTouchCancel.bind(this);
-    this.$planResetDragging = this.$planResetDragging.bind(this);
-    this.$resetDragging = this.$resetDragging.bind(this);
+    this.$onClick = this.$onClick.bind(this);
 
     this.$onInputChange = this.$onInputChange.bind(this);
-
     this.$setHasOutline = this.$setHasOutline.bind(this);
     this.$setHasNoOutline = this.$setHasNoOutline.bind(this);
-
     this.$getInputRef = this.$getInputRef.bind(this);
   }
 
@@ -46,6 +43,7 @@ class ReactSwitch extends Component {
   }
 
   $onDragStart(clientX) {
+    this.$inputRef.focus();
     this.setState({ $startX: clientX, $hasOutline: true });
   }
 
@@ -63,40 +61,28 @@ class ReactSwitch extends Component {
 
   $onDragStop(event) {
     const { $pos, $isDragging } = this.state;
+    const { onChange, checked, id } = this.props;
+    const halfwayCheckpoint = (this.$checkedPos + this.$uncheckedPos) / 2;
 
-    if ($isDragging) {
-      event.preventDefault();
-
-      const halfwayCheckpoint = (this.$checkedPos + this.$uncheckedPos) / 2;
-      const checked = $pos > halfwayCheckpoint;
-      this.setState({
-        $pos: checked ? this.$checkedPos : this.$uncheckedPos
-      });
-
-      if (event.target === this.$inputRef) {
-        this.$checkedStateFromDragging = checked;
+    if (!$isDragging) {
+      onChange(!checked, event, id);
+    } else if (checked) {
+      if ($pos > halfwayCheckpoint) {
+        this.setState({ $pos: this.$checkedPos });
+      } else {
+        onChange(false, event, id);
       }
-
-      if (checked !== this.props.checked) {
-        this.props.onChange(checked, event, this.props.id);
-      }
+    } else if ($pos < halfwayCheckpoint) {
+      this.setState({ $pos: this.$uncheckedPos });
+    } else {
+      onChange(true, event, id);
     }
 
     this.setState({ $isDragging: false, $hasOutline: false });
-
-    this.$planResetDragging();
-  }
-
-  $planResetDragging() {
-    clearTimeout(this.$resetDraggingTimeout);
-    this.$resetDraggingTimeout = setTimeout(this.$resetDragging, 5);
-  }
-
-  $resetDragging() {
-    this.$checkedStateFromDragging = null;
   }
 
   $onMouseDown(event) {
+    event.preventDefault();
     // Ignore right click and scroll
     if (typeof event.button === "number" && event.button !== 0) {
       return;
@@ -128,6 +114,7 @@ class ReactSwitch extends Component {
   }
 
   $onTouchEnd(event) {
+    event.preventDefault();
     this.$onDragStop(event);
   }
 
@@ -137,27 +124,29 @@ class ReactSwitch extends Component {
 
   $onInputChange(event) {
     const { onChange, id } = this.props;
-    let { checked } = event.target;
-
-    if (typeof this.$checkedStateFromDragging === "boolean") {
-      checked = this.$checkedStateFromDragging;
-      this.$resetDragging();
-    }
-
-    if (checked !== this.props.checked) {
-      onChange(checked, event, id);
-    }
+    const { checked } = event.target;
+    onChange(checked, event, id);
   }
 
   $setHasOutline() {
     this.setState({ $hasOutline: true });
   }
+
   $setHasNoOutline() {
     this.setState({ $hasOutline: false });
   }
 
   $getInputRef(el) {
     this.$inputRef = el;
+  }
+
+  $onClick(event) {
+    event.preventDefault();
+
+    const { checked, onChange, id } = this.props;
+    this.$inputRef.focus();
+    onChange(!checked, event, id);
+    this.setState({ $hasOutline: false });
   }
 
   render() {
@@ -262,6 +251,7 @@ class ReactSwitch extends Component {
         onHandleColor
       ),
       display: "inline-block",
+      cursor: disabled ? "default" : "pointer",
       borderRadius: "50%",
       position: "absolute",
       transform: `translateX(${$pos}px)`,
@@ -281,40 +271,45 @@ class ReactSwitch extends Component {
     };
 
     const inputStyle = {
-      WebkitAppearance: "none",
-      MozAppearance: "none",
-      appearance: "none",
+      border: 0,
+      clip: "rect(0 0 0 0)",
+      height: 1,
+      margin: -1,
+      overflow: "hidden",
+      padding: 0,
       position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      margin: 0,
-      border: "none",
-      opacity: 0,
-      cursor: disabled ? "default" : "pointer"
+      width: 1
     };
 
     return (
       <div className={className} style={rootStyle}>
-        <div className="react-switch-bg" style={backgroundStyle}>
+        <div
+          className="react-switch-bg"
+          style={backgroundStyle}
+          onClick={disabled ? null : this.$onClick}
+          onMouseDown={e => e.preventDefault()}
+        >
           {checkedIcon && <div style={checkedIconStyle}>{checkedIcon}</div>}
           {uncheckedIcon && (
             <div style={uncheckedIconStyle}>{uncheckedIcon}</div>
           )}
         </div>
-        <div className="react-switch-handle" style={handleStyle} />
+        <div
+          className="react-switch-handle"
+          style={handleStyle}
+          onClick={e => e.preventDefault()}
+          onMouseDown={disabled ? null : this.$onMouseDown}
+          onTouchStart={disabled ? null : this.$onTouchStart}
+          onTouchMove={disabled ? null : this.$onTouchMove}
+          onTouchEnd={disabled ? null : this.$onTouchEnd}
+          onTouchCancel={disabled ? null : this.$onTouchCancel}
+        />
         <input
           type="checkbox"
           id={id}
           checked={checked}
           disabled={disabled}
           tabIndex={disabled ? null : 0}
-          onMouseDown={disabled ? null : this.$onMouseDown}
-          onTouchStart={disabled ? null : this.$onTouchStart}
-          onTouchMove={disabled ? null : this.$onTouchMove}
-          onTouchEnd={disabled ? null : this.$onTouchEnd}
-          onTouchCancel={disabled ? null : this.$onTouchCancel}
           onFocus={this.$setHasOutline}
           onBlur={this.$setHasNoOutline}
           onChange={this.$onInputChange}
