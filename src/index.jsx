@@ -44,34 +44,49 @@ class ReactSwitch extends Component {
 
   $onDragStart(clientX) {
     this.$inputRef.focus();
-    this.setState({ $startX: clientX, $hasOutline: true });
+    this.setState({
+      $startX: clientX,
+      $hasOutline: true,
+      $dragStartingTime: Date.now()
+    });
   }
 
   $onDrag(clientX) {
-    const { $startX } = this.state;
+    const { $startX, $isDragging, $pos } = this.state;
     const { checked } = this.props;
     const startPos = checked ? this.$checkedPos : this.$uncheckedPos;
-    const newPos = startPos + clientX - $startX;
-    const $pos = Math.min(
+    const mousePos = startPos + clientX - $startX;
+    // We need this check to fix a windows glitch where onDrag is triggered onMouseDown in some cases
+    if (!$isDragging && clientX !== $startX) {
+      this.setState({ $isDragging: true });
+    }
+    const newPos = Math.min(
       this.$checkedPos,
-      Math.max(this.$uncheckedPos, newPos)
+      Math.max(this.$uncheckedPos, mousePos)
     );
-    this.setState({ $pos, $isDragging: true });
+    // Prevent unnecessary rerenders
+    if (newPos !== $pos) {
+      this.setState({ $pos: newPos });
+    }
   }
 
   $onDragStop(event) {
-    const { $pos, $isDragging } = this.state;
-    const { onChange, checked, id } = this.props;
+    const { $pos, $isDragging, $dragStartingTime } = this.state;
+    const { checked, onChange, id } = this.props;
     const halfwayCheckpoint = (this.$checkedPos + this.$uncheckedPos) / 2;
 
-    if (!$isDragging) {
+    // Simulate clicking the handle
+    const timeSinceStart = Date.now() - $dragStartingTime;
+    if (!$isDragging || timeSinceStart < 250) {
       onChange(!checked, event, id);
+      // Handle dragging from checked position
     } else if (checked) {
-      if ($pos > halfwayCheckpoint) {
+      if ($pos > halfwayCheckpoint / 2) {
         this.setState({ $pos: this.$checkedPos });
       } else {
         onChange(false, event, id);
       }
+      // Handle dragging from unchecked position
     } else if ($pos < halfwayCheckpoint) {
       this.setState({ $pos: this.$uncheckedPos });
     } else {
@@ -306,6 +321,7 @@ class ReactSwitch extends Component {
         />
         <input
           type="checkbox"
+          role="switch"
           id={id}
           checked={checked}
           disabled={disabled}
