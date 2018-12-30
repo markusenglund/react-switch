@@ -81,7 +81,7 @@ class ReactSwitch extends Component {
       onChange(!checked, event, id);
       // Handle dragging from checked position
     } else if (checked) {
-      if ($pos > halfwayCheckpoint / 2) {
+      if ($pos > halfwayCheckpoint) {
         this.setState({ $pos: this.$checkedPos });
       } else {
         onChange(false, event, id);
