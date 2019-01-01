@@ -35,6 +35,7 @@ class ReactSwitch extends Component {
     this.$setHasOutline = this.$setHasOutline.bind(this);
     this.$setHasNoOutline = this.$setHasNoOutline.bind(this);
     this.$getInputRef = this.$getInputRef.bind(this);
+    this.$onKeyDown = this.$onKeyDown.bind(this);
   }
 
   componentWillReceiveProps({ checked }) {
@@ -141,6 +142,16 @@ class ReactSwitch extends Component {
     const { onChange, id } = this.props;
     const { checked } = event.target;
     onChange(checked, event, id);
+    this.setState({ $hasOutline: false });
+  }
+
+  $onKeyDown(event) {
+    const { onChange, id, checked } = this.props;
+    const { $isDragging } = this.state;
+    if ((event.keyCode === 32 || event.keyCode === 13) && !$isDragging) {
+      event.preventDefault();
+      onChange(!checked, event, id);
+    }
   }
 
   $setHasOutline() {
@@ -329,6 +340,7 @@ class ReactSwitch extends Component {
           onFocus={this.$setHasOutline}
           onBlur={this.$setHasNoOutline}
           onChange={this.$onInputChange}
+          onKeyDown={this.$onKeyDown}
           aria-labelledby={ariaLabelledby}
           aria-label={ariaLabel}
           style={inputStyle}
