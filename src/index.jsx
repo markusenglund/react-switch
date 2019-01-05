@@ -20,7 +20,7 @@ class ReactSwitch extends Component {
     this.state = {
       $pos: checked ? this.$checkedPos : this.$uncheckedPos
     };
-    this.$lastChangedAt = 0;
+    this.$lastDragAt = 0;
 
     this.$onMouseDown = this.$onMouseDown.bind(this);
     this.$onMouseMove = this.$onMouseMove.bind(this);
@@ -97,6 +97,7 @@ class ReactSwitch extends Component {
     }
 
     this.setState({ $isDragging: false, $hasOutline: false });
+    this.$lastDragAt = Date.now();
   }
 
   $onMouseDown(event) {
@@ -141,8 +142,10 @@ class ReactSwitch extends Component {
   }
 
   $onInputChange(event) {
-    this.$onChange(event);
-    this.setState({ $hasOutline: false });
+    if (Date.now() - this.$lastDragAt > 50) {
+      this.$onChange(event);
+      this.setState({ $hasOutline: false });
+    }
   }
 
   $onKeyDown(event) {
@@ -174,12 +177,7 @@ class ReactSwitch extends Component {
 
   $onChange(event) {
     const { checked, onChange, id } = this.props;
-    if (Date.now() - this.$lastChangedAt > 50) {
-      onChange(!checked, event, id);
-      this.$lastChangedAt = Date.now();
-    } else {
-      this.setState({ $pos: checked ? this.$checkedPos : this.$uncheckedPos });
-    }
+    onChange(!checked, event, id);
   }
 
   render() {
