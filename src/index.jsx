@@ -174,9 +174,7 @@ class ReactSwitch extends Component {
 
   $onChange(event) {
     const { checked, onChange, id } = this.props;
-    console.log("onchange");
     if (Date.now() - this.$lastChangedAt > 50) {
-      console.log("helo??");
       onChange(!checked, event, id);
       this.$lastChangedAt = Date.now();
     } else {
