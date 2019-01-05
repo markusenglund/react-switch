@@ -25,6 +25,8 @@
     "object-curly-newline": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "function-paren-newline": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "react/destructuring-assignment": "off",
+    "import/extensions": "off"
   }
 }
