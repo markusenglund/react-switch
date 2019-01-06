@@ -29,12 +29,11 @@ class ReactSwitch extends Component {
     this.$onTouchStart = this.$onTouchStart.bind(this);
     this.$onTouchMove = this.$onTouchMove.bind(this);
     this.$onTouchEnd = this.$onTouchEnd.bind(this);
-    this.$onTouchCancel = this.$onTouchCancel.bind(this);
     this.$onClick = this.$onClick.bind(this);
 
     this.$onInputChange = this.$onInputChange.bind(this);
     this.$setHasOutline = this.$setHasOutline.bind(this);
-    this.$setHasNoOutline = this.$setHasNoOutline.bind(this);
+    this.$unsetHasOutline = this.$unsetHasOutline.bind(this);
     this.$getInputRef = this.$getInputRef.bind(this);
     this.$onKeyUp = this.$onKeyUp.bind(this);
   }
@@ -137,10 +136,6 @@ class ReactSwitch extends Component {
     this.$onDragStop(event);
   }
 
-  $onTouchCancel() {
-    this.setState({ $hasOutline: false });
-  }
-
   $onInputChange(event) {
     if (Date.now() - this.$lastDragAt > 50) {
       this.$onChange(event);
@@ -160,7 +155,7 @@ class ReactSwitch extends Component {
     this.setState({ $hasOutline: true });
   }
 
-  $setHasNoOutline() {
+  $unsetHasOutline() {
     this.setState({ $hasOutline: false });
   }
 
@@ -333,7 +328,7 @@ class ReactSwitch extends Component {
           onTouchStart={disabled ? null : this.$onTouchStart}
           onTouchMove={disabled ? null : this.$onTouchMove}
           onTouchEnd={disabled ? null : this.$onTouchEnd}
-          onTouchCancel={disabled ? null : this.$onTouchCancel}
+          onTouchCancel={disabled ? null : this.$unsetHasOutline}
         />
         <input
           type="checkbox"
@@ -343,7 +338,7 @@ class ReactSwitch extends Component {
           disabled={disabled}
           tabIndex={disabled ? null : 0}
           onFocus={this.$setHasOutline}
-          onBlur={this.$setHasNoOutline}
+          onBlur={this.$unsetHasOutline}
           onChange={this.$onInputChange}
           onKeyUp={this.$onKeyUp}
           aria-labelledby={ariaLabelledby}
