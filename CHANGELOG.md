@@ -5,12 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [4.0.0 - 2018-12-29]
+## [4.0.0 - 2019-01-06]
+
 ### Changed
+
+- The switch now includes a hidden nested checkbox input, which creates an expience more akin to a normal checkbox - clicking on the label will now cause a toggle, and the VoiceOver screen reader will now reliably read the label.
 - The switch will now always fire the onChange event if the dragStop event occurs <250ms after the dragStart event since that feels like a click.
 - Aria role changed from "checkbox" to "switch".
 
 ### Fixed
+
 - Fix glitch where the clicking the handle wouldn't trigger onChange event when browser window was out of focus on Windows.
 
 ## [3.0.3 - 2018-06-15]
@@ -50,7 +54,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 1.  Use rollup to bundle the different source files.
 2.  Use buble instead of babel for transpiling since it produces tinier output.
 3.  Remove prop-types from production mode. Prop-types are still there in development mode so developer experience is unchanged.
-4.  Mangle property names with uglify by putting a $-sign at the start of the properties that are safe to mangle.
+4.  Mangle property names with uglify by putting a \$-sign at the start of the properties that are safe to mangle.
 
 ### Fixed
 
