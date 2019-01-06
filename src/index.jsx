@@ -336,7 +336,6 @@ class ReactSwitch extends Component {
           id={id}
           checked={checked}
           disabled={disabled}
-          tabIndex={disabled ? null : 0}
           onFocus={this.$setHasOutline}
           onBlur={this.$unsetHasOutline}
           onChange={this.$onInputChange}
