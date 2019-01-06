@@ -137,6 +137,8 @@ class ReactSwitch extends Component {
   }
 
   $onInputChange(event) {
+    // This condition is unfortunately needed in some browsers where the input's change event might get triggered
+    // right after the dragstop event is triggered (occurs when dropping over a label element)
     if (Date.now() - this.$lastDragAt > 50) {
       this.$onChange(event);
       this.setState({ $hasOutline: false });
@@ -144,6 +146,8 @@ class ReactSwitch extends Component {
   }
 
   $onKeyUp(event) {
+    // This function isn't really need (it's basically the default behaviour). It only exists so that
+    // we can have different outline logic for key events and clicking on the label.
     const { $isDragging } = this.state;
     if ((event.keyCode === 32 || event.keyCode === 13) && !$isDragging) {
       event.preventDefault();
