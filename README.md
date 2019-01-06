@@ -9,8 +9,8 @@ A draggable toggle-switch component for React.
 <img src="https://media.giphy.com/media/3ov9k7TupiaveDlQ5O/giphy.gif" />
 
 - **Draggable** with the mouse or with a touch screen.
-- **Accessible** to visually impaired users and those who can't use a mouse.
 - **Customizable** - Easy to customize size, color and more.
+- **Accessible** to visually impaired users and those who can't use a mouse.
 - **Small package size** - 2 kB gzipped.
 - **It Just Works** - Sensible default styling. Uses inline styles, so no need to import a separate css file.
 
@@ -58,8 +58,7 @@ class SwitchExample extends Component {
 
 ### What's the deal with the label tag?
 
-The Switch component in the above example is nested inside a label tag. The label tag has an htmlFor-value that is identical to the id-value that is passed to the Switch ("normal-switch").
-These features are there to make the toggle-switch accessible to people with reduced sight who use screen readers. It will make screen readers read out the label text when the toggle-switch is selected. If you instead just put some text next to the switch, the screen reader will just read out "checkbox - not checked" or something like that and the user will have no idea what it is for. (The switch is actually a checkbox under the hood.)
+The Switch component in the above example is nested inside a label tag. The label tag has an htmlFor-value that is identical to the id-value that is passed to the Switch ("normal-switch"). This is to make sure that users can click the label to toggle the switch, and that the label text is read out to people with reduced sight who use screen readers. If one would theoretically just put some text next to the switch, the screen reader will just read out "switch off" or something like that and the user will have no idea what it is for.
 
 It's not strictly necessary to both nest the switch inside the label AND use the htmlFor prop to link the label and the switch. It should be enough to do just one. However, using both will ["cover 100% of assistive devices"](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md) and free you from annoying eslint errors.
 
@@ -97,7 +96,7 @@ Examples of **invalid** colors: 'red', 'rgb(0,0,0)'
 
 ## Development
 
-You're welcome to contribute to react-switch.
+You're welcome to contribute to react-switch. Keep in mind that big changes have to be thoroughly tested on lots of different browsers and devices before they can be merged.
 
 To set up the project:
 
