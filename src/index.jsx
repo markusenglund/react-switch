@@ -297,7 +297,7 @@ class ReactSwitch extends Component {
     };
 
     return (
-      <div className={className} style={rootStyle}>
+      <div className={className} style={rootStyle} onClick={e => e.stopPropagation()}>
         <div
           className="react-switch-bg"
           style={backgroundStyle}
