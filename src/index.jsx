@@ -21,6 +21,7 @@ class ReactSwitch extends Component {
       $pos: checked ? this.$checkedPos : this.$uncheckedPos
     };
     this.$lastDragAt = 0;
+    this.$lastKeyUpAt = 0;
 
     this.$onMouseDown = this.$onMouseDown.bind(this);
     this.$onMouseMove = this.$onMouseMove.bind(this);
@@ -32,10 +33,10 @@ class ReactSwitch extends Component {
     this.$onClick = this.$onClick.bind(this);
 
     this.$onInputChange = this.$onInputChange.bind(this);
+    this.$onKeyUp = this.$onKeyUp.bind(this);
     this.$setHasOutline = this.$setHasOutline.bind(this);
     this.$unsetHasOutline = this.$unsetHasOutline.bind(this);
     this.$getInputRef = this.$getInputRef.bind(this);
-    this.$onKeyUp = this.$onKeyUp.bind(this);
   }
 
   componentWillReceiveProps({ checked }) {
@@ -141,18 +142,15 @@ class ReactSwitch extends Component {
     // right after the dragstop event is triggered (occurs when dropping over a label element)
     if (Date.now() - this.$lastDragAt > 50) {
       this.$onChange(event);
-      this.setState({ $hasOutline: false });
+      // Prevent clicking label, but not key activation from setting outline to true - yes, this is absurd
+      if (Date.now() - this.$lastKeyUpAt > 50) {
+        this.setState({ $hasOutline: false });
+      }
     }
   }
 
-  $onKeyUp(event) {
-    // This function isn't really need (it's basically the default behaviour). It only exists so that
-    // we can have different outline logic for key events and clicking on the label.
-    const { $isDragging } = this.state;
-    if ((event.keyCode === 32 || event.keyCode === 13) && !$isDragging) {
-      event.preventDefault();
-      this.$onChange(event);
-    }
+  $onKeyUp() {
+    this.$lastKeyUpAt = Date.now();
   }
 
   $setHasOutline() {
@@ -342,8 +340,8 @@ class ReactSwitch extends Component {
           disabled={disabled}
           onFocus={this.$setHasOutline}
           onBlur={this.$unsetHasOutline}
-          onChange={this.$onInputChange}
           onKeyUp={this.$onKeyUp}
+          onChange={this.$onInputChange}
           aria-labelledby={ariaLabelledby}
           aria-label={ariaLabel}
           style={inputStyle}
