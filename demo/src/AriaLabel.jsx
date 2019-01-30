@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Switch from "../../";
+import Switch from "../..";
 
 export default class BasicExample extends Component {
   constructor() {
@@ -16,6 +16,10 @@ export default class BasicExample extends Component {
     return (
       <div className="example">
         <h2>Switch with invisible label only readable by screen readers</h2>
+        <p>
+          If the meaning of the switch is self-evident to sighted users but not
+          people who use screen readers, you can use the aria-label attribute.
+        </p>
         <Switch
           className="react-switch"
           onChange={this.handleChange}

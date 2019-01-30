@@ -20,6 +20,8 @@ class ReactSwitch extends Component {
     this.state = {
       $pos: checked ? this.$checkedPos : this.$uncheckedPos
     };
+    this.$lastDragAt = 0;
+    this.$lastKeyUpAt = 0;
 
     this.$onMouseDown = this.$onMouseDown.bind(this);
     this.$onMouseMove = this.$onMouseMove.bind(this);
@@ -28,12 +30,12 @@ class ReactSwitch extends Component {
     this.$onTouchStart = this.$onTouchStart.bind(this);
     this.$onTouchMove = this.$onTouchMove.bind(this);
     this.$onTouchEnd = this.$onTouchEnd.bind(this);
-    this.$onTouchCancel = this.$onTouchCancel.bind(this);
     this.$onClick = this.$onClick.bind(this);
 
     this.$onInputChange = this.$onInputChange.bind(this);
+    this.$onKeyUp = this.$onKeyUp.bind(this);
     this.$setHasOutline = this.$setHasOutline.bind(this);
-    this.$setHasNoOutline = this.$setHasNoOutline.bind(this);
+    this.$unsetHasOutline = this.$unsetHasOutline.bind(this);
     this.$getInputRef = this.$getInputRef.bind(this);
   }
 
@@ -72,28 +74,30 @@ class ReactSwitch extends Component {
 
   $onDragStop(event) {
     const { $pos, $isDragging, $dragStartingTime } = this.state;
-    const { checked, onChange, id } = this.props;
+    const { checked } = this.props;
     const halfwayCheckpoint = (this.$checkedPos + this.$uncheckedPos) / 2;
 
     // Simulate clicking the handle
     const timeSinceStart = Date.now() - $dragStartingTime;
     if (!$isDragging || timeSinceStart < 250) {
-      onChange(!checked, event, id);
+      this.$onChange(event);
+
       // Handle dragging from checked position
     } else if (checked) {
       if ($pos > halfwayCheckpoint) {
         this.setState({ $pos: this.$checkedPos });
       } else {
-        onChange(false, event, id);
+        this.$onChange(event);
       }
       // Handle dragging from unchecked position
     } else if ($pos < halfwayCheckpoint) {
       this.setState({ $pos: this.$uncheckedPos });
     } else {
-      onChange(true, event, id);
+      this.$onChange(event);
     }
 
     this.setState({ $isDragging: false, $hasOutline: false });
+    this.$lastDragAt = Date.now();
   }
 
   $onMouseDown(event) {
@@ -133,21 +137,27 @@ class ReactSwitch extends Component {
     this.$onDragStop(event);
   }
 
-  $onTouchCancel() {
-    this.setState({ $hasOutline: false });
+  $onInputChange(event) {
+    // This condition is unfortunately needed in some browsers where the input's change event might get triggered
+    // right after the dragstop event is triggered (occurs when dropping over a label element)
+    if (Date.now() - this.$lastDragAt > 50) {
+      this.$onChange(event);
+      // Prevent clicking label, but not key activation from setting outline to true - yes, this is absurd
+      if (Date.now() - this.$lastKeyUpAt > 50) {
+        this.setState({ $hasOutline: false });
+      }
+    }
   }
 
-  $onInputChange(event) {
-    const { onChange, id } = this.props;
-    const { checked } = event.target;
-    onChange(checked, event, id);
+  $onKeyUp() {
+    this.$lastKeyUpAt = Date.now();
   }
 
   $setHasOutline() {
     this.setState({ $hasOutline: true });
   }
 
-  $setHasNoOutline() {
+  $unsetHasOutline() {
     this.setState({ $hasOutline: false });
   }
 
@@ -157,11 +167,14 @@ class ReactSwitch extends Component {
 
   $onClick(event) {
     event.preventDefault();
-
-    const { checked, onChange, id } = this.props;
     this.$inputRef.focus();
-    onChange(!checked, event, id);
+    this.$onChange(event);
     this.setState({ $hasOutline: false });
+  }
+
+  $onChange(event) {
+    const { checked, onChange, id } = this.props;
+    onChange(!checked, event, id);
   }
 
   render() {
@@ -318,7 +331,7 @@ class ReactSwitch extends Component {
           onTouchStart={disabled ? null : this.$onTouchStart}
           onTouchMove={disabled ? null : this.$onTouchMove}
           onTouchEnd={disabled ? null : this.$onTouchEnd}
-          onTouchCancel={disabled ? null : this.$onTouchCancel}
+          onTouchCancel={disabled ? null : this.$unsetHasOutline}
         />
         <input
           type="checkbox"
@@ -328,7 +341,8 @@ class ReactSwitch extends Component {
           disabled={disabled}
           tabIndex={disabled ? null : tabIndex}
           onFocus={this.$setHasOutline}
-          onBlur={this.$setHasNoOutline}
+          onBlur={this.$unsetHasOutline}
+          onKeyUp={this.$onKeyUp}
           onChange={this.$onInputChange}
           aria-labelledby={ariaLabelledby}
           aria-label={ariaLabel}
