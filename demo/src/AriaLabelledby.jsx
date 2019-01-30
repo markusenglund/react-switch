@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Switch from "../../";
+import Switch from "../..";
 
 export default class BasicExample extends Component {
   constructor() {
@@ -17,7 +17,8 @@ export default class BasicExample extends Component {
       <div className="example">
         <h2>Switch using aria-labelledby</h2>
         <p id="neat-label">
-          Use this if you do not want your label to be a label element
+          Use this if you do not want clicking on the label to cause the switch
+          to toggle.
         </p>
         <Switch
           className="react-switch"
@@ -27,7 +28,7 @@ export default class BasicExample extends Component {
         />
         <pre>
           {`
-<p id="neat-label">Use this if you do not want your label to be a label element</p>
+<p id="neat-label">Use this if you do not want clicking on the label to cause the switch to toggle.</p>
 <Switch
   className="react-switch"
   onChange={this.handleChange}

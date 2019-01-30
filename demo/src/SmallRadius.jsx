@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Switch from "../../";
+import Switch from "../..";
 
 export default class SmallRadiusSwitch extends Component {
   constructor() {

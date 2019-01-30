@@ -1,12 +1,13 @@
 {
   "name": "react-switch",
-  "version": "3.0.4",
+  "version": "4.0.0",
   "description": "Draggable toggle-switch component for react",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm run lib:dev\" \"npm run demo:dev\"",
-    "build": "npm run lib:prod && npm run demo:prod",
-    "lib:dev": "rollup -c -w -o dist/react-switch.dev.js",
+    "dev": "concurrently \"npm run lib:watch\" \"npm run demo:dev\"",
+    "build": "npm run lib:prod && npm run lib:dev && npm run demo:prod",
+    "lib:watch": "rollup -c -w -o dist/react-switch.dev.js",
+    "lib:dev": "rollup -c -o dist/react-switch.dev.js",
     "lib:prod": "NODE_ENV=production rollup -c -o dist/react-switch.min.js",
     "demo:dev": "webpack-dev-server --mode development",
     "demo:prod": "webpack --mode production",
