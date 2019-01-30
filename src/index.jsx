@@ -195,7 +195,7 @@ class ReactSwitch extends Component {
       id,
       "aria-labelledby": ariaLabelledby,
       "aria-label": ariaLabel,
-      tabIndex,
+      tabIndex
     } = this.props;
 
     const { $pos, $isDragging, $hasOutline } = this.state;
@@ -339,7 +339,7 @@ class ReactSwitch extends Component {
           id={id}
           checked={checked}
           disabled={disabled}
-          tabIndex={disabled ? null : tabIndex}
+          tabIndex={tabIndex}
           onFocus={this.$setHasOutline}
           onBlur={this.$unsetHasOutline}
           onKeyUp={this.$onKeyUp}
@@ -370,9 +370,9 @@ ReactSwitch.propTypes = {
   width: PropTypes.number,
   className: PropTypes.string,
   id: PropTypes.string,
+  tabIndex: PropTypes.number,
   "aria-labelledby": PropTypes.string,
-  "aria-label": PropTypes.string,
-  tabIndex: PropTypes.oneOf([-1, 0])
+  "aria-label": PropTypes.string
 };
 
 ReactSwitch.defaultProps = {
@@ -386,8 +386,7 @@ ReactSwitch.defaultProps = {
   boxShadow: null,
   activeBoxShadow: "0 0 2px 3px #3bf",
   height: 28,
-  width: 56,
-  tabIndex: 0
+  width: 56
 };
 
 export default ReactSwitch;

@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [4.0.0-beta.0 - 2019-01-29]
+## [4.0.0 - 2019-01-30]
 
 ### Changed
 
@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - The switch will now always fire the onChange event if the dragStop event occurs <250ms after the dragStart event since that feels like a click.
 - Aria role changed from "checkbox" to "switch".
 - Pressing enter no longer activates the switch (spacebar still does)
+
+### Added
+
+- Add new tabIndex prop
 
 ### Fixed
 
