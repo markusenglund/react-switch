@@ -16,7 +16,7 @@ A draggable toggle-switch component for React.
 
 ## Demo
 
-[Take a look at the demo](https://markusenglund.github.io/react-switch/)
+[Take a look at the demo](https://react-switch.netlify.com/)
 
 ## Installation
 
