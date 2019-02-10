@@ -193,6 +193,7 @@ class ReactSwitch extends Component {
       height,
       width,
       id,
+      name,
       "aria-labelledby": ariaLabelledby,
       "aria-label": ariaLabel,
       tabIndex
@@ -337,6 +338,7 @@ class ReactSwitch extends Component {
           type="checkbox"
           role="switch"
           id={id}
+          name={name}
           checked={checked}
           disabled={disabled}
           tabIndex={tabIndex}
