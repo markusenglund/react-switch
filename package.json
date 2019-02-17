@@ -11,7 +11,6 @@
     "lib:prod": "NODE_ENV=production rollup -c -o dist/react-switch.min.js",
     "demo:dev": "webpack-dev-server --mode development",
     "demo:prod": "webpack --mode production",
-    "deploy-demo": "npm run test && npm run build && git subtree push --prefix demo/dist origin gh-pages",
     "format": "prettier --write '**/*.{js,jsx,json}'",
     "lint": "eslint --ext .js,.jsx src/ demo/src",
     "test": "jest",
