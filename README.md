@@ -43,13 +43,9 @@ class SwitchExample extends Component {
 
   render() {
     return (
-      <label htmlFor="normal-switch">
+      <label>
         <span>Switch with default style</span>
-        <Switch
-          onChange={this.handleChange}
-          checked={this.state.checked}
-          id="normal-switch"
-        />
+        <Switch onChange={this.handleChange} checked={this.state.checked} />
       </label>
     );
   }
@@ -58,11 +54,9 @@ class SwitchExample extends Component {
 
 ### What's the deal with the label tag?
 
-The Switch component in the above example is nested inside a label tag. The label tag has an htmlFor-value that is identical to the id-value that is passed to the Switch ("normal-switch"). This is to make sure that users can click the label to toggle the switch, and that the label text is read out to people with reduced sight who use screen readers. If one would theoretically just put some text next to the switch, the screen reader will just read out "switch off" or something like that and the user will have no idea what it is for.
+The Switch component in the above example is nested inside a label tag. This makes sure that the label text is read out to people with reduced sight who use screen readers and enables users to click on the text to toggle the switch. If you would only put some text next to the switch but not inside a `label` element, the screen reader will just read out "switch off" and the user will have no idea what it is for.
 
-It's not strictly necessary to both nest the switch inside the label AND use the htmlFor prop to link the label and the switch. It should be enough to do just one. However, using both will ["cover 100% of assistive devices"](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md) and free you from annoying eslint errors.
-
-Alternatively, you can use the aria-labelledby or aria-label props to give the switch a label. You can see examples of this at the bottom of the [demo page](https://markusenglund.github.io/react-switch/).
+If you don't want to nest the switch inside a label, you can use the `htmlFor` attribute on the label-element and set it to the same value as the `id` of the switch. Alternatively, you can use the `aria-labelledby` or `aria-label` props to give the switch a label. You can see examples of this at the bottom of the [demo page](https://react-switch.netlify.com/).
 
 ## API
 

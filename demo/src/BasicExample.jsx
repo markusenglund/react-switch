@@ -16,13 +16,12 @@ export default class BasicExample extends Component {
     return (
       <div className="example">
         <h2>Simple usage</h2>
-        <label htmlFor="normal-switch">
+        <label>
           <span>Switch with default style</span>
           <Switch
             onChange={this.handleChange}
             checked={this.state.checked}
             className="react-switch"
-            id="normal-switch"
           />
         </label>
         <p>
@@ -45,13 +44,12 @@ export default class BasicExample extends Component {
     return (
       <div className="example">
         <h2>Simple usage</h2>
-        <label htmlFor="normal-switch">
+        <label>
           <span>Switch with default style</span>
           <Switch
             onChange={this.handleChange}
             checked={this.state.checked}
             className="react-switch"
-            id="normal-switch"
           />
         </label>
         <p>The switch is <span>{this.state.checked ? 'on' : 'off'}</span>.</p>
