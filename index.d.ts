@@ -120,6 +120,20 @@ export interface ReactSwitchProps {
   id?: string;
 
   /**
+   * The name of the embedded checkbox.
+   *
+   * Defaults to undefined.
+   */
+  name?: string;
+
+  /**
+   * The components place in the tab order.
+   *
+   * Defaults to 0.
+   */
+  tabIndex?: number;
+
+  /**
    * The aria-labelledby attribute of the embedded checkbox. This should be the same as the id of the switch's label.
    *
    * Defaults to undefined.
@@ -132,13 +146,6 @@ export interface ReactSwitchProps {
    * Defaults to undefined.
    */
   ariaLabel?: string;
-
-  /**
-   * The components place in the tab order.
-   *
-   * Defaults to 0.
-   */
-  tabIndex?: number;
 }
 
 declare class ReactSwitch extends React.Component<ReactSwitchProps> {}

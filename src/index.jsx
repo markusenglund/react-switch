@@ -372,6 +372,7 @@ ReactSwitch.propTypes = {
   width: PropTypes.number,
   className: PropTypes.string,
   id: PropTypes.string,
+  name: PropTypes.string,
   tabIndex: PropTypes.number,
   "aria-labelledby": PropTypes.string,
   "aria-label": PropTypes.string
