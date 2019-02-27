@@ -10,8 +10,10 @@ import hexColorPropType from "./hexColorPropType";
 class ReactSwitch extends Component {
   constructor(props) {
     super(props);
-    const { height, width, handleDiameter, checked } = props;
+    const { height, width, handleDiameter, checked, backgroundBorderStyle, disableBackground } = props;
     this.$handleDiameter = handleDiameter || height - 2;
+    this.$backgroundBorderStyle = backgroundBorderStyle || "none";
+    this.$disableBackground = disableBackground || false;
     this.$checkedPos = Math.max(
       width - height,
       width - (height + this.$handleDiameter) / 2
@@ -223,7 +225,15 @@ class ReactSwitch extends Component {
       width,
       margin: Math.max(0, (this.$handleDiameter - height) / 2),
       position: "relative",
-      background: getBackgroundColor(
+      background: (this.$disableBackground === false) ? getBackgroundColor(
+        $pos,
+        this.$checkedPos,
+        this.$uncheckedPos,
+        offColor,
+        onColor
+      ) : "transparent",
+      border: this.$backgroundBorderStyle,
+      borderColor: getBackgroundColor(
         $pos,
         this.$checkedPos,
         this.$uncheckedPos,
@@ -231,6 +241,7 @@ class ReactSwitch extends Component {
         onColor
       ),
       borderRadius: height / 2,
+      boxSizing: "border-box",
       cursor: disabled ? "default" : "pointer",
       WebkitTransition: $isDragging ? null : "background 0.25s",
       MozTransition: $isDragging ? null : "background 0.25s",

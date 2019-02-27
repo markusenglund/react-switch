@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import "./styles.css";
 import BasicExample from "./BasicExample";
+import OutlineExample from "./OutlineExample";
 import MaterialDesign from "./MaterialDesign";
 import SmallRadius from "./SmallRadius";
 import CustomIcons from "./CustomIcons";
@@ -14,6 +15,7 @@ function Examples() {
     <div id="examples">
       <h1>React Switch</h1>
       <BasicExample />
+      <OutlineExample />
       <MaterialDesign />
       <SmallRadius />
       <CustomIcons />
