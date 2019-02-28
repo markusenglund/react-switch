@@ -12,7 +12,7 @@ class ReactSwitch extends Component {
     super(props);
     const { height, width, handleDiameter, checked, backgroundBorderStyle, disableBackground } = props;
     this.$handleDiameter = handleDiameter || height - 2;
-    this.$backgroundBorderStyle = backgroundBorderStyle || "none";
+    this.$backgroundBorderStyle = backgroundBorderStyle || null;
     this.$disableBackground = disableBackground || false;
     this.$checkedPos = Math.max(
       width - height,
@@ -232,21 +232,26 @@ class ReactSwitch extends Component {
         offColor,
         onColor
       ) : "transparent",
-      border: this.$backgroundBorderStyle,
-      borderColor: getBackgroundColor(
-        $pos,
-        this.$checkedPos,
-        this.$uncheckedPos,
-        offColor,
-        onColor
-      ),
+      
       borderRadius: height / 2,
-      boxSizing: "border-box",
       cursor: disabled ? "default" : "pointer",
       WebkitTransition: $isDragging ? null : "background 0.25s",
       MozTransition: $isDragging ? null : "background 0.25s",
       transition: $isDragging ? null : "background 0.25s"
     };
+    // apply backgroundBorderStyle
+    if(this.$backgroundBorderStyle !== null) {
+      backgroundStyle.border = this.$backgroundBorderStyle;
+      backgroundStyle.boxSizing = "border-box";
+      backgroundStyle.borderColor = getBackgroundColor(
+        $pos,
+        this.$checkedPos,
+        this.$uncheckedPos,
+        offColor,
+        onColor
+      )
+    }
+        
 
     const checkedIconStyle = {
       height,
