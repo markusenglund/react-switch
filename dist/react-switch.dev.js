@@ -126,7 +126,7 @@ var ReactSwitch = /*@__PURE__*/(function (Component) {
     var backgroundBorderStyle = props.backgroundBorderStyle;
     var disableBackground = props.disableBackground;
     this.$handleDiameter = handleDiameter || height - 2;
-    this.$backgroundBorderStyle = backgroundBorderStyle || "none";
+    this.$backgroundBorderStyle = backgroundBorderStyle || null;
     this.$disableBackground = disableBackground || false;
     this.$checkedPos = Math.max(
       width - height,
@@ -365,21 +365,26 @@ var ReactSwitch = /*@__PURE__*/(function (Component) {
         offColor,
         onColor
       ) : "transparent",
-      border: this.$backgroundBorderStyle,
-      borderColor: getBackgroundColor(
-        $pos,
-        this.$checkedPos,
-        this.$uncheckedPos,
-        offColor,
-        onColor
-      ),
+      
       borderRadius: height / 2,
-      boxSizing: "border-box",
       cursor: disabled ? "default" : "pointer",
       WebkitTransition: $isDragging ? null : "background 0.25s",
       MozTransition: $isDragging ? null : "background 0.25s",
       transition: $isDragging ? null : "background 0.25s"
     };
+    // apply backgroundBorderStyle
+    if(this.$backgroundBorderStyle !== null) {
+      backgroundStyle.border = this.$backgroundBorderStyle;
+      backgroundStyle.boxSizing = "border-box";
+      backgroundStyle.borderColor = getBackgroundColor(
+        $pos,
+        this.$checkedPos,
+        this.$uncheckedPos,
+        offColor,
+        onColor
+      );
+    }
+        
 
     var checkedIconStyle = {
       height: height,
