@@ -15,11 +15,11 @@ function Examples() {
     <div id="examples">
       <h1>React Switch</h1>
       <BasicExample />
-      <OutlineExample />
       <MaterialDesign />
       <SmallRadius />
       <CustomIcons />
       <Disabled />
+      <OutlineExample />
       <AriaLabelledby />
       <AriaLabel />
       <p>
