@@ -39,9 +39,13 @@ class ReactSwitch extends Component {
     this.$getInputRef = this.$getInputRef.bind(this);
   }
 
-  componentWillReceiveProps({ checked }) {
-    const $pos = checked ? this.$checkedPos : this.$uncheckedPos;
-    this.setState({ $pos });
+  componentDidUpdate(prevProps) {
+    if (prevProps.checked === this.props.checked) {
+      return;
+    }
+
+    const $pos = this.props.checked ? this.$checkedPos : this.$uncheckedPos;
+    this.setState({ $pos });    
   }
 
   $onDragStart(clientX) {
