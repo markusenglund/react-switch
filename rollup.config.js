@@ -9,7 +9,7 @@ const config = {
     interop: false,
     strict: false
   },
-  plugins: [buble()],
+  plugins: [buble({objectAssign: true})],
   external: ["react", "prop-types"]
 };
 

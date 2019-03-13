@@ -196,7 +196,9 @@ class ReactSwitch extends Component {
       name,
       "aria-labelledby": ariaLabelledby,
       "aria-label": ariaLabel,
-      tabIndex
+      tabIndex,
+      handleDiameter, // just to filter this prop out
+      ...rest
     } = this.props;
 
     const { $pos, $isDragging, $hasOutline } = this.state;
@@ -350,6 +352,7 @@ class ReactSwitch extends Component {
           aria-label={ariaLabel}
           style={inputStyle}
           ref={this.$getInputRef}
+          {...rest}
         />
       </div>
     );

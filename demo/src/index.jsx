@@ -8,6 +8,7 @@ import CustomIcons from "./CustomIcons";
 import Disabled from "./Disabled";
 import AriaLabelledby from "./AriaLabelledby";
 import AriaLabel from "./AriaLabel";
+import PassThroughProps from "./PassThroughProps";
 
 function Examples() {
   return (
@@ -20,6 +21,7 @@ function Examples() {
       <Disabled />
       <AriaLabelledby />
       <AriaLabel />
+      <PassThroughProps/>
       <p>
         The full source code for this page can be found&nbsp;
         <a
