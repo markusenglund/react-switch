@@ -9,7 +9,13 @@ const config = {
     interop: false,
     strict: false
   },
-  plugins: [buble({objectAssign: true})],
+  plugins: [
+    buble({ objectAssign: true }),
+    babel({
+      babelrc: false,
+      plugins: ["@babel/plugin-transform-object-assign"]
+    })
+  ],
   external: ["react", "prop-types"]
 };
 
