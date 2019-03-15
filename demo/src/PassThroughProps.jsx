@@ -6,17 +6,19 @@ export default class InputProps extends Component {
     super();
     this.state = { checked: false };
     this.handleChange = this.handleChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  onSubmit(e) {
+    e.preventDefault();
+    // eslint-disable-next-line no-alert
+    alert(`Cool, right? 😎`);
   }
 
   handleChange(checked) {
     this.setState({ checked });
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-    alert(`Cool, right? 😎`);
-  }
 
   render() {
     return (
