@@ -179,7 +179,6 @@ class ReactSwitch extends Component {
 
   render() {
     const {
-      checked,
       disabled,
       className,
       offColor,
@@ -192,11 +191,6 @@ class ReactSwitch extends Component {
       activeBoxShadow,
       height,
       width,
-      id,
-      name,
-      "aria-labelledby": ariaLabelledby,
-      "aria-label": ariaLabel,
-      tabIndex,
       handleDiameter, // just to filter this prop out
       ...rest
     } = this.props;
@@ -339,20 +333,15 @@ class ReactSwitch extends Component {
         <input
           type="checkbox"
           role="switch"
-          id={id}
-          name={name}
-          checked={checked}
           disabled={disabled}
-          tabIndex={tabIndex}
+          style={inputStyle}
+          ref={this.$getInputRef}
+          {...rest}
+          /* anything below should NOT get overriden by ...rest */
           onFocus={this.$setHasOutline}
           onBlur={this.$unsetHasOutline}
           onKeyUp={this.$onKeyUp}
           onChange={this.$onInputChange}
-          aria-labelledby={ariaLabelledby}
-          aria-label={ariaLabel}
-          style={inputStyle}
-          ref={this.$getInputRef}
-          {...rest}
         />
       </div>
     );
@@ -373,12 +362,8 @@ ReactSwitch.propTypes = {
   activeBoxShadow: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
-  className: PropTypes.string,
   id: PropTypes.string,
-  name: PropTypes.string,
-  tabIndex: PropTypes.number,
-  "aria-labelledby": PropTypes.string,
-  "aria-label": PropTypes.string
+  className: PropTypes.string
 };
 
 ReactSwitch.defaultProps = {

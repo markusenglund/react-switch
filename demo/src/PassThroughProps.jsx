@@ -15,7 +15,7 @@ export default class InputProps extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    alert('Cool, right? 😎');
+    alert(`Cool, right? 😎`);
   }
 
   render() {
@@ -36,7 +36,7 @@ export default class InputProps extends Component {
             className="react-switch"
             onChange={this.handleChange}
             checked={this.state.checked}
-            required="required"
+            required
           />
           <br/>
           <br />
