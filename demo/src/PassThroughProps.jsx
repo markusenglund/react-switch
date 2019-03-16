@@ -25,9 +25,9 @@ export default class InputProps extends Component {
       <div className="example">
         <h2>Pass through props</h2>
         <p>
-          {`Switch will pass all of the extra props that are not part of react-switch API to the underline <input /> element
-            For example, we passed the "required" attribute to the underline input.
-          `}
+          {`Switch will pass all of the extra props that are not part of react-switch API to the underline <input /> element`}
+          <br />
+          {`For example, we passed the "required" attribute to the underline input.`}
         </p>
         <form onSubmit={this.onSubmit}>
           <div>
