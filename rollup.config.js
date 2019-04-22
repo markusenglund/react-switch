@@ -7,7 +7,8 @@ const config = {
   output: {
     format: "cjs",
     interop: false,
-    strict: false
+    strict: false,
+    exports: "named"
   },
   plugins: [
     buble({ objectAssign: true }),
