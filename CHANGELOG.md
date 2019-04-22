@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [5.0.0 - 2019-04-22]
+
+### Added
+
+- It's now possible to give the Switch any prop (such as aria-\* props or tabIndex) and it will automatically be passed to the nested `input`-element.
+- Improved Typescript compatibility by using `exports:named` option in rollup. This could possibly be breaking for some obscure setups.
+
+### Changed
+
+- Replaced deprecated `componentWillReceiveProps` lifecycle hook with `componentDidUpdate`, which means it now works in strict mode.
+
+### Fixed
+
+- Now works properly with right-to-left languages.
+
 ## [4.1.0 - 2019-02-17]
 
 ### Added
