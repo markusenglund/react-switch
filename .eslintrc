@@ -27,6 +27,7 @@
     "function-paren-newline": "off",
     "react/require-default-props": "off",
     "react/destructuring-assignment": "off",
+    "react/no-did-update-set-state": "off",
     "import/extensions": "off"
   }
 }

@@ -45,7 +45,7 @@ class ReactSwitch extends Component {
     }
 
     const $pos = this.props.checked ? this.$checkedPos : this.$uncheckedPos;
-    this.setState({ $pos });    
+    this.setState({ $pos });
   }
 
   $onDragStart(clientX) {
