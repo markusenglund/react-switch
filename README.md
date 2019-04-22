@@ -81,7 +81,7 @@ If you don't want to nest the switch inside a label, you can use the `htmlFor` a
 
 ---
 
-**All additional props will be passed to the nested `input` element**
+**NOTE**: All additional props will be passed to the nested `input` element.
 
 The following props have to be either 3-digit or 6-digit hex-colors:
 **offColor, onColor, offHandleColor,** and **onHandleColor.** This is because this library calculates intermediate color values based on the hex-color strings.
