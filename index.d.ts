@@ -118,9 +118,26 @@ export interface ReactSwitchProps {
    * Defaults to undefined.
    */
   id?: string;
-
 }
 
-declare class ReactSwitch extends React.Component<ReactSwitchProps> {}
+type Omit<T, U> = Pick<T, Exclude<keyof T, U>>;
+
+type htmlInputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+type excludedHTMLInputProps =
+  | "onFocus"
+  | "onBlur"
+  | "onKeyUp"
+  | "onChange"
+  | "ref"
+  | keyof ReactSwitchProps;
+
+type allowedHTMLinputProps = Omit<htmlInputProps, excludedHTMLInputProps>;
+
+declare class ReactSwitch extends React.Component<
+  ReactSwitchProps | allowedHTMLinputProps
+> {}
 
 export default ReactSwitch;
