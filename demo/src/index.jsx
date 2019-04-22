@@ -19,9 +19,9 @@ function Examples() {
       <SmallRadius />
       <CustomIcons />
       <Disabled />
+      <PassThroughProps />
       <AriaLabelledby />
       <AriaLabel />
-      <PassThroughProps/>
       <p>
         The full source code for this page can be found&nbsp;
         <a

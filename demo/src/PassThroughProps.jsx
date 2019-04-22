@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import Switch from "../..";
 
 export default class InputProps extends Component {
@@ -12,35 +12,32 @@ export default class InputProps extends Component {
   onSubmit(e) {
     e.preventDefault();
     // eslint-disable-next-line no-alert
-    alert(`Cool, right? 😎`);
+    alert(`Form submitted!`);
   }
 
   handleChange(checked) {
     this.setState({ checked });
   }
 
-
   render() {
     return (
       <div className="example">
-        <h2>Pass through props</h2>
+        <h2>Additional props</h2>
         <p>
-          {`Switch will pass all of the extra props that are not part of react-switch API to the underline <input /> element`}
-          <br />
-          {`For example, we passed the "required" attribute to the underline input.`}
+          {`All additional props that are not part of the react-switch API will be passed on to the nested <input /> element. In this example, we passed it the 'required' attribute. Other examples are aria-*-attributes, tabIndex, name etc.`}
         </p>
         <form onSubmit={this.onSubmit}>
           <div>
-            <small>Try to submit when the switch is not checked</small>
+            <small>Try to submit when the switch is not checked!</small>
           </div>
-          <br/>
+          <br />
           <Switch
             className="react-switch"
             onChange={this.handleChange}
             checked={this.state.checked}
             required
           />
-          <br/>
+          <br />
           <br />
           <button type="submit">Submit</button>
         </form>
