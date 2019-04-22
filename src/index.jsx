@@ -339,9 +339,9 @@ class ReactSwitch extends Component {
           role="switch"
           disabled={disabled}
           style={inputStyle}
-          ref={this.$getInputRef}
           {...rest}
           /* anything below should NOT get overriden by ...rest */
+          ref={this.$getInputRef}
           onFocus={this.$setHasOutline}
           onBlur={this.$unsetHasOutline}
           onKeyUp={this.$onKeyUp}
