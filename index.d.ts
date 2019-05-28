@@ -137,7 +137,7 @@ type excludedHTMLInputProps =
 type allowedHTMLinputProps = Omit<htmlInputProps, excludedHTMLInputProps>;
 
 declare class ReactSwitch extends React.Component<
-  ReactSwitchProps | allowedHTMLinputProps
+  ReactSwitchProps & allowedHTMLinputProps
 > {}
 
 export default ReactSwitch;
