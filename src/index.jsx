@@ -195,6 +195,7 @@ class ReactSwitch extends Component {
       activeBoxShadow,
       height,
       width,
+      borderRadius,
       handleDiameter, // just to filter this prop out
       ...rest
     } = this.props;
@@ -231,7 +232,8 @@ class ReactSwitch extends Component {
         offColor,
         onColor
       ),
-      borderRadius: height / 2,
+      borderRadius:
+        typeof borderRadius === "number" ? borderRadius : height / 2,
       cursor: disabled ? "default" : "pointer",
       WebkitTransition: $isDragging ? null : "background 0.25s",
       MozTransition: $isDragging ? null : "background 0.25s",
@@ -283,7 +285,7 @@ class ReactSwitch extends Component {
       ),
       display: "inline-block",
       cursor: disabled ? "default" : "pointer",
-      borderRadius: "50%",
+      borderRadius: typeof borderRadius === "number" ? borderRadius - 1 : "50%",
       position: "absolute",
       transform: `translateX(${$pos}px)`,
       top: Math.max(0, (height - this.$handleDiameter) / 2),
@@ -364,6 +366,7 @@ ReactSwitch.propTypes = {
   uncheckedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
   checkedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
   boxShadow: PropTypes.string,
+  borderRadius: PropTypes.number,
   activeBoxShadow: PropTypes.string,
   height: PropTypes.number,
   width: PropTypes.number,
