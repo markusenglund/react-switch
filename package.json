@@ -13,6 +13,7 @@
     "demo:prod": "webpack --mode production",
     "format": "prettier --write '**/*.{js,jsx,json}'",
     "lint": "eslint --ext .js,.jsx src/ demo/src",
+    "prepare": "npm run build",
     "test": "jest",
     "test:watch": "jest --watch",
     "gzip-size": "node -e \"process.stdout.write('gzip size: ')\" && gzip-size --raw dist/react-switch.min.js",
