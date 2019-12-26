@@ -183,6 +183,7 @@ class ReactSwitch extends Component {
 
   render() {
     const {
+      checked,
       disabled,
       className,
       offColor,
@@ -338,6 +339,8 @@ class ReactSwitch extends Component {
         <input
           type="checkbox"
           role="switch"
+          aria-checked={checked}
+          checked={checked}
           disabled={disabled}
           style={inputStyle}
           {...rest}
