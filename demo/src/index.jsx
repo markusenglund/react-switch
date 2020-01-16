@@ -9,6 +9,8 @@ import Disabled from "./Disabled";
 import AriaLabelledby from "./AriaLabelledby";
 import AriaLabel from "./AriaLabel";
 import PassThroughProps from "./PassThroughProps";
+import BackgroundHoverColors from "./BackgroundHoverColors";
+import HandleHoverColors from "./HandleHoverColors";
 
 function Examples() {
   return (
@@ -19,6 +21,8 @@ function Examples() {
       <SmallRadius />
       <CustomIcons />
       <Disabled />
+      <BackgroundHoverColors />
+      <HandleHoverColors />
       <PassThroughProps />
       <AriaLabelledby />
       <AriaLabel />

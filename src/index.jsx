@@ -6,6 +6,7 @@ import {
 } from "./icons.jsx";
 import getBackgroundColor from "./getBackgroundColor";
 import hexColorPropType from "./hexColorPropType";
+import hexColorAcceptADefaultPropType from "./hexColorAcceptDefaultPropType";
 
 class ReactSwitch extends Component {
   constructor(props) {
@@ -18,11 +19,13 @@ class ReactSwitch extends Component {
     );
     this.$uncheckedPos = Math.max(0, (height - this.$handleDiameter) / 2);
     this.state = {
-      $pos: checked ? this.$checkedPos : this.$uncheckedPos
+      $pos: checked ? this.$checkedPos : this.$uncheckedPos,
+      $hover: false
     };
     this.$lastDragAt = 0;
     this.$lastKeyUpAt = 0;
 
+    this.$toggleHover = this.$toggleHover.bind(this);
     this.$onMouseDown = this.$onMouseDown.bind(this);
     this.$onMouseMove = this.$onMouseMove.bind(this);
     this.$onMouseUp = this.$onMouseUp.bind(this);
@@ -46,6 +49,10 @@ class ReactSwitch extends Component {
 
     const $pos = this.props.checked ? this.$checkedPos : this.$uncheckedPos;
     this.setState({ $pos });
+  }
+
+  $toggleHover() {
+    this.setState(prevState => ({ $hover: !prevState.$hover }));
   }
 
   $onDragStart(clientX) {
@@ -189,6 +196,10 @@ class ReactSwitch extends Component {
       onColor,
       offHandleColor,
       onHandleColor,
+      offHoverColor,
+      onHoverColor,
+      offHoverHandleColor,
+      onHoverHandleColor,
       checkedIcon,
       uncheckedIcon,
       boxShadow,
@@ -229,7 +240,10 @@ class ReactSwitch extends Component {
         this.$checkedPos,
         this.$uncheckedPos,
         offColor,
-        onColor
+        onColor,
+        this.state.$hover,
+        onHoverColor === "default" ? onColor : onHoverColor,
+        offHoverColor === "default" ? offColor : offHoverColor
       ),
       borderRadius: height / 2,
       cursor: disabled ? "default" : "pointer",
@@ -279,7 +293,10 @@ class ReactSwitch extends Component {
         this.$checkedPos,
         this.$uncheckedPos,
         offHandleColor,
-        onHandleColor
+        onHandleColor,
+        this.state.$hover,
+        onHoverHandleColor === "default" ? onHandleColor : onHoverHandleColor,
+        offHoverHandleColor === "default" ? offHandleColor : offHoverHandleColor
       ),
       display: "inline-block",
       cursor: disabled ? "default" : "pointer",
@@ -313,7 +330,12 @@ class ReactSwitch extends Component {
     };
 
     return (
-      <div className={className} style={rootStyle}>
+      <div
+        className={className}
+        style={rootStyle}
+        onMouseEnter={this.$toggleHover}
+        onMouseLeave={this.$toggleHover}
+      >
         <div
           className="react-switch-bg"
           style={backgroundStyle}
@@ -360,6 +382,10 @@ ReactSwitch.propTypes = {
   onColor: hexColorPropType,
   offHandleColor: hexColorPropType,
   onHandleColor: hexColorPropType,
+  offHoverColor: hexColorAcceptADefaultPropType,
+  onHoverColor: hexColorAcceptADefaultPropType,
+  offHoverHandleColor: hexColorAcceptADefaultPropType,
+  onHoverHandleColor: hexColorAcceptADefaultPropType,
   handleDiameter: PropTypes.number,
   uncheckedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
   checkedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
@@ -377,6 +403,16 @@ ReactSwitch.defaultProps = {
   onColor: "#080",
   offHandleColor: "#fff",
   onHandleColor: "#fff",
+  /* All the hover colors would ideally be set based on on/offColor and on/offHandleColor
+   * but setting default props conditionally based on other props is not possible.
+   * Setting the default as some actual hex color would not be wise, because the developer
+   * could have always set the same value as a prop, that then would be overwritten by
+   * on/offColor or on/offHandleColor.
+   * Since setting string "default", and providing looser custom type validator */
+  offHoverColor: "default",
+  onHoverColor: "default",
+  offHoverHandleColor: "default",
+  onHoverHandleColor: "default",
   uncheckedIcon: defaultUncheckedIcon,
   checkedIcon: defaultCheckedIcon,
   boxShadow: null,
