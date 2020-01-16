@@ -3,13 +3,22 @@ function createBackgroundColor(
   checkedPos,
   uncheckedPos,
   offColor,
-  onColor
+  onColor,
+  isHover,
+  onHoverColor,
+  offHoverColor
 ) {
   const relativePos = (pos - uncheckedPos) / (checkedPos - uncheckedPos);
   if (relativePos === 0) {
+    if (isHover) {
+      return offHoverColor;
+    }
     return offColor;
   }
   if (relativePos === 1) {
+    if (isHover) {
+      return onHoverColor;
+    }
     return onColor;
   }
 
@@ -45,15 +54,24 @@ export default function getBackgroundColor(
   checkedPos,
   uncheckedPos,
   offColor,
-  onColor
+  onColor,
+  isHover,
+  onHoverColor,
+  offHoverColor
 ) {
   const sixDigitOffColor = convertShorthandColor(offColor);
   const sixDigitOnColor = convertShorthandColor(onColor);
+  const sixDigitOnHoverColor = convertShorthandColor(onHoverColor);
+  const sixDigitOffHoverColor = convertShorthandColor(offHoverColor);
+
   return createBackgroundColor(
     pos,
     checkedPos,
     uncheckedPos,
     sixDigitOffColor,
-    sixDigitOnColor
+    sixDigitOnColor,
+    isHover,
+    sixDigitOnHoverColor,
+    sixDigitOffHoverColor
   );
 }

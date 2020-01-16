@@ -58,6 +58,34 @@ export interface ReactSwitchProps {
   onHandleColor?: string;
 
   /**
+   * Switch will take this color when mouse is hovering over it and the switch is checked.
+   * Defaults to onColor.
+   * Only accepts 3 or 6 digit hex colors, e.g., #fff, #45abcd.
+   */
+  onHoverColor?: string;
+
+  /**
+   * Switch will take this color when mouse is hovering over it and the switch is **not** checked.
+   * Defaults to offColor.
+   * Only accepts 3 or 6 digit hex colors, e.g., #fff, #45abcd.
+   */
+  offHoverColor?: string;
+
+  /**
+   * The color of the handle of the switch when mouse is hovering over it and the switch is checked.
+   * Defaults to onHandleColor.
+   * Only accepts 3 or 6 digit hex colors, e.g., #fff, #45abcd.
+   */
+  onHoverHandleColor?: string;
+
+  /**
+   * The color of the handle of the switch when mouse is hovering over it and the switch is **not** checked.
+   * Defaults to offHandleColor.
+   * Only accepts 3 or 6 digit hex colors, e.g., #fff, #45abcd.
+   */
+  offHoverHandleColor?: string;
+
+  /**
    * The diameter of the handle, measured in pixels. By default it will be slightly smaller than the height of the switch.
    *
    * Defaults to undefined.
