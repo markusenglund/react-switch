@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "concurrently \"npm run lib:watch\" \"npm run demo:dev\"",
     "build": "npm run lib:prod && npm run lib:dev && npm run demo:prod",
+    "prepare": "npm run build",
     "lib:watch": "rollup -c -w -o dist/react-switch.dev.js",
     "lib:dev": "rollup -c -o dist/react-switch.dev.js",
     "lib:prod": "cross-env NODE_ENV=production rollup -c -o dist/react-switch.min.js",
