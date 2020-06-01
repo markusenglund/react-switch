@@ -9,6 +9,7 @@ import Disabled from "./Disabled";
 import AriaLabelledby from "./AriaLabelledby";
 import AriaLabel from "./AriaLabel";
 import PassThroughProps from "./PassThroughProps";
+import HandleIcons from "./HandleIcons";
 
 function Examples() {
   return (
@@ -19,6 +20,7 @@ function Examples() {
       <SmallRadius />
       <CustomIcons />
       <Disabled />
+      <HandleIcons />
       <PassThroughProps />
       <AriaLabelledby />
       <AriaLabel />

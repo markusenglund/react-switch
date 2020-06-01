@@ -191,6 +191,8 @@ class ReactSwitch extends Component {
       onHandleColor,
       checkedIcon,
       uncheckedIcon,
+      checkedHandleIcon,
+      uncheckedHandleIcon,
       boxShadow,
       activeBoxShadow,
       height,
@@ -301,6 +303,40 @@ class ReactSwitch extends Component {
         : "background-color 0.25s, transform 0.25s, box-shadow 0.15s"
     };
 
+    const uncheckedHandleIconStyle = {
+      height: this.$handleDiameter,
+      width: this.$handleDiameter,
+      opacity:
+        Math.max(
+          (1 - ($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos) - 0.5) * 2,
+          0
+        ),
+      position: "absolute",
+      left: 0,
+      top: 0,
+      pointerEvents: "none",
+      WebkitTransition: $isDragging ? null : "opacity 0.25s",
+      MozTransition: $isDragging ? null : "opacity 0.25s",
+      transition: $isDragging ? null : "opacity 0.25s"
+    };
+
+    const checkedHandleIconStyle = {
+      height: this.$handleDiameter,
+      width: this.$handleDiameter,
+      opacity:
+        Math.max(
+          (($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos) - 0.5) * 2,
+          0
+        ),
+      position: "absolute",
+      left: 0,
+      top: 0,
+      pointerEvents: "none",
+      WebkitTransition: $isDragging ? null : "opacity 0.25s",
+      MozTransition: $isDragging ? null : "opacity 0.25s",
+      transition: $isDragging ? null : "opacity 0.25s"
+    };
+
     const inputStyle = {
       border: 0,
       clip: "rect(0 0 0 0)",
@@ -334,7 +370,18 @@ class ReactSwitch extends Component {
           onTouchMove={disabled ? null : this.$onTouchMove}
           onTouchEnd={disabled ? null : this.$onTouchEnd}
           onTouchCancel={disabled ? null : this.$unsetHasOutline}
-        />
+        >
+          {uncheckedHandleIcon && (
+            <div style={uncheckedHandleIconStyle}>
+              {uncheckedHandleIcon}
+            </div>
+          )}
+          {checkedHandleIcon && (
+            <div style={checkedHandleIconStyle}>
+              {checkedHandleIcon}
+            </div>
+          )}
+        </div>
         <input
           type="checkbox"
           role="switch"
@@ -365,6 +412,8 @@ ReactSwitch.propTypes = {
   checkedIcon: PropTypes.oneOfType([PropTypes.bool, PropTypes.element]),
   boxShadow: PropTypes.string,
   activeBoxShadow: PropTypes.string,
+  uncheckedHandleIcon: PropTypes.element,
+  checkedHandleIcon: PropTypes.element,
   height: PropTypes.number,
   width: PropTypes.number,
   id: PropTypes.string,
