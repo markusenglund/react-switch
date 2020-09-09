@@ -184,6 +184,7 @@ class ReactSwitch extends Component {
   render() {
     const {
       disabled,
+      disableTouch,
       className,
       offColor,
       onColor,
@@ -328,12 +329,12 @@ class ReactSwitch extends Component {
         <div
           className="react-switch-handle"
           style={handleStyle}
-          onClick={e => e.preventDefault()}
-          onMouseDown={disabled ? null : this.$onMouseDown}
-          onTouchStart={disabled ? null : this.$onTouchStart}
-          onTouchMove={disabled ? null : this.$onTouchMove}
-          onTouchEnd={disabled ? null : this.$onTouchEnd}
-          onTouchCancel={disabled ? null : this.$unsetHasOutline}
+          onClick={e => disableTouch ? this.$onClick(e) : e.preventDefault()}
+          onMouseDown={disabled || disableTouch ? null : this.$onMouseDown}
+          onTouchStart={disabled || disableTouch ? null : this.$onTouchStart}
+          onTouchMove={disabled || disableTouch ? null : this.$onTouchMove}
+          onTouchEnd={disabled || disableTouch ? null : this.$onTouchEnd}
+          onTouchCancel={disabled || disableTouch ? null : this.$unsetHasOutline}
         />
         <input
           type="checkbox"
@@ -356,6 +357,7 @@ ReactSwitch.propTypes = {
   checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
+  disableTouch: PropTypes.bool,
   offColor: hexColorPropType,
   onColor: hexColorPropType,
   offHandleColor: hexColorPropType,
@@ -373,6 +375,7 @@ ReactSwitch.propTypes = {
 
 ReactSwitch.defaultProps = {
   disabled: false,
+  disableTouch: false,
   offColor: "#888",
   onColor: "#080",
   offHandleColor: "#fff",
