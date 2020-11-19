@@ -53,7 +53,7 @@ class ReactSwitch extends Component {
     this.setState({ $pos });
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     this.$isMounted = false;
   }
 
