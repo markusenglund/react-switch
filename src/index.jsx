@@ -10,7 +10,6 @@ import hexColorPropType from "./hexColorPropType";
 class ReactSwitch extends Component {
   constructor(props) {
     super(props);
-    this.$isMounted = false;
     const { height, width, handleDiameter, checked } = props;
     this.$handleDiameter = handleDiameter || height - 2;
     this.$checkedPos = Math.max(
