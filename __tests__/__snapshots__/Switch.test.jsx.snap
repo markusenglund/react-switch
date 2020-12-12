@@ -40,6 +40,7 @@ exports[`Props matches snapshot with custom props 1`] = `
     style="height:9px;width:9px;background:#ffffff;display:inline-block;cursor:default;border-radius:50%;position:absolute;transform:translateX(26px);top:2px;outline:0;box-shadow:0px 1px 5px rgba(0, 0, 0, 0.6);border:0;-webkit-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;-moz-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s"
   />
   <input
+    aria-checked="true"
     aria-label="bar"
     aria-labelledby="baz"
     checked=""
@@ -98,6 +99,7 @@ exports[`Props matches snapshot with default props 1`] = `
     style="height:26px;width:26px;background:#ffffff;display:inline-block;cursor:pointer;border-radius:50%;position:absolute;transform:translateX(1px);top:1px;outline:0;border:0;-webkit-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;-moz-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s"
   />
   <input
+    aria-checked="false"
     role="switch"
     style="border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px"
     type="checkbox"
