@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add custom handle icons ([@morinted](https://github.com/morinted))
+- Add `aria-checked` attribute ([@monicahung](https://github.com/monicahung))
+
+### Fixed
+
+- Prevent setState from being called after component is unmounted ([@smhg](https://github.com/smhg))
+
 ### Changed
 
 - Support react and react-dom 17 as peer dependencies
