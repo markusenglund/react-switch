@@ -39,6 +39,10 @@ class ReactSwitch extends Component {
     this.$getInputRef = this.$getInputRef.bind(this);
   }
 
+  componentDidMount() {
+    this.$isMounted = true;
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.checked === this.props.checked) {
       return;
@@ -46,6 +50,10 @@ class ReactSwitch extends Component {
 
     const $pos = this.props.checked ? this.$checkedPos : this.$uncheckedPos;
     this.setState({ $pos });
+  }
+
+  componentWillUnmount() {
+    this.$isMounted = false;
   }
 
   $onDragStart(clientX) {
@@ -100,7 +108,9 @@ class ReactSwitch extends Component {
       this.$onChange(event);
     }
 
-    this.setState({ $isDragging: false, $hasOutline: false });
+    if (this.$isMounted) {
+      this.setState({ $isDragging: false, $hasOutline: false });
+    }
     this.$lastDragAt = Date.now();
   }
 
@@ -148,7 +158,9 @@ class ReactSwitch extends Component {
       this.$onChange(event);
       // Prevent clicking label, but not key activation from setting outline to true - yes, this is absurd
       if (Date.now() - this.$lastKeyUpAt > 50) {
-        this.setState({ $hasOutline: false });
+        if (this.$isMounted) {
+          this.setState({ $hasOutline: false });
+        }
       }
     }
   }
@@ -173,7 +185,9 @@ class ReactSwitch extends Component {
     event.preventDefault();
     this.$inputRef.focus();
     this.$onChange(event);
-    this.setState({ $hasOutline: false });
+    if (this.$isMounted) {
+      this.setState({ $hasOutline: false });
+    }
   }
 
   $onChange(event) {
