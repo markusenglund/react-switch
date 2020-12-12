@@ -11,3 +11,4 @@ webpack.config.js
 jest.config.js
 jest.setup.js
 coverage
+rollup.config.js
