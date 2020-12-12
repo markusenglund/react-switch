@@ -1,6 +1,6 @@
 import babel from "rollup-plugin-babel";
 import buble from "rollup-plugin-buble";
-import { uglify } from "rollup-plugin-uglify";
+import { terser } from "rollup-plugin-terser";
 
 const config = {
   input: "src/index.jsx",
@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "production") {
         ]
       ]
     }),
-    uglify({
+    terser({
       mangle: {
         properties: { regex: /^\$/ }
       },
