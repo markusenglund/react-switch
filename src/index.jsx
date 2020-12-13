@@ -89,28 +89,24 @@ class ReactSwitch extends Component {
     const { checked } = this.props;
     const halfwayCheckpoint = (this.$checkedPos + this.$uncheckedPos) / 2;
 
-    // Simulate clicking the handle
-    const timeSinceStart = Date.now() - $dragStartingTime;
-    if (!$isDragging || timeSinceStart < 250) {
-      this.$onChange(event);
+    /*
+      Set position state back to the previous position even if user drags the switch with intention to change the state.
+      This is to prevent the switch from getting stuck in the middle if the event isn't handled in the onChange callback.
+    */
+    const prevPos = this.props.checked ? this.$checkedPos : this.$uncheckedPos;
+    this.setState({ $pos: prevPos });
 
-      // Handle dragging from checked position
-    } else if (checked) {
-      /*
-        Set position state back to the checked position even if user tries to uncheck it to prevent
-        the switch from getting stuck in the middle if the event isn't handled in the onChange callback.
-        The same is done in reverse a few lines down if the switch is unchecked 
-      */
-      this.setState({ $pos: this.$checkedPos });
-      if ($pos <= halfwayCheckpoint) {
-        this.$onChange(event);
-      }
-      // Handle dragging from unchecked position
-    } else {
-      this.setState({ $pos: this.$uncheckedPos });
-      if ($pos >= halfwayCheckpoint) {
-        this.$onChange(event);
-      }
+    // Act as if the user clicked the handle if they didn't drag it _or_ the dragged it for less than 250ms
+    const timeSinceStart = Date.now() - $dragStartingTime;
+    const isSimulatedClick = !$isDragging || timeSinceStart < 250;
+
+    // Handle when the user has dragged the switch more than halfway from either side
+    const isDraggedHalfway =
+      (checked && $pos <= halfwayCheckpoint) ||
+      (!checked && $pos >= halfwayCheckpoint);
+
+    if (isSimulatedClick || isDraggedHalfway) {
+      this.$onChange(event);
     }
 
     if (this.$isMounted) {
