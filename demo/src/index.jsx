@@ -10,6 +10,7 @@ import AriaLabelledby from "./AriaLabelledby";
 import AriaLabel from "./AriaLabel";
 import PassThroughProps from "./PassThroughProps";
 import HandleIcons from "./HandleIcons";
+import RandomCheckedState from "./RandomCheckedState";
 
 function Examples() {
   return (
@@ -22,6 +23,7 @@ function Examples() {
       <Disabled />
       <HandleIcons />
       <PassThroughProps />
+      <RandomCheckedState />
       <AriaLabelledby />
       <AriaLabel />
       <p>
