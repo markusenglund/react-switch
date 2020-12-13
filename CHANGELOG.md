@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- When the `checked` state is not changed in the `onChange` callback, the switch will now go back to its previous position instead of getting stuck halfway. This means the switch will move back and forth if the `onChange` callback changes the state after an asynchronous operation.
 - Support react and react-dom 17 as peer dependencies
 - Update all dev depencies
 
