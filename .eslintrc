@@ -28,6 +28,7 @@
     "react/require-default-props": "off",
     "react/destructuring-assignment": "off",
     "react/no-did-update-set-state": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }
