@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Add custom handle icons ([@morinted](https://github.com/morinted))
 - Add `aria-checked` attribute ([@monicahung](https://github.com/monicahung))
+- Add borderRadius prop
 
 ### Fixed
 

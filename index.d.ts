@@ -120,6 +120,13 @@ export interface ReactSwitchProps {
   width?: number;
 
   /**
+   * Border radius of the switch _and_ the handle.
+   *
+   * Defaults to undefined.
+   */
+  borderRadius?: number;
+
+  /**
    * The className of the outer shell of the switch.
    *
    * Defaults to undefined.
