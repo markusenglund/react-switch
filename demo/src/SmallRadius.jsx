@@ -15,9 +15,11 @@ export default class SmallRadiusSwitch extends Component {
   render() {
     return (
       <div className="example">
-        <h2>Smaller handle</h2>
+        <h2>Customized style</h2>
         <label htmlFor="small-radius-switch">
-          <span>Thick switch with smaller handle radius</span>
+          <span>
+            Thick switch with smaller handle size and custom border radius
+          </span>
           <Switch
             checked={this.state.checked}
             onChange={this.handleChange}
@@ -28,6 +30,7 @@ export default class SmallRadiusSwitch extends Component {
             onHandleColor="#08f"
             height={40}
             width={70}
+            borderRadius={6}
             className="react-switch"
             id="small-radius-switch"
           />
@@ -35,7 +38,9 @@ export default class SmallRadiusSwitch extends Component {
         <pre>
           {`
 <label htmlFor="small-radius-switch">
-  <span>Thick switch with smaller handle radius</span>
+  <span>
+    Thick switch with smaller handle size and custom border radius
+  </span>
   <Switch
     checked={this.state.checked}
     onChange={this.handleChange}
@@ -46,6 +51,7 @@ export default class SmallRadiusSwitch extends Component {
     onHandleColor="#08f"
     height={40}
     width={70}
+    borderRadius={6}
     className="react-switch"
     id="small-radius-switch"
   />
