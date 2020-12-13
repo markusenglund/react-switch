@@ -5,6 +5,7 @@ demo
 .eslintrc
 .gitignore
 .prettierignore
+.prettierrc
 .vscode
 stats.json
 webpack.config.js
