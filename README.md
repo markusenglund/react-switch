@@ -11,7 +11,7 @@ A draggable toggle-switch component for React.
 - **Draggable** with the mouse or with a touch screen.
 - **Customizable** - Easy to customize size, color and more.
 - **Accessible** to visually impaired users and those who can't use a mouse.
-- **Small package size** - 2 kB gzipped.
+- **Reasonable package size** - <2.5 kB gzipped.
 - **It Just Works** - Sensible default styling. Uses inline styles, so no need to import a separate css file.
 
 ## Demo
