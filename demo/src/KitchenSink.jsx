@@ -29,8 +29,7 @@ export default class KitchenSinkSwitch extends Component {
             height={40}
             width={70}
             borderRadius={6}
-            boxShadow="0px 0px 1px 2px #fffc35"
-            activeBoxShadow="0px 0px 1px 10px grey"
+            activeBoxShadow="0px 0px 1px 2px #fffc35"
             uncheckedIcon={
               <div
                 style={{
@@ -97,8 +96,7 @@ export default class KitchenSinkSwitch extends Component {
     height={40}
     width={70}
     borderRadius={6}
-    boxShadow="0px 0px 1px 2px #fffc35"
-    activeBoxShadow="0px 0px 1px 10px grey"
+    activeBoxShadow="0px 0px 1px 2px #fffc35"
     uncheckedIcon={
       <div
         style={{

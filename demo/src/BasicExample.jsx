@@ -1,62 +1,52 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Switch from "../..";
 
-export default class BasicExample extends Component {
-  constructor() {
-    super();
-    this.state = { checked: false };
-    this.handleChange = this.handleChange.bind(this);
-  }
+const BasicHooksExample = () => {
+  const [checked, setChecked] = useState(false);
+  const handleChange = nextChecked => {
+    setChecked(nextChecked);
+  };
 
-  handleChange(checked) {
-    this.setState({ checked });
-  }
+  return (
+    <div className="example">
+      <h2>Simple usage</h2>
+      <label>
+        <span>Switch with default style</span>
+        <Switch
+          onChange={handleChange}
+          checked={checked}
+          className="react-switch"
+        />
+      </label>
+      <p>
+        The switch is <span>{checked ? "on" : "off"}</span>.
+      </p>
+      <pre>
+        {`
+const BasicHooksExample = () => {
+  const [checked, setChecked] = useState(false);
+  const handleChange = nextChecked => {
+    setChecked(nextChecked);
+  };
 
-  render() {
-    return (
-      <div className="example">
-        <h2>Simple usage</h2>
-        <label>
-          <span>Switch with default style</span>
-          <Switch
-            onChange={this.handleChange}
-            checked={this.state.checked}
-            className="react-switch"
-          />
-        </label>
-        <p>
-          The switch is <span>{this.state.checked ? "on" : "off"}</span>.
-        </p>
-        <pre>
-          {`
-export default class BasicExample extends Component {
-  constructor() {
-    super();
-    this.state = { checked: false };
-    this.handleChange = this.handleChange.bind(this);
-  }
+  return (
+    <div className="example">
+      <h2>Simple usage</h2>
+      <label>
+        <span>Switch with default style</span>
+        <Switch
+          onChange={handleChange}
+          checked={checked}
+          className="react-switch"
+        />
+      </label>
+      <p>
+        The switch is <span>{checked ? "on" : "off"}</span>.
+      </p>
+    </div>
+  );
+};
 
-  handleChange(checked) {
-    this.setState({ checked });
-  }
-
-  render() {
-    return (
-      <div className="example">
-        <h2>Simple usage</h2>
-        <label>
-          <span>Switch with default style</span>
-          <Switch
-            onChange={this.handleChange}
-            checked={this.state.checked}
-            className="react-switch"
-          />
-        </label>
-        <p>The switch is <span>{this.state.checked ? 'on' : 'off'}</span>.</p>
-      </div>
-    );
-  }
-}
 
 /* styles.css */
 
@@ -65,8 +55,9 @@ export default class BasicExample extends Component {
   margin-left: 4px;
 }
         `}
-        </pre>
-      </div>
-    );
-  }
-}
+      </pre>
+    </div>
+  );
+};
+
+export default BasicHooksExample;
