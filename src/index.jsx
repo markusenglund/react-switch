@@ -39,6 +39,10 @@ class ReactSwitch extends Component {
     this.$getInputRef = this.$getInputRef.bind(this);
   }
 
+  componentDidMount() {
+    this.$isMounted = true;
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.checked === this.props.checked) {
       return;
@@ -46,6 +50,10 @@ class ReactSwitch extends Component {
 
     const $pos = this.props.checked ? this.$checkedPos : this.$uncheckedPos;
     this.setState({ $pos });
+  }
+
+  componentWillUnmount() {
+    this.$isMounted = false;
   }
 
   $onDragStart(clientX) {
@@ -81,26 +89,29 @@ class ReactSwitch extends Component {
     const { checked } = this.props;
     const halfwayCheckpoint = (this.$checkedPos + this.$uncheckedPos) / 2;
 
-    // Simulate clicking the handle
-    const timeSinceStart = Date.now() - $dragStartingTime;
-    if (!$isDragging || timeSinceStart < 250) {
-      this.$onChange(event);
+    /*
+      Set position state back to the previous position even if user drags the switch with intention to change the state.
+      This is to prevent the switch from getting stuck in the middle if the event isn't handled in the onChange callback.
+    */
+    const prevPos = this.props.checked ? this.$checkedPos : this.$uncheckedPos;
+    this.setState({ $pos: prevPos });
 
-      // Handle dragging from checked position
-    } else if (checked) {
-      if ($pos > halfwayCheckpoint) {
-        this.setState({ $pos: this.$checkedPos });
-      } else {
-        this.$onChange(event);
-      }
-      // Handle dragging from unchecked position
-    } else if ($pos < halfwayCheckpoint) {
-      this.setState({ $pos: this.$uncheckedPos });
-    } else {
+    // Act as if the user clicked the handle if they didn't drag it _or_ the dragged it for less than 250ms
+    const timeSinceStart = Date.now() - $dragStartingTime;
+    const isSimulatedClick = !$isDragging || timeSinceStart < 250;
+
+    // Handle when the user has dragged the switch more than halfway from either side
+    const isDraggedHalfway =
+      (checked && $pos <= halfwayCheckpoint) ||
+      (!checked && $pos >= halfwayCheckpoint);
+
+    if (isSimulatedClick || isDraggedHalfway) {
       this.$onChange(event);
     }
 
-    this.setState({ $isDragging: false, $hasOutline: false });
+    if (this.$isMounted) {
+      this.setState({ $isDragging: false, $hasOutline: false });
+    }
     this.$lastDragAt = Date.now();
   }
 
@@ -148,7 +159,9 @@ class ReactSwitch extends Component {
       this.$onChange(event);
       // Prevent clicking label, but not key activation from setting outline to true - yes, this is absurd
       if (Date.now() - this.$lastKeyUpAt > 50) {
-        this.setState({ $hasOutline: false });
+        if (this.$isMounted) {
+          this.setState({ $hasOutline: false });
+        }
       }
     }
   }
@@ -173,7 +186,9 @@ class ReactSwitch extends Component {
     event.preventDefault();
     this.$inputRef.focus();
     this.$onChange(event);
-    this.setState({ $hasOutline: false });
+    if (this.$isMounted) {
+      this.setState({ $hasOutline: false });
+    }
   }
 
   $onChange(event) {
@@ -183,6 +198,7 @@ class ReactSwitch extends Component {
 
   render() {
     const {
+      checked,
       disabled,
       className,
       offColor,
@@ -191,6 +207,8 @@ class ReactSwitch extends Component {
       onHandleColor,
       checkedIcon,
       uncheckedIcon,
+      checkedHandleIcon,
+      uncheckedHandleIcon,
       boxShadow,
       activeBoxShadow,
       height,
@@ -303,6 +321,44 @@ class ReactSwitch extends Component {
         : "background-color 0.25s, transform 0.25s, box-shadow 0.15s"
     };
 
+    const uncheckedHandleIconStyle = {
+      height: this.$handleDiameter,
+      width: this.$handleDiameter,
+      opacity: Math.max(
+        (1 -
+          ($pos - this.$uncheckedPos) /
+            (this.$checkedPos - this.$uncheckedPos) -
+          0.5) *
+          2,
+        0
+      ),
+      position: "absolute",
+      left: 0,
+      top: 0,
+      pointerEvents: "none",
+      WebkitTransition: $isDragging ? null : "opacity 0.25s",
+      MozTransition: $isDragging ? null : "opacity 0.25s",
+      transition: $isDragging ? null : "opacity 0.25s"
+    };
+
+    const checkedHandleIconStyle = {
+      height: this.$handleDiameter,
+      width: this.$handleDiameter,
+      opacity: Math.max(
+        (($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos) -
+          0.5) *
+          2,
+        0
+      ),
+      position: "absolute",
+      left: 0,
+      top: 0,
+      pointerEvents: "none",
+      WebkitTransition: $isDragging ? null : "opacity 0.25s",
+      MozTransition: $isDragging ? null : "opacity 0.25s",
+      transition: $isDragging ? null : "opacity 0.25s"
+    };
+
     const inputStyle = {
       border: 0,
       clip: "rect(0 0 0 0)",
@@ -336,10 +392,19 @@ class ReactSwitch extends Component {
           onTouchMove={disabled ? null : this.$onTouchMove}
           onTouchEnd={disabled ? null : this.$onTouchEnd}
           onTouchCancel={disabled ? null : this.$unsetHasOutline}
-        />
+        >
+          {uncheckedHandleIcon && (
+            <div style={uncheckedHandleIconStyle}>{uncheckedHandleIcon}</div>
+          )}
+          {checkedHandleIcon && (
+            <div style={checkedHandleIconStyle}>{checkedHandleIcon}</div>
+          )}
+        </div>
         <input
           type="checkbox"
           role="switch"
+          aria-checked={checked}
+          checked={checked}
           disabled={disabled}
           style={inputStyle}
           {...rest}
@@ -368,6 +433,8 @@ ReactSwitch.propTypes = {
   boxShadow: PropTypes.string,
   borderRadius: PropTypes.number,
   activeBoxShadow: PropTypes.string,
+  uncheckedHandleIcon: PropTypes.element,
+  checkedHandleIcon: PropTypes.element,
   height: PropTypes.number,
   width: PropTypes.number,
   id: PropTypes.string,
