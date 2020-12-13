@@ -96,16 +96,21 @@ class ReactSwitch extends Component {
 
       // Handle dragging from checked position
     } else if (checked) {
-      if ($pos > halfwayCheckpoint) {
-        this.setState({ $pos: this.$checkedPos });
-      } else {
+      /*
+        Set position state back to the checked position even if user tries to uncheck it to prevent
+        the switch from getting stuck in the middle if the event isn't handled in the onChange callback.
+        The same is done in reverse a few lines down if the switch is unchecked 
+      */
+      this.setState({ $pos: this.$checkedPos });
+      if ($pos <= halfwayCheckpoint) {
         this.$onChange(event);
       }
       // Handle dragging from unchecked position
-    } else if ($pos < halfwayCheckpoint) {
-      this.setState({ $pos: this.$uncheckedPos });
     } else {
-      this.$onChange(event);
+      this.setState({ $pos: this.$uncheckedPos });
+      if ($pos >= halfwayCheckpoint) {
+        this.$onChange(event);
+      }
     }
 
     if (this.$isMounted) {
@@ -321,11 +326,14 @@ class ReactSwitch extends Component {
     const uncheckedHandleIconStyle = {
       height: this.$handleDiameter,
       width: this.$handleDiameter,
-      opacity:
-        Math.max(
-          (1 - ($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos) - 0.5) * 2,
-          0
-        ),
+      opacity: Math.max(
+        (1 -
+          ($pos - this.$uncheckedPos) /
+            (this.$checkedPos - this.$uncheckedPos) -
+          0.5) *
+          2,
+        0
+      ),
       position: "absolute",
       left: 0,
       top: 0,
@@ -338,11 +346,12 @@ class ReactSwitch extends Component {
     const checkedHandleIconStyle = {
       height: this.$handleDiameter,
       width: this.$handleDiameter,
-      opacity:
-        Math.max(
-          (($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos) - 0.5) * 2,
-          0
-        ),
+      opacity: Math.max(
+        (($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos) -
+          0.5) *
+          2,
+        0
+      ),
       position: "absolute",
       left: 0,
       top: 0,
@@ -387,14 +396,10 @@ class ReactSwitch extends Component {
           onTouchCancel={disabled ? null : this.$unsetHasOutline}
         >
           {uncheckedHandleIcon && (
-            <div style={uncheckedHandleIconStyle}>
-              {uncheckedHandleIcon}
-            </div>
+            <div style={uncheckedHandleIconStyle}>{uncheckedHandleIcon}</div>
           )}
           {checkedHandleIcon && (
-            <div style={checkedHandleIconStyle}>
-              {checkedHandleIcon}
-            </div>
+            <div style={checkedHandleIconStyle}>{checkedHandleIcon}</div>
           )}
         </div>
         <input
