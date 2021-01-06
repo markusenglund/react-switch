@@ -3,12 +3,12 @@ import { render } from "react-dom";
 import "./styles.css";
 import BasicExample from "./BasicExample";
 import MaterialDesign from "./MaterialDesign";
-import SmallRadius from "./SmallRadius";
-import CustomIcons from "./CustomIcons";
+import KitchenSink from "./KitchenSink";
 import Disabled from "./Disabled";
 import AriaLabelledby from "./AriaLabelledby";
 import AriaLabel from "./AriaLabel";
 import PassThroughProps from "./PassThroughProps";
+import OnlyTurnedOn from "./OnlyTurnedOn";
 
 function Examples() {
   return (
@@ -16,10 +16,10 @@ function Examples() {
       <h1>React Switch</h1>
       <BasicExample />
       <MaterialDesign />
-      <SmallRadius />
-      <CustomIcons />
+      <KitchenSink />
       <Disabled />
       <PassThroughProps />
+      <OnlyTurnedOn />
       <AriaLabelledby />
       <AriaLabel />
       <p>

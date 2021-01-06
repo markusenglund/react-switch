@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [6.0.0 - 2021-01-06]
+
+### Added
+
+- Add custom handle icons ([@morinted](https://github.com/morinted))
+- Add `aria-checked` attribute ([@monicahung](https://github.com/monicahung))
+- Add borderRadius prop
+
+### Fixed
+
+- Prevent setState from being called after component is unmounted ([@smhg](https://github.com/smhg))
+
+### Changed
+
+- When the `checked` state is not changed in the `onChange` callback, the switch will now go back to its previous position instead of getting stuck halfway. This means the switch will move back and forth if the `onChange` callback changes the state after an asynchronous operation.
+- Support react and react-dom 17 as peer dependencies
+- Update all dev depencies
+
 ## [5.0.1 - 2019-07-16]
 
 ### Fixed

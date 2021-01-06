@@ -65,6 +65,20 @@ export interface ReactSwitchProps {
   handleDiameter?: number;
 
   /**
+   * Icon to display on the handle while switch is unchecked.
+   *
+   * Defaults to undefined.
+   */
+  uncheckedHandleIcon?: JSX.Element;
+
+  /**
+   * Icon to display on the handle while switch is checked.
+   *
+   * Defaults to undefined.
+   */
+  checkedHandleIcon?: JSX.Element;
+
+  /**
    * An icon that will be shown on the switch when it is **not** checked. Set to false to show no icon.
    *
    * Defaults to an x icon.
@@ -104,6 +118,13 @@ export interface ReactSwitchProps {
    * Defaults to 56.
    */
   width?: number;
+
+  /**
+   * Border radius of the switch _and_ the handle.
+   *
+   * Defaults to undefined.
+   */
+  borderRadius?: number;
 
   /**
    * The className of the outer shell of the switch.
