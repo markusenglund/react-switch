@@ -442,7 +442,9 @@ ReactSwitch.propTypes = {
   height: PropTypes.number,
   width: PropTypes.number,
   id: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  borderWidth: PropTypes.number,
+  borderColor: hexColorPropType
 };
 
 ReactSwitch.defaultProps = {
@@ -458,7 +460,7 @@ ReactSwitch.defaultProps = {
   height: 28,
   width: 56,
   borderWidth: 10,
-  borderColor: 'red'
+  borderColor: '#FF0'
 
 };
 
