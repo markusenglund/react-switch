@@ -257,7 +257,9 @@ class ReactSwitch extends Component {
       cursor: disabled ? "default" : "pointer",
       WebkitTransition: $isDragging ? null : "background 0.25s",
       MozTransition: $isDragging ? null : "background 0.25s",
-      transition: $isDragging ? null : "background 0.25s"
+      transition: $isDragging ? null : "background 0.25s",
+      borderWidth: 10,
+      borderColor: 'red'
     };
 
     const checkedIconStyle = {
