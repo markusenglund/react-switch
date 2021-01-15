@@ -236,8 +236,6 @@ class ReactSwitch extends Component {
       MozUserSelect: "none",
       msUserSelect: "none",
       userSelect: "none",
-      borderWidth: 5,
-      borderColor: "red"
     };
 
     const backgroundStyle = {
@@ -258,8 +256,6 @@ class ReactSwitch extends Component {
       WebkitTransition: $isDragging ? null : "background 0.25s",
       MozTransition: $isDragging ? null : "background 0.25s",
       transition: $isDragging ? null : "background 0.25s",
-      borderWidth: 10,
-      borderColor: 'red'
     };
 
     const checkedIconStyle = {
@@ -375,21 +371,21 @@ class ReactSwitch extends Component {
     };
 
     return (
-      <div className={className} style={rootStyle}>
+      <div className={className} style={[rootStyle, ...this.props.rootStyle]}>
         <div
           className="react-switch-bg"
-          style={backgroundStyle}
+          style={[backgroundStyle, ...this.props.backgroundStyle]}
           onClick={disabled ? null : this.$onClick}
           onMouseDown={e => e.preventDefault()}
         >
-          {checkedIcon && <div style={checkedIconStyle}>{checkedIcon}</div>}
+          {checkedIcon && <div style={[checkedIconStyle, ...this.props.checkedIconStyle]}>{checkedIcon}</div>}
           {uncheckedIcon && (
-            <div style={uncheckedIconStyle}>{uncheckedIcon}</div>
+            <div style={[uncheckedIconStyle, ...this.props.uncheckedIconStyle]}>{uncheckedIcon}</div>
           )}
         </div>
         <div
           className="react-switch-handle"
-          style={handleStyle}
+          style={[handleStyle, ...this.props.handleStyle]}
           onClick={e => e.preventDefault()}
           onMouseDown={disabled ? null : this.$onMouseDown}
           onTouchStart={disabled ? null : this.$onTouchStart}
@@ -398,10 +394,10 @@ class ReactSwitch extends Component {
           onTouchCancel={disabled ? null : this.$unsetHasOutline}
         >
           {uncheckedHandleIcon && (
-            <div style={uncheckedHandleIconStyle}>{uncheckedHandleIcon}</div>
+            <div style={[uncheckedHandleIconStyle, ...this.props.uncheckedHandleIconStyle]}>{uncheckedHandleIcon}</div>
           )}
           {checkedHandleIcon && (
-            <div style={checkedHandleIconStyle}>{checkedHandleIcon}</div>
+            <div style={[checkedHandleIconStyle, ...this.props.checkedHandleIconStyle]}>{checkedHandleIcon}</div>
           )}
         </div>
         <input
@@ -410,7 +406,7 @@ class ReactSwitch extends Component {
           aria-checked={checked}
           checked={checked}
           disabled={disabled}
-          style={inputStyle}
+          style={[inputStyle, ...this.props.inputStyle]}
           {...rest}
           /* anything below should NOT get overriden by ...rest */
           ref={this.$getInputRef}
@@ -443,8 +439,6 @@ ReactSwitch.propTypes = {
   width: PropTypes.number,
   id: PropTypes.string,
   className: PropTypes.string,
-  borderWidth: PropTypes.number,
-  borderColor: hexColorPropType
 };
 
 ReactSwitch.defaultProps = {
@@ -459,9 +453,6 @@ ReactSwitch.defaultProps = {
   activeBoxShadow: "0 0 2px 3px #3bf",
   height: 28,
   width: 56,
-  borderWidth: 10,
-  borderColor: '#FF0'
-
 };
 
 export default ReactSwitch;
