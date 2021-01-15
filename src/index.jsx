@@ -235,7 +235,9 @@ class ReactSwitch extends Component {
       WebkitUserSelect: "none",
       MozUserSelect: "none",
       msUserSelect: "none",
-      userSelect: "none"
+      userSelect: "none",
+      borderWidth: 5,
+      borderColor: "red"
     };
 
     const backgroundStyle = {
