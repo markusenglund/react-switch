@@ -140,9 +140,6 @@ export interface ReactSwitchProps {
    */
   id?: string;
 
-  borderStyle?: string,
-  borderWidth?: number,
-  borderColor?: string
 }
 
 type Omit<T, U> = Pick<T, Exclude<keyof T, U>>;

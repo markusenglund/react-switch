@@ -256,9 +256,9 @@ class ReactSwitch extends Component {
       WebkitTransition: $isDragging ? null : "background 0.25s",
       MozTransition: $isDragging ? null : "background 0.25s",
       transition: $isDragging ? null : "background 0.25s",
-      borderStyle: this.props.borderStyle,
-      borderWidth: this.props.borderWidth,
-      borderColor: this.props.borderColor
+      borderStyle: "solid",
+      borderWidth: 5,
+      borderColor: "#FFF",
     };
 
     const checkedIconStyle = {
@@ -442,9 +442,6 @@ ReactSwitch.propTypes = {
   width: PropTypes.number,
   id: PropTypes.string,
   className: PropTypes.string,
-  borderStyle: PropTypes.string,
-  borderWidth: PropTypes.number,
-  borderColor: hexColorPropType
 };
 
 ReactSwitch.defaultProps = {
@@ -459,9 +456,6 @@ ReactSwitch.defaultProps = {
   activeBoxShadow: "0 0 2px 3px #3bf",
   height: 28,
   width: 56,
-  borderStyle: "solid",
-  borderWidth: 1,
-  borderColor: "#FFF"
 };
 
 export default ReactSwitch;
