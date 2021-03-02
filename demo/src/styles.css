@@ -16,24 +16,24 @@ pre {
   background: #eee;
 }
 
-.horizontal-switch {
+.vertical-switch {
   display: inline-flex;
 }
-.horizontal-switch .react-switch-handle > div {
+.vertical-switch .react-switch-handle > div {
   text-align: center;
   padding-left: 2px;
 }
 
-.horizontal-switch__selectors {
+.vertical-switch__selectors {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   cursor: pointer;
   margin-left: 20px;
 }
-.horizontal-switch__selector {
+.vertical-switch__selector {
   transition: opacity .3s;
 }
-.horizontal-switch__selector_hide {
+.vertical-switch__selector_hide {
   opacity: .5;
 }

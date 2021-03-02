@@ -12,10 +12,10 @@ class ReactSwitch extends Component {
     super(props);
     const { height, width, handleDiameter, checked } = props;
 
-    this.$horizontal = height > width;
-    const largeSize = this.$horizontal ? height : width;
-    this.$smallerSize = this.$horizontal ? width : height;
-    this.$orientation = this.$horizontal ? 'Y' : 'X';
+    this.$vertical = height > width;
+    const largeSize = this.$vertical ? height : width;
+    this.$smallerSize = this.$vertical ? width : height;
+    this.$orientation = this.$vertical ? 'Y' : 'X';
     this.$eventField = `client${this.$orientation}`;
     this.$handleDiameter = handleDiameter || this.$smallerSize - 2;
     this.$handleOffset = Math.max(0, (this.$smallerSize - this.$handleDiameter) / 2);
@@ -271,8 +271,8 @@ class ReactSwitch extends Component {
     };
 
     const checkedIconStyle = {
-      height: this.$horizontal ? this.$iconSize : height,
-      width: this.$horizontal ? width : this.$iconSize,
+      height: this.$vertical ? this.$iconSize : height,
+      width: this.$vertical ? width : this.$iconSize,
       position: "relative",
       opacity:
         ($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos),
@@ -283,15 +283,15 @@ class ReactSwitch extends Component {
     };
 
     const uncheckedIconStyle = {
-      height: this.$horizontal ? this.$iconSize : height,
-      width: this.$horizontal ? width : this.$iconSize,
+      height: this.$vertical ? this.$iconSize : height,
+      width: this.$vertical ? width : this.$iconSize,
       position: "absolute",
       opacity:
         1 -
         ($pos - this.$uncheckedPos) / (this.$checkedPos - this.$uncheckedPos),
       right: 0,
-      top: this.$horizontal ? undefined : 0,
-      bottom: this.$horizontal ? 0 : undefined,
+      top: this.$vertical ? undefined : 0,
+      bottom: this.$vertical ? 0 : undefined,
       pointerEvents: "none",
       WebkitTransition: $isDragging ? null : "opacity 0.25s",
       MozTransition: $isDragging ? null : "opacity 0.25s",
@@ -313,8 +313,8 @@ class ReactSwitch extends Component {
       borderRadius: typeof borderRadius === "number" ? borderRadius - 1 : "50%",
       position: "absolute",
       transform: `translate${this.$orientation}(${$pos}px)`,
-      top: this.$horizontal ? 0 : this.$handleOffset,
-      left: this.$horizontal ? this.$handleOffset : undefined,
+      top: this.$vertical ? 0 : this.$handleOffset,
+      left: this.$vertical ? this.$handleOffset : undefined,
       outline: 0,
       boxShadow: $hasOutline ? activeBoxShadow : boxShadow,
       border: 0,
