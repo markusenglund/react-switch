@@ -15,3 +15,25 @@ pre {
   padding: 0 10px;
   background: #eee;
 }
+
+.horizontal-switch {
+  display: inline-flex;
+}
+.horizontal-switch .react-switch-handle > div {
+  text-align: center;
+  padding-left: 2px;
+}
+
+.horizontal-switch__selectors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.horizontal-switch__selector {
+  transition: opacity .3s;
+}
+.horizontal-switch__selector_hide {
+  opacity: .5;
+}
