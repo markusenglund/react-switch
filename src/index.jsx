@@ -15,7 +15,7 @@ class ReactSwitch extends Component {
     this.$handleWidth = handleWidth ? handleWidth : this.$handleDiameter
     this.$checkedPos = Math.min(
       width - height,
-      width - (height + this.$handleWidth) / 2
+      width - this.$handleWidth / 2
     );
     this.$uncheckedPos = Math.max(0, (height - this.$handleWidth) / 2);
     this.state = {
