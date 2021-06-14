@@ -12,10 +12,10 @@ class ReactSwitch extends Component {
     super(props);
     const { height, width, handleDiameter, handleWidth, checked } = props;
     this.$handleDiameter = handleDiameter || height - 2;
-    this.$handleWidth = handleWidth ? handleWidth : this.$handleDiameter
+    this.$handleWidth = handleWidth || this.$handleDiameter
     this.$checkedPos = Math.min(
       width - height,
-      width - this.$handleWidth / 2
+      width - this.$handleWidth
     );
     this.$uncheckedPos = Math.max(0, (height - this.$handleWidth) / 2);
     this.state = {
