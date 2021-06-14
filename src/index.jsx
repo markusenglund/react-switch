@@ -243,7 +243,7 @@ class ReactSwitch extends Component {
     const backgroundStyle = {
       height,
       width,
-      margin: Math.max(0, (this.$handleWidth - height) / 2),
+      margin: Math.max(0, (this.$handleDiameter- height) / 2),
       position: "relative",
       background: getBackgroundColor(
         $pos,
