@@ -13,7 +13,7 @@ class ReactSwitch extends Component {
     const { height, width, handleDiameter, handleWidth, checked } = props;
     this.$handleDiameter = handleDiameter || height - 2;
     this.$handleWidth = handleWidth ? handleWidth : this.$handleDiameter
-    this.$checkedPos = Math.max(
+    this.$checkedPos = Math.min(
       width - height,
       width - (height + this.$handleWidth) / 2
     );
