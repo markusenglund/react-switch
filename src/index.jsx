@@ -10,9 +10,10 @@ import hexColorPropType from "./hexColorPropType";
 class ReactSwitch extends Component {
   constructor(props) {
     super(props);
-    const { height, width, handleDiameter, handleWidth, checked } = props;
+    const { height, width, handleDiameter, handleWidth, handleBorder, checked } = props;
     this.$handleDiameter = handleDiameter || height - 2;
-    this.$handleWidth = handleWidth || this.$handleDiameter
+    this.$handleWidth = handleWidth || this.$handleDiameter;
+    this.$handleBorder = handleBorder || 0;
     this.$checkedPos = Math.min(
       width - height,
       width - this.$handleWidth
@@ -217,6 +218,7 @@ class ReactSwitch extends Component {
       borderRadius,
       handleDiameter, // just to filter this prop out
       handleWidth,
+      handleBorder,
       ...rest
     } = this.props;
 
@@ -311,7 +313,7 @@ class ReactSwitch extends Component {
       top: Math.max(0, (height - this.$handleDiameter) / 2),
       outline: 0,
       boxShadow: $hasOutline ? activeBoxShadow : boxShadow,
-      border: 0,
+      border: this.$handleBorder,
       WebkitTransition: $isDragging
         ? null
         : "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
