@@ -8,15 +8,15 @@ export default class InputProps extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  handleChange(checked) {
+    this.setState({ checked });
+  }
+
   // eslint-disable-next-line class-methods-use-this
   onSubmit(e) {
     e.preventDefault();
     // eslint-disable-next-line no-alert
     alert(`Form submitted!`);
-  }
-
-  handleChange(checked) {
-    this.setState({ checked });
   }
 
   render() {
