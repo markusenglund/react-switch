@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import Switch from "../src";
 
 const noop = () => {};
@@ -47,44 +47,50 @@ describe("Props", () => {
 describe("handle", () => {
   it("sets a boxShadow on focus and loses it on blur", () => {
     const { container } = render(<Switch onChange={noop} checked={false} />);
-    fireEvent.focus(
-      container.querySelector("input")
-    );
+    fireEvent.focus(container.querySelector("input"));
     expect(
-      container.querySelector(".react-switch-handle").style.getPropertyValue('box-shadow')
+      container
+        .querySelector(".react-switch-handle")
+        .style.getPropertyValue("box-shadow")
     ).toBe("0 0 2px 3px #3bf");
-    fireEvent.blur(
-      container.querySelector("input")
-    );
+    fireEvent.blur(container.querySelector("input"));
     expect(
-      container.querySelector(".react-switch-handle").style.getPropertyValue('box-shadow')
-    ).toBe('');
+      container
+        .querySelector(".react-switch-handle")
+        .style.getPropertyValue("box-shadow")
+    ).toBe("");
   });
 
   it("doesn't call onChange on some other key", () => {
     const mockOnChange = jest.fn();
-    const { container } = render(<Switch onChange={mockOnChange} checked={false} />);
-    fireEvent.focus(
-      container.querySelector("input")
+    const { container } = render(
+      <Switch onChange={mockOnChange} checked={false} />
     );
-    fireEvent.keyDown(
-      container.querySelector("input"),
-      { keyCode: 14, preventDefault: noop }
-    );
+    fireEvent.focus(container.querySelector("input"));
+    fireEvent.keyDown(container.querySelector("input"), {
+      keyCode: 14,
+      preventDefault: noop
+    });
     expect(mockOnChange).not.toBeCalled();
   });
 });
 
 describe("checked prop", () => {
   it("affects transform style when it changes", () => {
-    const { container, rerender } = render(<Switch onChange={noop} checked={false} />);
+    const { container, rerender } = render(
+      <Switch onChange={noop} checked={false} />
+    );
     rerender(<Switch onChange={noop} checked />);
     expect(
-      container.querySelector(".react-switch-handle").style.getPropertyValue('transform')
+      container
+        .querySelector(".react-switch-handle")
+        .style.getPropertyValue("transform")
     ).toBe("translateX(29px)");
     rerender(<Switch onChange={noop} checked={false} />);
     expect(
-      container.querySelector(".react-switch-handle").style.getPropertyValue('transform')
+      container
+        .querySelector(".react-switch-handle")
+        .style.getPropertyValue("transform")
     ).toBe("translateX(1px)");
   });
 
@@ -98,16 +104,13 @@ describe("checked prop", () => {
       />
     );
     rerender(
-      <Switch
-        onChange={noop}
-        checked
-        offColor="#aabbcc"
-        onColor="#ddeeff"
-      />
+      <Switch onChange={noop} checked offColor="#aabbcc" onColor="#ddeeff" />
     );
-    expect(container.querySelector(".react-switch-bg").style.getPropertyValue('background')).toBe(
-      "rgb(221, 238, 255)"
-    );
+    expect(
+      container
+        .querySelector(".react-switch-bg")
+        .style.getPropertyValue("background")
+    ).toBe("rgb(221, 238, 255)");
     rerender(
       <Switch
         onChange={noop}
@@ -116,9 +119,11 @@ describe("checked prop", () => {
         onColor="#ddeeff"
       />
     );
-    expect(container.querySelector(".react-switch-bg").style.getPropertyValue('background')).toBe(
-      "rgb(170, 187, 204)"
-    );
+    expect(
+      container
+        .querySelector(".react-switch-bg")
+        .style.getPropertyValue("background")
+    ).toBe("rgb(170, 187, 204)");
   });
 });
 
