@@ -5,11 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm run lib:watch\" \"npm run demo:dev\"",
-    "build": "npm run lib:prod && npm run lib:dev && npm run demo:prod",
+    "build": "npm run build:lib && npm run demo:prod",
+    "build:lib": "rollup -c",
     "prepare": "npm run build",
     "lib:watch": "rollup -c -w -o dist/react-switch.dev.js",
-    "lib:dev": "rollup -c -o dist/react-switch.dev.js",
-    "lib:prod": "cross-env NODE_ENV=production rollup -c -o dist/react-switch.min.js",
     "demo:dev": "webpack-dev-server --mode development",
     "demo:prod": "webpack --mode production",
     "format": "prettier --write '**/*.{js,jsx,json}'",
@@ -83,5 +82,18 @@
   ],
   "dependencies": {
     "prop-types": "^15.7.2"
+  },
+  "exports": {
+    ".": {
+      "development": {
+        "import": "./dist/index.dev.mjs",
+        "require": "./dist/index.dev.js"
+      },
+      "production": {
+        "import": "./dist/index.prod.mjs",
+        "require": "./dist/index.prod.js"
+      },
+      "default": "./index.js"
+    }
   }
 }

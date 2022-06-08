@@ -1,48 +1,96 @@
 import babel from "rollup-plugin-babel";
 import buble from "rollup-plugin-buble";
 import { terser } from "rollup-plugin-terser";
+import path from "path";
 
-const config = {
-  input: "src/index.jsx",
-  output: {
-    format: "cjs",
-    interop: false,
-    strict: false,
-    exports: "named"
-  },
-  plugins: [
-    buble({ objectAssign: true }),
-    babel({
-      babelrc: false,
-      plugins: ["@babel/plugin-transform-object-assign"]
-    })
-  ],
-  external: ["react", "prop-types"]
-};
+// import { terser } from "rollup-plugin-terser";
 
-if (process.env.NODE_ENV === "production") {
-  config.plugins.push(
-    babel({
-      babelrc: false,
-      plugins: [
-        [
-          "transform-react-remove-prop-types",
-          {
-            removeImport: true,
-            additionalLibraries: ["./hexColorPropType"]
-          }
-        ]
+/**
+ * @type { [import('rollup').Plugin] }
+ */
+const prodPlugins = [
+  babel({
+    babelrc: false,
+    plugins: [
+      [
+        "transform-react-remove-prop-types",
+        {
+          removeImport: true,
+          additionalLibraries: ["./hexColorPropType"]
+        }
       ]
-    }),
-    terser({
-      mangle: {
-        properties: { regex: /^\$/ }
-      },
-      compress: {
-        pure_getters: true
-      }
-    })
-  );
-}
+    ]
+  }),
+  terser({
+    mangle: {
+      properties: { regex: /^\$/ }
+    },
+    compress: {
+      pure_getters: true
+    }
+  })
+]
 
-export default config;
+/**
+ * @type { [import('rollup').Plugin] }
+ */
+const commonPlugins = [
+  buble({ objectAssign: true }),
+  babel({
+    babelrc: false,
+    plugins: ["@babel/plugin-transform-object-assign"]
+  })
+];
+
+
+/**
+ * @type { [import('rollup').RollupOptions] }
+ */
+const configs = [
+  {
+    input: "src/index.jsx",
+    output: [
+      {
+        format: "cjs",
+        file: path.resolve(__dirname, "dist", "index.dev.js"),
+        interop: false,
+        strict: false,
+        exports: "named"
+      },
+      {
+        format: "esm",
+        file: path.resolve(__dirname, "dist", "index.dev.mjs"),
+        interop: false,
+        strict: false,
+        exports: "named"
+
+      }
+    ],
+    plugins: commonPlugins,
+    external: ["react", "prop-types"]
+  },
+  {
+    input: "src/index.jsx",
+    output: [
+      {
+        format: "cjs",
+        file: path.resolve(__dirname, "dist", "index.prod.js"),
+        interop: false,
+        strict: false,
+        exports: "named"
+      },
+      {
+        format: "esm",
+        file: path.resolve(__dirname, "dist", "index.prod.mjs"),
+        interop: false,
+        strict: false,
+        exports: "named"
+
+      }
+    ],
+    plugins: commonPlugins.concat(prodPlugins),
+    external: ["react", "prop-types"]
+  }
+]
+
+export default configs
