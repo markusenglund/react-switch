@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV === "production") {
-  module.exports = require("./dist/react-switch.min.js");
+  module.exports = require("./dist/index.prod.js");
 } else {
-  module.exports = require("./dist/react-switch.dev.js");
+  module.exports = require("./dist/index.dev.js");
 }
