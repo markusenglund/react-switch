@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [7.0.0 - 2022-06-09]
+
+### Changed
+
+- Export package as ESM, fixes incompatibility with Rollup/Vite and makes output slightly smaller ([@Niputi](https://github.com/Niputi))
+
+## [6.1.0 - 2022-06-08]
+
+### Added
+
+- Add react@18 as a peerDependency ([@smhg](https://github.com/smhg))
+
+### Changed
+
+- Replace Enzyme with React testing library ([@smhg](https://github.com/smhg))
+
 ## [6.0.0 - 2021-01-06]
 
 ### Added
