@@ -27,29 +27,56 @@ npm install react-switch
 ## Usage
 
 ```javascript
-import React, { Component } from "react";
+import { useState } from "react";
 import Switch from "react-switch";
+import { FiSun, FiMoon } from "react-icons/fi";
 
-class SwitchExample extends Component {
-  constructor() {
-    super();
-    this.state = { checked: false };
-    this.handleChange = this.handleChange.bind(this);
-  }
+const App = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-  handleChange(checked) {
-    this.setState({ checked });
-  }
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
 
-  render() {
-    return (
-      <label>
-        <span>Switch with default style</span>
-        <Switch onChange={this.handleChange} checked={this.state.checked} />
-      </label>
-    );
-  }
-}
+  const styles = {
+    lightTheme: {
+      backgroundColor: "#fff",
+      color: "#333",
+    },
+    darkTheme: {
+      backgroundColor: "#222",
+      color: "#fff",
+    },
+  };
+
+  return (
+    <div
+      className="App"
+      style={isDarkTheme ? styles.darkTheme : styles.lightTheme}
+    >
+      <header>
+        <h1>{isDarkTheme ? "Dark Theme" : "Light Theme"}</h1>
+      </header>
+      <main>
+        <p>This is a beautiful minimal theme toggle!</p>
+        <Switch
+          onChange={toggleTheme}
+          checked={isDarkTheme}
+          onColor="#86d3ff"
+          onHandleColor="#2693e6"
+          handleDiameter={20}
+          uncheckedIcon={<FiSun size={16} color="#fff" />}
+          checkedIcon={<FiMoon size={16} color="#fff" />}
+          height={24}
+          width={48}
+          className="switch"
+        />
+      </main>
+    </div>
+  );
+};
+
+export default App;
 ```
 
 ### What's the deal with the label tag?
