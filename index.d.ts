@@ -26,6 +26,17 @@ export interface ReactSwitchProps {
   ) => void;
 
   /**
+   * Invoked when the user clicks on the switch.
+   *
+   * **event** is a native SyntheticEvent when the handle or handle bg is clicked.
+   *
+   * @param {object} event
+   */
+  onClick: (
+    event: React.SyntheticEvent<MouseEvent | KeyboardEvent> | MouseEvent,
+  ) => void;
+
+  /**
    * When true, the switch will no longer be interactive and its colors will be greyed out.
    */
   disabled?: boolean;
