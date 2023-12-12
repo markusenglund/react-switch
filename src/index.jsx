@@ -185,7 +185,7 @@ class ReactSwitch extends Component {
 
   $switchHandleClick(event) {
     event.preventDefault();
-    this.props.onClick(event);
+    if (typeof this.props.onClick === "function") this.props.onClick(event);
   }
 
   $onClick(event) {
