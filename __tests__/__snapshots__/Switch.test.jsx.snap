@@ -3,27 +3,27 @@
 exports[`Props matches snapshot with custom props 1`] = `
 <div
   class="qux"
-  style="position:relative;display:inline-block;text-align:left;opacity:0.5;direction:ltr;border-radius:6.5px;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s;touch-action:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none"
+  style="position: relative; display: inline-block; text-align: left; opacity: 0.5; direction: ltr; border-radius: 6.5px; transition: opacity 0.25s; user-select: none;"
 >
   <div
     class="react-switch-bg"
-    style="height:13px;width:37px;margin:0;position:relative;background:#aabbcc;border-radius:6.5px;cursor:default;-webkit-transition:background 0.25s;-moz-transition:background 0.25s;transition:background 0.25s"
+    style="height: 13px; width: 37px; margin: 0px; position: relative; background: rgb(170, 187, 204); border-radius: 6.5px; cursor: default; transition: background 0.25s;"
   >
     <div
-      style="height:13px;width:19.5px;position:relative;opacity:1;pointer-events:none;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s"
+      style="height: 13px; width: 19.5px; position: relative; opacity: 1; pointer-events: none; transition: opacity 0.25s;"
     >
       <div
-        style="color:pink;padding-top:2px;padding-left:6px;font-size:20px"
+        style="color: pink; padding-top: 2px; padding-left: 6px; font-size: 20px;"
       >
         ❤
       </div>
     </div>
     <div
-      style="height:13px;width:19.5px;position:absolute;opacity:0;right:0;top:0;pointer-events:none;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s"
+      style="height: 13px; width: 19.5px; position: absolute; opacity: 0; right: 0px; top: 0px; pointer-events: none; transition: opacity 0.25s;"
     >
       <svg
         height="100%"
-        style="position:absolute;top:0"
+        style="position: absolute; top: 0px;"
         viewBox="-2 -5 14 20"
         width="100%"
       >
@@ -37,7 +37,7 @@ exports[`Props matches snapshot with custom props 1`] = `
   </div>
   <div
     class="react-switch-handle"
-    style="height:9px;width:9px;background:#ffffff;display:inline-block;cursor:default;border-radius:50%;position:absolute;transform:translateX(26px);top:2px;outline:0;box-shadow:0px 1px 5px rgba(0, 0, 0, 0.6);border:0;-webkit-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;-moz-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s"
+    style="height: 9px; width: 9px; background: rgb(255, 255, 255); display: inline-block; cursor: default; border-radius: 50%; position: absolute; transform: translateX(26px); top: 2px; outline: 0; box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.6); border: 0px; transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;"
   />
   <input
     aria-checked="true"
@@ -47,7 +47,7 @@ exports[`Props matches snapshot with custom props 1`] = `
     disabled=""
     id="foo"
     role="switch"
-    style="border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px"
+    style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"
     type="checkbox"
   />
 </div>
@@ -55,18 +55,18 @@ exports[`Props matches snapshot with custom props 1`] = `
 
 exports[`Props matches snapshot with default props 1`] = `
 <div
-  style="position:relative;display:inline-block;text-align:left;opacity:1;direction:ltr;border-radius:14px;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s;touch-action:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none"
+  style="position: relative; display: inline-block; text-align: left; opacity: 1; direction: ltr; border-radius: 14px; transition: opacity 0.25s; user-select: none;"
 >
   <div
     class="react-switch-bg"
-    style="height:28px;width:56px;margin:0;position:relative;background:#888888;border-radius:14px;cursor:pointer;-webkit-transition:background 0.25s;-moz-transition:background 0.25s;transition:background 0.25s"
+    style="height: 28px; width: 56px; margin: 0px; position: relative; background: rgb(136, 136, 136); border-radius: 14px; cursor: pointer; transition: background 0.25s;"
   >
     <div
-      style="height:28px;width:30px;position:relative;opacity:0;pointer-events:none;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s"
+      style="height: 28px; width: 30px; position: relative; opacity: 0; pointer-events: none; transition: opacity 0.25s;"
     >
       <svg
         height="100%"
-        style="position:absolute;top:0"
+        style="position: absolute; top: 0px;"
         viewBox="-2 -5 17 21"
         width="100%"
       >
@@ -78,11 +78,11 @@ exports[`Props matches snapshot with default props 1`] = `
       </svg>
     </div>
     <div
-      style="height:28px;width:30px;position:absolute;opacity:1;right:0;top:0;pointer-events:none;-webkit-transition:opacity 0.25s;-moz-transition:opacity 0.25s;transition:opacity 0.25s"
+      style="height: 28px; width: 30px; position: absolute; opacity: 1; right: 0px; top: 0px; pointer-events: none; transition: opacity 0.25s;"
     >
       <svg
         height="100%"
-        style="position:absolute;top:0"
+        style="position: absolute; top: 0px;"
         viewBox="-2 -5 14 20"
         width="100%"
       >
@@ -96,12 +96,12 @@ exports[`Props matches snapshot with default props 1`] = `
   </div>
   <div
     class="react-switch-handle"
-    style="height:26px;width:26px;background:#ffffff;display:inline-block;cursor:pointer;border-radius:50%;position:absolute;transform:translateX(1px);top:1px;outline:0;border:0;-webkit-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;-moz-transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s;transition:background-color 0.25s, transform 0.25s, box-shadow 0.15s"
+    style="height: 26px; width: 26px; background: rgb(255, 255, 255); display: inline-block; cursor: pointer; border-radius: 50%; position: absolute; transform: translateX(1px); top: 1px; outline: 0; border: 0px; transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;"
   />
   <input
     aria-checked="false"
     role="switch"
-    style="border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px"
+    style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"
     type="checkbox"
   />
 </div>
