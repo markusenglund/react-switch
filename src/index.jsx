@@ -31,6 +31,7 @@ class ReactSwitch extends Component {
     this.$onTouchMove = this.$onTouchMove.bind(this);
     this.$onTouchEnd = this.$onTouchEnd.bind(this);
     this.$onClick = this.$onClick.bind(this);
+    this.$switchHandleClick = this.$switchHandleClick.bind(this);
 
     this.$onInputChange = this.$onInputChange.bind(this);
     this.$onKeyUp = this.$onKeyUp.bind(this);
@@ -182,8 +183,13 @@ class ReactSwitch extends Component {
     this.$inputRef = el;
   }
 
-  $onClick(event) {
+  $switchHandleClick(event) {
     event.preventDefault();
+    if (typeof this.props.onClick === "function") this.props.onClick(event);
+  }
+
+  $onClick(event) {
+    this.$switchHandleClick(event);
     this.$inputRef.focus();
     this.$onChange(event);
     if (this.$isMounted) {
@@ -386,7 +392,7 @@ class ReactSwitch extends Component {
         <div
           className="react-switch-handle"
           style={handleStyle}
-          onClick={e => e.preventDefault()}
+          onClick={this.$switchHandleClick}
           onMouseDown={disabled ? null : this.$onMouseDown}
           onTouchStart={disabled ? null : this.$onTouchStart}
           onTouchMove={disabled ? null : this.$onTouchMove}
@@ -422,6 +428,7 @@ class ReactSwitch extends Component {
 ReactSwitch.propTypes = {
   checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   disabled: PropTypes.bool,
   offColor: hexColorPropType,
   onColor: hexColorPropType,
