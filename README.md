@@ -16,7 +16,7 @@ A draggable toggle-switch component for React.
 
 ## Demo
 
-[Take a look at the demo](https://react-switch.netlify.com/)
+[Take a look at the demo](https://react-switch.netlify.app/)
 
 ## Installation
 
@@ -56,7 +56,7 @@ class SwitchExample extends Component {
 
 The Switch component in the above example is nested inside a label tag. This makes sure that the label text is read out to people with reduced sight who use screen readers and enables users to click on the text to toggle the switch. If you would only put some text next to the switch but not inside a `label` element, the screen reader will just read out "switch off" and the user will have no idea what it is for.
 
-If you don't want to nest the switch inside a label, you can use the `htmlFor` attribute on the label-element and set it to the same value as the `id` of the switch. Alternatively, you can use the `aria-labelledby` or `aria-label` props to give the switch a label. You can see examples of this at the bottom of the [demo page](https://react-switch.netlify.com/).
+If you don't want to nest the switch inside a label, you can use the `htmlFor` attribute on the label-element and set it to the same value as the `id` of the switch. Alternatively, you can use the `aria-labelledby` or `aria-label` props to give the switch a label. You can see examples of this at the bottom of the [demo page](https://react-switch.netlify.app/).
 
 ## API
 
