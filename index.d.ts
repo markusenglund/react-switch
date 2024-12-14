@@ -31,7 +31,8 @@ export interface ReactSwitchProps {
   disabled?: boolean;
 
   /**
-   * The switch will take on this color when it is **not** checked. Only accepts 3 or 6 digit hex colors, e.g., #888, #45abcd.
+   * The switch will take on this color when it is **not** checked. Only accepts 3 or 6 digit hex 
+   * colors (e.g., #888, #45abcd) or 8 digit hex colors with opacity (e.g., #45abcdff).
    *
    * Defaults to #888.
    */

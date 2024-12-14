@@ -14,7 +14,7 @@ function createBackgroundColor(
   }
 
   let newColor = "#";
-  for (let i = 1; i < 6; i += 2) {
+  for (let i = 1; i < 8; i += 2) {
     const offComponent = parseInt(offColor.substr(i, 2), 16);
     const onComponent = parseInt(onColor.substr(i, 2), 16);
     const weightedValue = Math.round(
@@ -30,14 +30,17 @@ function createBackgroundColor(
 }
 
 function convertShorthandColor(color) {
-  if (color.length === 7) {
+  if (color.length === 9) {
     return color;
+  }
+  if (color.length === 7) {
+    return color + 'FF';
   }
   let sixDigitColor = "#";
   for (let i = 1; i < 4; i += 1) {
     sixDigitColor += color[i] + color[i];
   }
-  return sixDigitColor;
+  return sixDigitColor + 'FF';
 }
 
 export default function getBackgroundColor(
@@ -47,13 +50,13 @@ export default function getBackgroundColor(
   offColor,
   onColor
 ) {
-  const sixDigitOffColor = convertShorthandColor(offColor);
-  const sixDigitOnColor = convertShorthandColor(onColor);
+  const eightDigitOffColor = convertShorthandColor(offColor);
+  const eightDigitOnColor = convertShorthandColor(onColor);
   return createBackgroundColor(
     pos,
     checkedPos,
     uncheckedPos,
-    sixDigitOffColor,
-    sixDigitOnColor
+    eightDigitOffColor,
+    eightDigitOnColor
   );
 }
